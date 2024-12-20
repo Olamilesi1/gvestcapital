@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.footB {
+  background: linear-gradient(rgba(15, 55, 92, 0.4), rgba(15, 55, 92, 0.4)),
+    url("../../public/images/footer.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.footDiv {
+  width: 70%;
+  margin: 0.5rem auto;
+}
+
+.logo {
+  width: 20%;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.navLi a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+.p {
+  font-weight: 600;
+  color: white;
+}
+
+.active {
+  background-color: white;
+  border-radius: 0.1rem;
+}
+
+.navUl {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.footNav {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.footNav2 {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.footText {
+  /* text-align: justify; */
+  font-size: .8rem;
+}
+
+.footText1 {
+  /* text-align: justify; */
+  color: white;
+  font-size: .8rem;
+}
+
+.copy {
+  background-color: rgb(61, 134, 39);
+  text-align: center;
+  padding: 1rem 0;
+  color: white;
+}
