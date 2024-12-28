@@ -1,0 +1,426 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.home {
+  background: url("../../public/images/bg__.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.homeText {
+  color: white;
+}
+
+.homeText1 {
+  text-align: center;
+  width: 65%;
+  margin: 0 auto;
+  font-size: 4rem;
+  line-height: 4rem;
+}
+
+.homeText2 {
+  text-align: center;
+  margin: 0.5rem auto;
+  font-size: 1.5rem;
+}
+
+.btnMore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.invest {
+  font-weight: 600;
+  border: none;
+  padding: 0.8rem 1rem;
+  color: white;
+  background-color: rgb(144, 12, 12);
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 300ms, color 300ms;
+}
+
+.invest:hover {
+  background-color: rgb(110, 10, 10);
+}
+
+.more a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  position: relative;
+  transition: color 300ms;
+}
+
+.more a:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 300ms;
+}
+
+.more a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms;
+}
+
+.home2 {
+  width: 90%;
+  margin: 3rem auto;
+}
+
+.invest1 {
+  color: rgba(70, 20, 4, 1);
+  text-align: center;
+  font-style: italic;
+  padding: 0.6rem 0;
+  border-radius: 2rem;
+  border: 0.15rem solid rgba(70, 20, 4, 1);
+  background-color: rgba(255, 247, 236);
+  width: 23%;
+  margin: 1rem 0 1rem 0;
+}
+
+.cardTitle {
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
+}
+
+.cardPara {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnri {
+  display: flex;
+  justify-content: right;
+}
+
+.investConsult {
+  font-weight: 600;
+  border: none;
+  padding: 1.5rem 1rem;
+  color: white;
+  background-color: rgb(144, 12, 12);
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  margin-top: 2rem;
+  transition: background-color 300ms, color 300ms;
+}
+
+.investConsult:hover {
+  background-color: rgb(110, 10, 10);
+}
+
+.imageContainer {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.container {
+  min-width: 100%;
+  animation: slideLeft 10s linear infinite;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); /* Moves two sets of images off-screen */
+  }
+}
+
+.home3 {
+  width: 90%;
+  margin: 3rem auto;
+}
+
+.HH {
+  margin: 1rem 0;
+}
+
+.cardH {
+  display: flex;
+  justify-content: space-between;
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.benefit1 {
+  padding: 0.8rem;
+  color: rgba(0, 128, 0, 1);
+  border-radius: 2rem;
+  border: 0.1rem solid rgba(0, 128, 0, 0.5);
+  background-color: rgba(212, 255, 255, 0.3);
+}
+
+.benefit2 {
+  padding: 0.8rem;
+  color: rgba(26, 35, 126, 1);
+  border-radius: 2rem;
+  border: 0.1rem solid rgba(26, 35, 126, 1);
+  background-color: rgba(26, 35, 126, 0.1);
+}
+
+.benefit3 {
+  padding: 0.8rem;
+  color: rgba(74, 6, 6, 1);
+  border-radius: 2rem;
+  border: 0.1rem solid rgba(74, 6, 6, 0.5);
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.profiles {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem;
+  scroll-behavior: smooth;
+}
+
+.profiles > * {
+  flex-shrink: 0;
+}
+
+.profiles::-webkit-scrollbar {
+  height: 0px;
+}
+
+.home4 {
+  background-color: rgba(255, 240, 240, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem;
+}
+
+.secur {
+  width: 58%;
+}
+
+.faqContainer {
+  padding: 2rem;
+}
+
+.faqItem {
+  margin: 1rem 0;
+  background-color: rgba(246, 246, 246, 1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question:hover {
+  color: #df5c10;
+}
+
+.answer {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  /* color: #555; */
+  color: black;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1360px) {
+  .homeText1 {
+    margin-top: 3rem;
+    width: 100%;
+    font-size: 1.7rem;
+    line-height: 1.4rem;
+  }
+
+  .homeText2 {
+    font-size: 1.2rem;
+  }
+
+  .btnMore {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .homeText1 {
+    margin-top: 1rem;
+    width: 90%;
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+  }
+
+  .homeText2 {
+    font-size: 1.2rem;
+  }
+
+  .btnMore {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .HH {
+    margin: 1.4rem 0;
+  }
+
+  .cardH {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .invest1 {
+    width: 40%;
+  }
+
+  .benefit {
+    margin: 1.5rem 0;
+  }
+
+  .cardPara {
+    font-size: 1rem;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+
+  .question {
+    font-size: 0.9rem;
+  }
+
+  .home4 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem;
+  }
+
+  .secur {
+    width: 100%;
+  }
+
+  .investConsult {
+    font-size: 0.9rem;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 620px) {
+  .invest1 {
+    width: 55%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    padding: 0.5rem; /* Add more padding for very small screens */
+  }
+
+  .homeText2 {
+    font-size: 1rem;
+  }
+
+  .btnMore {
+    gap: 0.3rem;
+  }
+
+  .benefit {
+    font-size: 0.8rem;
+  }
+
+  .invest1 {
+    width: 79%;
+  }
+
+  .investConsult {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .benefit {
+    font-size: 0.6rem;
+  }
+}

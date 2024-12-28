@@ -6,47 +6,52 @@ function Footer() {
     <>
       <div className={style.footB}>
         <div className={style.footDiv}>
-          <img src="./images/logo.png" alt="img" className={style.logo} />
+          <div className={style.logoH}>
+            <img src="./images/gVestL.png" alt="img" className={style.logo} />
+          </div>
 
           <div className={style.footNav}>
-            <div className={style.footNav2}>
-              <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-              />
+            <link
+              rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            />
 
-              <div className={style.contact}>
-                <h5 className={style.p}>CONTACT</h5>
-                <p className={style.p}>09078652556276</p>
-                <p className={style.p}>gtext@gmail.com</p>
-                <p className={style.p}>
-                  4, Joe Faraday, Mojisola Estate, Onikoyi, Ikoyi
-                </p>
-                <span>
-                  <p className={style.p}> Social media Icon</p>
-                </span>
-              </div>
+            <div className={style.contact}>
+              <h4 className={style.contactText}>Contact</h4>
+              <p className={style.p}>+1 305 407 0276</p>
+              <p className={style.p}>gtext@gmail.com</p>
+              <p className={style.p}>
+                4, Joe Faraday, Mojisola Estate, Onikoyi, Ikoyi
+              </p>
 
-              <div className={style.contact}>
-                <h5 className={style.p}>LEGAL</h5>
-                <ul className={style.navUl}>
-                  <li className={style.navLi}>
-                    <NavLink to="/faq">FAQs</NavLink>
-                  </li>
-                  <li className={style.navLi}>
-                    <NavLink to="/privacy-policy">Privacy Policy</NavLink>
-                  </li>
-                  <li className={style.navLi}>
-                    <NavLink to="/t&c">Terms & Conditions</NavLink>
-                  </li>
-                  <li className={style.navLi}>
-                    <NavLink to="/disclosure">Disclosures</NavLink>
-                  </li>
-                </ul>
-              </div>
+              <span className={style.social}>
+                <img src="./images/Linkedin.png" alt="" />
+                <img src="./images/Facebook.png" alt="" />
+                <img src="./images/Twitter.png" alt="" />
+                <img src="./images/IG.png" alt="" />
+              </span>
+            </div>
+
+            <div className={style.contact}>
+              <h4 className={style.contactText}>Legal</h4>
+              <ul className={style.navUl}>
+                <li className={style.navLi}>
+                  <NavLink to="/faq">FAQs</NavLink>
+                </li>
+                <li className={style.navLi}>
+                  <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+                </li>
+                <li className={style.navLi}>
+                  <NavLink to="/t&c">Terms & Conditions</NavLink>
+                </li>
+                <li className={style.navLi}>
+                  <NavLink to="/disclosure">Disclosures</NavLink>
+                </li>
+              </ul>
             </div>
 
             <div className={style.footText}>
+              <h4 className={style.contactText}>Important</h4>
               <p className={style.footText1}>
                 Investing involves risk, including loss of principal. Past
                 performance does not guarantee or indicate future results. Any
@@ -65,16 +70,18 @@ function Footer() {
                 expectation. Prospective investors should consult with a tax,
                 legal and/or financial adviser before making any investment
                 decision.
-              </p>{" "}
-              <br />
-              <p className={style.p}>
-                For additional important risks, disclosures, and information,
-                please visit www.cardonecapital.com/disclosures
               </p>
             </div>
           </div>
+
+          <div className={style.copyTerm}>
+            <p className={style.copy}>© 2024 All rights reserved.</p>
+            <div className={style.termPriv}>
+              <p className={style.copy}>Terms</p>
+              <p className={style.copy}>Privacy</p>
+            </div>
+          </div>
         </div>
-        <p className={style.copy}>All rights reserved © 2024 Cardone Capital</p>
       </div>
     </>
   );

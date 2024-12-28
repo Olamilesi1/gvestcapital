@@ -1,60 +1,113 @@
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import style from "../../styles/Header.module.css";
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
-    const [showDetails, setShowDetails] = useState(false);
-
-  const toggleDetails = () => {
-    setShowDetails((prevState) => !prevState);
+  const toggleMenu = () => {
+    setIsMenuOpen((prevState) => !prevState);
   };
+
+  const closeMenu = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", closeMenu);
+    return () => {
+      document.removeEventListener("mousedown", closeMenu);
+    };
+  }, []);
+
   return (
-    <>
-      <div className={style.headHi}>
-        <div className={style.imgnav}>
-          <img src="./images/logo.png" alt="img" className={style.logo} />
+    <div className={style.headHi}>
+      {/* Logo Section */}
+      <div className={style.logoH}>
+        <NavLink to="/">
+          <img
+            src="./images/gVestLogo.png"
+            alt="gVest Logo"
+            className={style.logo}
+          />
+        </NavLink>
+      </div>
 
-          <ul className={style.navUl}>
-            <p className={style.ab} onClick={toggleDetails}>About</p>
-            {showDetails && (
-        <div className={style.about}>
-          <p className={style.navLi}>
-            <NavLink to="/overview">Overview</NavLink>
-          </p>
-          <p className={style.navLi}>
-            <NavLink to="/team">Team</NavLink>
-          </p>
-          <p className={style.navLi}>
-            <NavLink to="/gc-insight">GC's Insights</NavLink>
-          </p>
-        </div>
-      )}
-            <li className={style.navLi}>
-              <NavLink to="/investment">Investments</NavLink>
-            </li>
-            <li className={style.navLi}>
-              <NavLink to="/contact">Contact</NavLink>
-            </li>
-            <li className={style.navLi}>
-              <NavLink to="/ira-info">IRA</NavLink>
-            </li>
-          </ul>
-        </div>
+      {/* Navigation Menu */}
+      <nav
+        ref={menuRef}
+        className={`${style.nav} ${isMenuOpen ? style.showMenu : ""}`}
+      >
+        <ul className={style.navUl}>
+          <li className={style.navLi}>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => (isActive ? style.active : "")}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </NavLink>
+          </li>
+          <li className={style.navLi}>
+            <NavLink
+              to="/investment"
+              className={({ isActive }) => (isActive ? style.active : "")}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Investments
+            </NavLink>
+          </li>
+          <li className={style.navLi}>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) => (isActive ? style.active : "")}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </NavLink>
+          </li>
+          <li className={style.navLi}>
+            <NavLink
+              to="/ira-info"
+              className={({ isActive }) => (isActive ? style.active : "")}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              IRA
+            </NavLink>
+          </li>
+        </ul>
 
-        <div className={style.numLog}>
-          <p>097764842679</p> 
+        {/* Responsive numLog */}
+        <div className={style.numLogR}>
           <ul className={style.navUl}>
             <li className={style.navLi}>
               <NavLink to="/login">Login</NavLink>
             </li>
           </ul>
-
           <button className={style.invest}>Ready To Invest?</button>
         </div>
+      </nav>
 
+      {/* Always Visible Section */}
+      <div className={style.numLog}>
+        <ul className={style.navUl}>
+          <li className={style.navLi}>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+        </ul>
+        <button className={style.invest}>Ready To Invest?</button>
       </div>
-    </>
+
+      {/* Hamburger Menu */}
+      <div className={style.menuIcon} onClick={toggleMenu}>
+        <div className={isMenuOpen ? style.barOpen : style.bar}></div>
+        <div className={isMenuOpen ? style.barOpen : style.bar}></div>
+        <div className={isMenuOpen ? style.barOpen : style.bar}></div>
+      </div>
+    </div>
   );
 }
 

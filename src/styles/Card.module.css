@@ -1,0 +1,28 @@
+.para {
+  font-size: 0.86rem;
+  border: 0.1rem solid rgba(0, 0, 255, 0.8);
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  color: rgba(0, 0, 255, 0.8);
+  background-color: rgba(0, 0, 255, 0.1);
+  width: 50%;
+  text-align: center;
+}
+
+@media (max-width: 680px) {
+  .para {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .para {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .para {
+    font-size: 0.5rem;
+  }
+}

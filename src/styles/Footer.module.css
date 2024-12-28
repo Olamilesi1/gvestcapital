@@ -5,76 +5,138 @@
 }
 
 .footB {
-  background: linear-gradient(rgba(15, 55, 92, 0.4), rgba(15, 55, 92, 0.4)),
-    url("../../public/images/footer.jpg");
-  background-size: cover;
-  background-position: center;
+  background-color: rgba(255, 221, 221, 1);
+  padding: 2rem;
 }
 
 .footDiv {
-  width: 70%;
+  width: 90%;
   margin: 0.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.logoH {
+  width: 6%;
+  cursor: pointer;
 }
 
 .logo {
-  width: 20%;
+  width: 100%;
+}
+
+.footNav {
+  display: flex;
+  justify-content: space-between;
 }
 
 .contact {
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  gap: 1rem;
 }
 
-.navLi a {
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
+.contactText {
+  color: rgba(110, 0, 0, 1);
 }
 
-.p {
-  font-weight: 600;
-  color: white;
-}
-
-.active {
-  background-color: white;
-  border-radius: 0.1rem;
+.social {
+  display: flex;
+  gap: 1rem;
 }
 
 .navUl {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  gap: 1rem;
 }
 
-.footNav {
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
+.navLi a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  position: relative;
+  transition: color 300ms;
 }
 
-.footNav2 {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
+.navLi a:hover {
+  color: #7f1d1d;
+}
+
+.navLi a:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #7f1d1d;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 300ms;
+}
+
+.navLi a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #7f1d1d;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms;
 }
 
 .footText {
-  /* text-align: justify; */
-  font-size: .8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 49%;
 }
- 
+
 .footText1 {
-  /* text-align: justify; */
-  color: white;
-  font-size: .8rem;
+  text-align: justify;
+}
+
+.copyTerm {
+  display: flex;
+  justify-content: space-between;
 }
 
 .copy {
-  background-color: rgb(61, 134, 39);
-  text-align: center;
-  padding: 1rem 0;
-  color: white;
+  color: rgba(110, 0, 0, 1);
+}
+
+.termPriv {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .footNav {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .footText {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .logoH {
+    width: 26%;
+  }
+}
+
+@media (max-width: 400px) {
+  .copy {
+    font-size: 0.7rem;
+  }
 }

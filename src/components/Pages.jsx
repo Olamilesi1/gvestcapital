@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Overview from "../pages/Overview";
+import About from "../pages/About";
 import Team from "../pages/Team";
 import Contact from "../pages/Contact";
 import Home from "../pages/Home";
@@ -16,28 +16,27 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsCondition from "../pages/TermsCondition";
 import Disclosure from "../pages/Disclosure";
 
-
 function Pages() {
   return (
     <div>
       <Routes>
         {/* Main website routes */}
-        <Route path="/" element={<Home/>} />
-        <Route path="/overview" element={<Overview/>} />
-        <Route path="/team" element={<Team/>} />
-        <Route path="/gc-insight" element={<GvestInsight/>} />
-        <Route path="/investment" element={<Investment/>} />
-        <Route path="/contact-us" element={<Contact/>} />
-        <Route path="/ira-info" element={<IRA/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/sign-up" element={<Register/>} />
-        <Route path="/book-an-appointment" element={<Schedule/>} />
-        <Route path="/testimonial" element={<Testimonial/>}/>
-        <Route path="/faq" element={<FAQ />}/>
-        <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
-        <Route path="/t&c" element={<TermsCondition/>}/>
-        <Route path="/disclosure" element={<Disclosure/>} />
-        <Route path="*" element={<NotFound/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/gc-insight" element={<GvestInsight />} />
+        <Route path="/investment" element={<Investment />} />
+        <Route path="/contact-us" element={<Contact />} />
+        <Route path="/ira-info" element={<IRA />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<Register />} />
+        <Route path="/book-an-appointment" element={<Schedule />} />
+        <Route path="/testimonial" element={<Testimonial />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/t&c" element={<TermsCondition />} />
+        <Route path="/disclosure" element={<Disclosure />} />
+        <Route path="*" element={<NotFound />} />
 
         {/* Admin Pages*/}
       </Routes>
