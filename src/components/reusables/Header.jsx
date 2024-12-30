@@ -62,7 +62,7 @@ function Header() {
           </li>
           <li className={style.navLi}>
             <NavLink
-              to="/contact"
+              to="/contact-us"
               className={({ isActive }) => (isActive ? style.active : "")}
               onClick={() => setIsMenuOpen(false)}
             >
