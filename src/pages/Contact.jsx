@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SimpleMap from "../components/reusables/Map";
 import { NavLink } from "react-router-dom";
-import style from "../styles/Home.module.css";
+import style from "../styles/Contact.module.css";
 import Footer from "../components/reusables/Footer";
 import Header from "../components/reusables/Header";
 
@@ -22,6 +22,7 @@ function Contact() {
         </div>
 
         <div className={style.contact}>
+
           <div className={style.contactLeft}>
             <p>
               Whether you have questions, need assistance, or are ready to
@@ -118,6 +119,7 @@ function Contact() {
 
             <SimpleMap/>
           </div>
+
         </div>
       </div>
       <Footer />
