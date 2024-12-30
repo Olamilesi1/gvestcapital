@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SimpleMap from "../components/reusables/Map";
 import { NavLink } from "react-router-dom";
 import style from "../styles/Home.module.css";
 import Footer from "../components/reusables/Footer";
@@ -115,7 +116,7 @@ function Contact() {
               </div>
             </div>
 
-            <h1>MAP</h1>
+            <SimpleMap/>
           </div>
         </div>
       </div>
