@@ -50,29 +50,35 @@ function Contact() {
               </div>
             </div>
 
-            <label htmlFor="">Phone Number</label>
-            <input
-              className={style.input}
-              type="number"
-              placeholder="Enter your phone"
-            />
+            <div className={style.nuph}>
+              <label htmlFor="">Phone Number</label>
+              <input
+                className={style.input}
+                type="number"
+                placeholder="Enter your phone"
+              />
+            </div>
 
-            <label htmlFor="">Email</label>
-            <input
-              className={style.input}
-              type="email"
-              placeholder="Enter your email"
-              required
-            />
+            <div className={style.nuph}>
+              <label htmlFor="">Email</label>
+              <input
+                className={style.input}
+                type="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
 
-            <label htmlFor="">Message</label>
-            <textarea
-              className={style.input}
-              name=""
-              id=""
-              placeholder="Enter your message"
-              required
-            ></textarea>
+            <div className={style.nuph}>
+              <label htmlFor="">Message</label>
+              <textarea
+                className={style.input}
+                name=""
+                id=""
+                placeholder="Enter your message"
+                required
+              ></textarea>
+            </div>
 
             <button className={style.investConsult3}>
               Ready to Invest? Let's Start the Conversation!

@@ -55,7 +55,8 @@
 }
 
 .benefit1 {
-  padding: 0.8rem;
+  padding: 0.8rem 3rem;
+  font-size: 1.5rem;
   color: rgba(0, 128, 0, 1);
   border-radius: 2rem;
   border: 0.1rem solid rgba(0, 128, 0, 0.5);
@@ -63,7 +64,8 @@
 }
 
 .benefit2 {
-  padding: 0.8rem;
+  padding: 0.8rem 3rem;
+  font-size: 1.5rem;
   color: rgba(26, 35, 126, 1);
   border-radius: 2rem;
   border: 0.1rem solid rgba(26, 35, 126, 1);
@@ -71,7 +73,8 @@
 }
 
 .benefit3 {
-  padding: 0.8rem;
+  padding: 0.8rem 3rem;
+  font-size: 1.5rem;
   color: rgba(74, 6, 6, 1);
   border-radius: 2rem;
   border: 0.1rem solid rgba(74, 6, 6, 0.5);
@@ -148,7 +151,6 @@
 
 .card {
   display: flex;
-  gap: 1rem;
   justify-content: space-between;
 }
 
@@ -214,5 +216,20 @@
 
   .home4 {
     flex-direction: column;
+  }
+
+  .benefit1 {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .benefit2 {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .benefit3 {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.2rem;
   }
 }
