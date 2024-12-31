@@ -35,8 +35,9 @@ function Footer() {
             <div className={style.contact}>
               <h4 className={style.contactText}>Legal</h4>
               <ul className={style.navUl}>
-                <li className={style.navLi}>
-                  <NavLink to="/faq">FAQs</NavLink>
+                <li className={style.navLi} >
+                  {/* <NavLink to="/faq">FAQs</NavLink> */}
+                  <a href="#faq">FAQs</a>
                 </li>
                 <li className={style.navLi}>
                   <NavLink to="/privacy-policy">Privacy Policy</NavLink>
@@ -76,10 +77,17 @@ function Footer() {
 
           <div className={style.copyTerm}>
             <p className={style.copy}>© 2024 All rights reserved.</p>
-            <div className={style.termPriv}>
-              <p className={style.copy}>Terms</p>
-              <p className={style.copy}>Privacy</p>
-            </div>
+            
+              <ul className={style.termPriv}>
+                <li className={style.copy}>
+                  <NavLink to="/t&c">Terms </NavLink>
+                </li>
+
+                <li className={style.copy}>
+                  <NavLink to="/privacy-policy">Privacy</NavLink>
+                </li>
+              </ul>
+            
           </div>
         </div>
       </div>

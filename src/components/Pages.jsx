@@ -12,6 +12,10 @@ import Investment from "../pages/Investment";
 import Schedule from "../pages/Schedule";
 import Testimonial from "../pages/Testimonial";
 import FAQ from "../pages/FAQ";
+import EmailSuccess from "../pages/EmailSuccess";
+import ForgotPassword from "../pages/ForgotPassword";
+import UpdatePassword from "../pages/UpdatePassword";
+import EmailVerify from "../pages/EmailVerify";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsCondition from "../pages/TermsCondition";
 import Disclosure from "../pages/Disclosure";
@@ -32,10 +36,15 @@ function Pages() {
         <Route path="/sign-up" element={<Register />} />
         <Route path="/book-an-appointment" element={<Schedule />} />
         <Route path="/testimonial" element={<Testimonial />} />
+        <Route path="/email-verify" element={<EmailVerify/>} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/t&c" element={<TermsCondition />} />
+        <Route path="/email-success" element={<EmailSuccess />} />
         <Route path="/disclosure" element={<Disclosure />} />
+        <Route path="/disclosure" element={<Disclosure />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/update-password" element={<UpdatePassword />} />
         <Route path="*" element={<NotFound />} />
 
         {/* Admin Pages*/}

@@ -140,7 +140,9 @@ function Home() {
 
           <div className={style.btnMore}>
             <button className={style.invest}>
-              Ready To Invest
+             <NavLink to="/sign-up">Ready To Invest</NavLink>
+       
+      
               <span class="material-symbols-outlined">arrow_forward</span>
             </button>
             <p className={style.more}>
@@ -469,8 +471,8 @@ function Home() {
         </div>
       </div>
 
-      <div className={style.home3}>
-        <div className={style.faqContainer}>
+      <div className={style.home3} id="faq">
+        <div className={style.faqContainer} >
           <h1 className={style.cardTitle}>FAQ</h1>
           {faqs.map((faq, index) => (
             <div key={index} className={style.faqItem}>

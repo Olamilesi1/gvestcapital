@@ -118,18 +118,29 @@
 }
 
 .invest {
+  list-style: none;
+  text-decoration: none;
   font-weight: 600;
   border: none;
   padding: 0.8rem 1rem;
   color: white;
   background-color: rgb(144, 12, 12);
   border-radius: 0.4rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   transition: background-color 300ms, color 300ms;
 }
 
 .invest:hover {
   background-color: rgb(110, 10, 10);
+}
+
+.invest a {
+  text-decoration: none;
+  color: inherit;
 }
 
 @media (max-width: 768px) {

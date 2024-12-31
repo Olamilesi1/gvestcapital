@@ -22,7 +22,6 @@ function Contact() {
         </div>
 
         <div className={style.contact}>
-
           <div className={style.contactLeft}>
             <p>
               Whether you have questions, need assistance, or are ready to
@@ -117,9 +116,8 @@ function Contact() {
               </div>
             </div>
 
-            <SimpleMap/>
+            <SimpleMap />
           </div>
-
         </div>
       </div>
       <Footer />
