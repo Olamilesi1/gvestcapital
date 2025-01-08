@@ -21,7 +21,9 @@ import TermsCondition from "../pages/TermsCondition";
 import Disclosure from "../pages/Disclosure";
 
 // User Import
+import UserProperties from "../user/pages/UserProperties";
 import UserDashboard from "../user/pages/UserDashboard";
+import UserTransactions from "../user/pages/UserTransactions";
 
 function Pages() {
   return (
@@ -52,6 +54,8 @@ function Pages() {
 
         {/* User Pages*/}
         <Route path="/user/dashboard" element={<UserDashboard />} />
+        <Route path="/user/properties" element={<UserProperties />} />
+        <Route path="/user/transactions" element={<UserTransactions />} />
       </Routes>
     </div>
   );

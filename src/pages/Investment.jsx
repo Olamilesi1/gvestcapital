@@ -187,8 +187,6 @@ function Investment() {
       </div>
 
       <div className={style.home3}>
-        
-
         <Property
           imageSrc="./images/xaxa.png"
           title="Premium Housing Developments"
@@ -232,80 +230,46 @@ function Investment() {
           // onButtonClick={() => alert("Navigating to Commercial Real Estate...")}
           onButtonClick={() => handleViewDetail("customizable-investment")}
         />
-
-       
       </div>
 
       <div className={style.home4Invest}>
         <div className={style.investTable}>
-        <p className={style.cardTitle}>
-          Choose the Right Investment Opportunity for Your Goals
-        </p>
-        <p className={style.cardPara}>
-          Compare our diverse investment options side-by-side to identify the
-          best fit for your financial ambitions. Whether you’re seeking
-          stability, high returns, or long-term growth, we’ve got you covered.
-        </p>
+          <p className={style.cardTitle}>
+            Choose the Right Investment Opportunity for Your Goals
+          </p>
+          <p className={style.cardPara}>
+            Compare our diverse investment options side-by-side to identify the
+            best fit for your financial ambitions. Whether you’re seeking
+            stability, high returns, or long-term growth, we’ve got you covered.
+          </p>
 
-
-{/* <div className="table-container">
-        <table
-          border="1"
-          cellPadding="10"
-          cellSpacing="0"
-          className={style.table}
-        >
-          <thead>
-            <tr className={style.tr}>
-              <th className={style.thb}>Category</th>
-              <th className={style.thb}>Min Investment</th>
-              <th className={style.thb}>ROI Potential</th>
-              <th className={style.thb}>Recommended For</th>
-            </tr>
-          </thead>
-          <tbody>
-            {investment.map((investments, index) => (
-              <tr key={index} className={style.tr}>
-                <td className={style.tdb}>{investments.category}</td>
-                <td className={style.tdb}>{investments.minInvestment}</td>
-                <td className={style.tdb}>{investments.ROIPotential}</td>
-                <td className={style.tdb}>{investments.RecommendedFor}</td>
-
-               
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        </div> */}
-
-<div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th>Min Investment</th>
-        <th>ROI Potential</th>
-        <th>Recommended For</th>
-      </tr>
-    </thead>
-    <tbody>
-      {investment.map((investments, index) => (
-        <tr key={index}>
-          <td>{investments.category}</td>
-          <td>{investments.minInvestment}</td>
-          <td>{investments.ROIPotential}</td>
-          <td>{investments.RecommendedFor}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-
-      </div>
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Min Investment</th>
+                  <th>ROI Potential</th>
+                  <th>Recommended For</th>
+                </tr>
+              </thead>
+              <tbody>
+                {investment.map((investments, index) => (
+                  <tr key={index}>
+                    <td>{investments.category}</td>
+                    <td>{investments.minInvestment}</td>
+                    <td>{investments.ROIPotential}</td>
+                    <td>{investments.RecommendedFor}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
       <div className={style.home3}>
-      <p className={style.cardTitle}>How It Works (3-4 Step Process)</p>
+        <p className={style.cardTitle}>How It Works (3-4 Step Process)</p>
         <div className={style.HH}>
           <div className={style.cardH}>
             <Cardss
@@ -348,7 +312,7 @@ function Investment() {
             Secure transactions, compliance with legal frameworks.
           </p>
         </div>
-       
+
         <p className={style.invest1}>Real Stories, Real Success</p>
 
         <p className={style.cardPara}>

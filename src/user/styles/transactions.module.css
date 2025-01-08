@@ -14,29 +14,28 @@ table {
 
 thead th {
   color: black;
-  background-color: rgba(255, 240, 240, 1);
-  padding: .5rem 1rem  ;
+  background-color: white;
+  padding: 0.5rem 1rem;
   font-weight: 600;
 }
 
-thead  {
-  border: .1rem solid rgba(110, 0, 0, 1);
+thead {
+  border: none;
 }
-
 
 .pay {
   color: rgba(69, 69, 69, 1);
 }
 
 .view {
-    color: rgba(110, 0, 0, 1);
+  color: rgba(110, 0, 0, 1);
 }
 
 tbody td {
   padding: 1rem;
   border-bottom: 1px solid #ddd;
   font-size: 1rem;
-  text-align: center;
+  text-align: left;
 }
 
 tbody tr:nth-child(even) {
@@ -48,20 +47,47 @@ tbody tr:hover {
 }
 
 .buton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .buton:hover {
-    background-color: #0056b3;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buton:hover {
+  background-color: #0056b3;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+.foot1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* justify-content: center; */
+}
+
+.foot2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* justify-content: center; */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    font-size: 0.7rem;
+    gap: 1rem; /* Add space between items */
   }
 
-  /* Responsive Design */
-@media (max-width: 768px) {
   .table-container {
     overflow-x: auto; /* Add horizontal scroll for smaller screens */
     border: none; /* Optional: Hide the outer border for a cleaner look */
@@ -96,5 +122,9 @@ tbody tr:hover {
   .buton {
     font-size: 0.7rem;
     padding: 3px 6px;
+  }
+
+  .footer{
+    font-size: .55rem;
   }
 }

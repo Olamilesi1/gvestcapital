@@ -20,13 +20,14 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  margin: 8rem 0 0 0.4rem;
   gap: 1rem;
 }
 
 .investTotal {
   display: flex;
   justify-content: space-between;
-  margin: 8rem 0 0 0.4rem;
+  /* margin: 8rem 0 0 0.4rem; */
   gap: 1rem;
 }
 
@@ -40,7 +41,19 @@
   width: 100%;
 }
 
+.property{
+   /* margin: 8rem 0 0 0.4rem; */
+  display: flex;
+  gap: 1rem;
+  /* width: 100%; */
+  /* align-items: center; */
+}
+
 @media (max-width: 768px) {
+  .property{
+    flex-direction: column;
+ }
+
   .investTotal {
     flex-direction: column;
   }
@@ -49,7 +62,8 @@
     flex-direction: column;
   }
 
-  .investTotal {
+  .outline {
     margin: 4.5rem 0 0 0.4rem;
   }
+
 }
