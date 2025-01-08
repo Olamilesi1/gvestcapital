@@ -29,7 +29,7 @@ function Header() {
       <div className={style.logoH}>
         <NavLink to="/">
           <img
-            src="./images/gVestLogo.png"
+            src="/images/gVestLogo.png"
             alt="gVest Logo"
             className={style.logo}
           />

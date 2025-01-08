@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.componentContent {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.headerContent {
+  /* margin-left: 17rem; */
+  width: 100%;
+}
+
+.outline {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.investTotal {
+  display: flex;
+  justify-content: space-between;
+  margin: 8rem 0 0 0.4rem;
+  gap: 1rem;
+}
+
+.overcome {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.overview {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .investTotal {
+    flex-direction: column;
+  }
+
+  .overcome {
+    flex-direction: column;
+  }
+
+  .investTotal {
+    margin: 4.5rem 0 0 0.4rem;
+  }
+}

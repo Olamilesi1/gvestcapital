@@ -7,7 +7,7 @@ function Footer() {
       <div className={style.footB}>
         <div className={style.footDiv}>
           <div className={style.logoH}>
-            <img src="./images/gVestL.png" alt="img" className={style.logo} />
+            <img src="/images/gVestL.png" alt="img" className={style.logo} />
           </div>
 
           <div className={style.footNav}>

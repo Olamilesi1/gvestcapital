@@ -1,0 +1,32 @@
+
+.faqContainer {
+    padding: 2rem;
+  }
+  
+  .faqItem {
+    margin: 1rem 0;
+    background-color: rgba(246, 246, 246, 1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .question {
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .question:hover {
+    color: #df5c10;
+  }
+  
+  .answer {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    /* color: #555; */
+    color: black;
+    animation: fadeIn 0.3s ease-in-out;
+  }

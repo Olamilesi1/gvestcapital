@@ -1,0 +1,157 @@
+/* * {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.haeder {
+ 
+  position: fixed;
+  width: 100%;
+  display: flex;
+  gap: 44rem;
+  padding: 0 1rem;
+  height: 17vh;
+ 
+  align-items: center;
+ 
+}
+
+.dashIcon {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dashboard {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.dashLogos {
+  display: flex;
+  gap: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    height: auto; 
+    padding: 0.5rem 1rem;
+    gap: 2rem;
+  }
+
+  .dashIcon {
+    flex: 1; 
+    justify-content: space-between;
+  }
+
+  .dashboard {
+    font-size: 1.1rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column; 
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .dashIcon {
+    width: 100%; 
+    justify-content: space-between;
+  }
+
+  .dashLogos {
+    justify-content: flex-start;
+    gap: 0.5rem; 
+  }
+
+  .dashboard {
+    font-size: 1rem;
+    text-align: left;
+  }
+} */
+
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.haeder {
+  position: fixed;
+  /* top: 0; */
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between;  */
+  /* gap: 44rem; */
+  align-items: center;
+  padding: 0 1rem;
+  height: 17vh;
+  background-color: #f4f4f4; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashIcon {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dashboard {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.dashLogos {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Media Query for Tablets */
+/* @media (max-width: 768px) {
+  .haeder {
+    flex-wrap: wrap;
+    height: auto; 
+    padding: 0.5rem 1rem;
+    gap: 2rem;
+  }
+
+  .dashIcon {
+    flex: 1; 
+    justify-content: space-between;
+  }
+
+  .dashboard {
+    font-size: 1.1rem;
+  }
+} */
+
+/* Media Query for Mobile Phones */
+/* @media (max-width: 480px) {
+  .haeder {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .dashIcon {
+    width: 100%; 
+    justify-content: space-between;
+  }
+
+  .dashLogos {
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .dashboard {
+    font-size: 1rem;
+    text-align: left;
+  }
+} */
