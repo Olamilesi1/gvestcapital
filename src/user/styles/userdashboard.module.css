@@ -22,6 +22,7 @@
   flex-direction: column;
   margin: 8rem 0 0 0.4rem;
   gap: 1rem;
+  padding-left: 1rem;
 }
 
 .investTotal {
@@ -101,6 +102,21 @@
   color: rgba(255, 240, 240, 1);
   border: none;
   border-radius: .5rem;
+}
+
+.wallet{
+  display: flex;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+.initiate{
+  background-color: rgba(110, 0, 0, 1);
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: .5rem;
+  width: 30%;
 }
 
 @media (max-width: 768px) {

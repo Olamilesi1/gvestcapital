@@ -27,7 +27,7 @@ function UserSideBar() {
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/term'><span class="material-symbols-outlined">upload</span> <span>Terms & Conditions</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/setting'><span class="material-symbols-outlined">mail</span> <span>Settings</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/help'><span class="material-symbols-outlined">upload</span> <span>Help</span></NavLink></li>
-                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/logout'><span class="material-symbols-outlined">logout</span> <span>Logout</span></NavLink></li>
+                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/login'><span class="material-symbols-outlined">logout</span> <span>Logout</span></NavLink></li>
                 </ul>
             </nav>
  </div>;
