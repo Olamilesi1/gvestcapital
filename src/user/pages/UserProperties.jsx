@@ -699,7 +699,7 @@ function UserProperties() {
                 description6={premiumHousingCards[0].description6}
                 description7={premiumHousingCards[0].description7}
                 description8={premiumHousingCards[0].description8}
-                onButtonClick={() => handleViewDetail("premium-housing")}
+                onButtonClick={() => handleViewDetail("jasper-estate")}
               />
 
               <UserPropt
@@ -722,7 +722,7 @@ function UserProperties() {
                 description6={premiumHousingCards[1].description6}
                 description7={premiumHousingCards[1].description7}
                 description8={premiumHousingCards[1].description8}
-                onButtonClick={() => handleViewDetail("premium-housing")}
+                onButtonClick={() => handleViewDetail("tidwell")}
               />
             </div>
 
@@ -747,7 +747,7 @@ function UserProperties() {
                 description6={premiumHousingCards[0].description6}
                 description7={premiumHousingCards[0].description7}
                 description8={premiumHousingCards[0].description8}
-                onButtonClick={() => handleViewDetail("premium-housing")}
+                onButtonClick={() => handleViewDetail("jasper-estate")}
               />
 
               <UserPropt
@@ -770,7 +770,7 @@ function UserProperties() {
                 description6={premiumHousingCards[1].description6}
                 description7={premiumHousingCards[1].description7}
                 description8={premiumHousingCards[1].description8}
-                onButtonClick={() => handleViewDetail("premium-housing")}
+                onButtonClick={() => handleViewDetail("tidwell")}
               />
             </div>
           </div>

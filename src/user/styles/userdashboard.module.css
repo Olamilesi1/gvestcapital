@@ -45,6 +45,7 @@
 .property{
    /* margin: 8rem 0 0 0.4rem; */
   display: flex;
+  width: 100%;
   gap: 1rem;
   /* width: 100%; */
   /* align-items: center; */
@@ -117,6 +118,27 @@
   border: none;
   border-radius: .5rem;
   width: 30%;
+}
+
+.imageDiv{
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.imgDiv{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.imgD{
+  display: flex;
+  gap: 1rem;
+}
+
+.contain{
+  width: 100%;
 }
 
 @media (max-width: 768px) {

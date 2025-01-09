@@ -1,17 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import SideBar from "../components/UserSideBar";
 import Transactions from "../components/Transactions";
 import UserHeader from "../components/UserHeader";
 import style from "../styles/userdashboard.module.css";
-import { useNavigate } from "react-router-dom";
-function Documents() {
-  const navigate = useNavigate();
-  const company = () => {
-      navigate("/user/company"); // Navigate to the '/compound' page
-    };
+function UserCompany() {
+    const navigate = useNavigate();
+    const company = () => {
+        navigate("/user/company"); // Navigate to the '/compound' page
+      };
 
-  const mine = () => {
-      navigate("/user/mine"); // Navigate to the '/compound' page
-    };
+    const mine = () => {
+        navigate("/user/mine"); // Navigate to the '/compound' page
+      };
+
   return (
     <>
       <div className={style.componentContent}>
@@ -22,8 +23,8 @@ function Documents() {
 
           <div className={style.outline}>
           <div className={style.document}>
-            <button className={style.myDocument} onClick={mine}>My Documents</button>
-            <button className={style.companyDocument} onClick={company}>Company Documents</button>
+            <button className={style.companyDocument} onClick={mine}>My Documents</button>
+            <button className={style.myDocument} onClick={company}>Company Documents</button>
           </div>
             <Transactions />
             </div>
@@ -34,4 +35,4 @@ function Documents() {
   );
 }
 
-export default Documents;
+export default UserCompany;

@@ -34,6 +34,7 @@ import UserSetting from "../user/pages/UserSettings";
 import UserPassword from "../user/pages/UserPassword";
 import UserTerm from "../user/pages/UserTerms";
 import UserWallet from "../user/pages/UserWallet";
+import UserCompany from "../user/pages/UserCompany";
 
 function Pages() {
   return (
@@ -70,7 +71,8 @@ function Pages() {
         <Route path="/user/investments" element={<UserInvestments />} />
         <Route path="/user/compound-interest" element={<CompoundInterest />} />
         <Route path="/user/simple-interest" element={<SimpleInterest />} />
-        <Route path="/user/document" element={<Documents />} />
+        <Route path="/user/mine" element={<Documents />} />
+        <Route path="/user/company" element={<UserCompany />} />
         <Route path="/user/notification" element={<UserNotification />} />
         <Route path="/user/wallet" element={<UserWallet />} />
         <Route path="/user/setting" element={<UserSetting />} />

@@ -18,7 +18,7 @@ function UserSideBar() {
                     <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/investments' ><span class="material-symbols-outlined">person</span> <span>My Investments</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/wallet'><span class="material-symbols-outlined">volunteer_activism</span> <span>Wallet</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/transactions'><span class="material-symbols-outlined">rss_feed</span> <span>Transactions</span></NavLink></li>
-                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/document'><span class="material-symbols-outlined">rss_feed</span> <span>Documents</span></NavLink></li>
+                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/mine'><span class="material-symbols-outlined">rss_feed</span> <span>Documents</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/notification'><span class="material-symbols-outlined">upload</span> <span>Notification</span></NavLink></li>
                     {/* <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/news'><span class="material-symbols-outlined">rss_feed</span> <span>News</span></NavLink></li> */}
                     </ul>
