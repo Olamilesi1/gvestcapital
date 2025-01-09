@@ -1,10 +1,11 @@
 import SideBar from "../components/UserSideBar";
 import UserHeader from "../components/UserHeader";
+import style from "../styles/userinvestments.module.css";
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import style from "../styles/userdashboard.module.css";
+import { useNavigate } from "react-router-dom";
 import UserPropt from "../components/UserPropt";
-function UserProperties() {
+import Footer from "../components/Footer";
+function CompoundInterest() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAnswer = (index) => {
@@ -668,7 +669,6 @@ function UserProperties() {
   const handleViewDetail = (investmentCategory) => {
     navigate(`/user/properties/${investmentCategory}`);
   };
-
   return (
     <>
       <div className={style.componentContent}>
@@ -678,52 +678,20 @@ function UserProperties() {
           <UserHeader />
 
           <div className={style.outline}>
-            <div className={style.property}>
-              <UserPropt
-                imageSrc={premiumHousingCards[0].imageSrc}
-                imageSrc1={premiumHousingCards[0].imageSrc1}
-                imageSrc2={premiumHousingCards[0].imageSrc2}
-                imageSrc3={premiumHousingCards[0].imageSrc3}
-                imageSrc4={premiumHousingCards[0].imageSrc4}
-                imageSrc5={premiumHousingCards[0].imageSrc5}
-                imageSrc6={premiumHousingCards[0].imageSrc6}
-                title={premiumHousingCards[0].title1}
-                description={premiumHousingCards[0].description0}
-                cards={premiumHousingCards[0].dynamicCard}
-                buttonLabel={premiumHousingCards[0].buttonLabel}
-                description1={premiumHousingCards[0].description1}
-                description2={premiumHousingCards[0].description2}
-                description3={premiumHousingCards[0].description3}
-                description4={premiumHousingCards[0].description4}
-                description5={premiumHousingCards[0].description5}
-                description6={premiumHousingCards[0].description6}
-                description7={premiumHousingCards[0].description7}
-                description8={premiumHousingCards[0].description8}
-                onButtonClick={() => handleViewDetail("premium-housing")}
-              />
+            <div className={style.compoundInterest}>
+              <p className={style.investText}>Compound Interest</p>
 
-              <UserPropt
-                imageSrc={premiumHousingCards[1].imageSrc}
-                imageSrc1={premiumHousingCards[1].imageSrc1}
-                imageSrc2={premiumHousingCards[1].imageSrc2}
-                imageSrc3={premiumHousingCards[1].imageSrc3}
-                imageSrc4={premiumHousingCards[1].imageSrc4}
-                imageSrc5={premiumHousingCards[1].imageSrc5}
-                imageSrc6={premiumHousingCards[1].imageSrc6}
-                title={premiumHousingCards[1].title1}
-                description={premiumHousingCards[1].description0}
-                cards={premiumHousingCards[1].dynamicCard}
-                buttonLabel={premiumHousingCards[1].buttonLabel}
-                description1={premiumHousingCards[1].description1}
-                description2={premiumHousingCards[1].description2}
-                description3={premiumHousingCards[1].description3}
-                description4={premiumHousingCards[1].description4}
-                description5={premiumHousingCards[1].description5}
-                description6={premiumHousingCards[1].description6}
-                description7={premiumHousingCards[1].description7}
-                description8={premiumHousingCards[1].description8}
-                onButtonClick={() => handleViewDetail("premium-housing")}
-              />
+              <div className={style.categoryInput}>
+                <p className={style.categor}>Filter By Currency </p>
+                <form className={style.inputApply}>
+                  <input
+                    type="text"
+                    placeholder="Enter coupon code"
+                    className={style.inpu}
+                  />
+                  <button className={style.compound}>Apply</button>
+                </form>
+              </div>
             </div>
 
             <div className={style.property}>
@@ -773,6 +741,8 @@ function UserProperties() {
                 onButtonClick={() => handleViewDetail("premium-housing")}
               />
             </div>
+
+            <Footer />
           </div>
         </div>
       </div>
@@ -780,4 +750,4 @@ function UserProperties() {
   );
 }
 
-export default UserProperties;
+export default CompoundInterest;

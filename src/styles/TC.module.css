@@ -45,3 +45,38 @@
 .para{
    
 }
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.componentContent {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.headerContent {
+  /* margin-left: 17rem; */
+  width: 100%;
+}
+
+.outlines {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 7rem 0 0 0.4rem;
+  gap: 1rem;
+}
+
+
+@media (max-width: 768px) {
+
+  .outline {
+    margin: 4.5rem 0 0 0.4rem;
+  }
+
+}

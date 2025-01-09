@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.componentContent {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.headerContent {
+  /* margin-left: 17rem; */
+  width: 100%;
+}
+
+.outline {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 8rem 0 0 0.4rem;
+  gap: 1rem;
+}
+
+.notification {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(246, 246, 246, 1);
+}
+
+.notiInvest {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.notiPlan {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.notificationRight {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  /* background-color: rgba(255, 240, 240, 1);; */
+  /* color: rgba(110, 0, 0, 1); */
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.set {
+  margin: 1rem 0;
+}
+
+.profilePassword {
+  display: flex;
+  /* gap: 1rem; */
+}
+
+.profile {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+}
+
+.password {
+  text-align: center;
+  background-color: rgba(246, 246, 246, 1);
+  color: black;
+  padding: 0.8rem 1.5rem;
+  border: none;
+}
+
+.imageText {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.prof {
+  width: 10%;
+}
+
+.texts {
+  display: flex;
+  /* gap: 1rem; */
+  flex-direction: column;
+}
+
+.text1 {
+  font-weight: bold;
+}
+
+.text2 {
+}
+
+.edit {
+  background-color: black;
+  padding: 0.8rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 0.4rem;
+  width: 10%;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-left: auto;
+}
+
+.edits {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.labeInpu {
+  display: flex;
+  justify-content: space-between;
+  /* border: 0.1rem solid black; */
+}
+
+.labe {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.labet {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inpu {
+  display: flex;
+}
+
+.lab {
+  margin-top: 1rem;
+}
+
+.input {
+  padding: 1rem;
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  /* width: 100%; */
+}
+
+.pass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  /* border: 0.1rem solid black; */
+}
+
+.sav {
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem;
+  background-color: rgba(110, 0, 0, 1);
+  color: rgba(255, 240, 240, 1);
+}
+
+.savt {
+  background-color: transparent;
+  border: none;
+  color: rgba(255, 240, 240, 1);
+}
+
+@media (max-width: 768px) {
+  .outline {
+    margin: 4.5rem 0 0 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+}

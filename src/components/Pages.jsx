@@ -21,9 +21,18 @@ import TermsCondition from "../pages/TermsCondition";
 import Disclosure from "../pages/Disclosure";
 
 // User Import
+import UserPropertyDetail from "../user/pages/UserPropertyDetail";
 import UserProperties from "../user/pages/UserProperties";
 import UserDashboard from "../user/pages/UserDashboard";
 import UserTransactions from "../user/pages/UserTransactions";
+import UserInvestments from "../user/pages/UserInvestments";
+import CompoundInterest from "../user/pages/CompoundInterest";
+import SimpleInterest from "../user/pages/SimpleInterest";
+import Documents from "../user/pages/Documents";
+import UserNotification from "../user/pages/UserNotification";
+import UserSetting from "../user/pages/UserSettings";
+import UserPassword from "../user/pages/UserPassword";
+import UserTerm from "../user/pages/UserTerms";
 
 function Pages() {
   return (
@@ -54,8 +63,17 @@ function Pages() {
 
         {/* User Pages*/}
         <Route path="/user/dashboard" element={<UserDashboard />} />
+        <Route path="/user/properties/:id" element={<UserPropertyDetail />} />
         <Route path="/user/properties" element={<UserProperties />} />
         <Route path="/user/transactions" element={<UserTransactions />} />
+        <Route path="/user/investments" element={<UserInvestments />} />
+        <Route path="/user/compound-interest" element={<CompoundInterest />} />
+        <Route path="/user/simple-interest" element={<SimpleInterest />} />
+        <Route path="/user/document" element={<Documents />} />
+        <Route path="/user/notification" element={<UserNotification />} />
+        <Route path="/user/setting" element={<UserSetting />} />
+        <Route path="/user/password" element={<UserPassword />} />
+        <Route path="/user/term" element={<UserTerm />} />
       </Routes>
     </div>
   );

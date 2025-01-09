@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.componentContent {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.headerContent {
+  /* margin-left: 17rem; */
+  width: 100%;
+}
+
+.outline {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 8rem 0 0 0.4rem;
+  gap: 1rem;
+}
+
+.investText {
+  font-size: 1.2rem;
+}
+
+.simpleCompund {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.simple {
+  padding: 1rem;
+  border: 0.1rem solid rgba(110, 0, 0, 1);
+  color: rgba(110, 0, 0, 1);
+  background-color: rgba(255, 240, 240, 1);
+  border-radius: 0.5rem;
+  /* flex: 1 1 auto;  */
+  text-align: center;
+}
+
+.compound {
+  padding: 1rem;
+  background-color: rgba(110, 0, 0, 1);
+  color: rgba(255, 240, 240, 1);
+  border: none;
+  border-radius: 0.5rem;
+  /* flex: 1 1 auto;  */
+  text-align: center;
+}
+
+.compoundInterest {
+  display: flex;
+  justify-content: space-between;
+}
+
+.categoryInput {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.categor {
+  padding: 1rem 2rem;
+  border: 0.1rem solid black;
+  border-radius: .5rem;
+}
+
+.inputApply {
+  display: flex;
+  gap: 1rem;
+  border: .1rem solid black;
+}
+
+.inpu {
+  padding: 1rem 2rem;
+  border: 0.1rem solid black;
+  border-radius: .5rem;
+}
+
+.property {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .outline {
+    margin: 4.5rem 0 0 0.4rem;
+  }
+
+  .investText {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .investText {
+    font-size: 0.9rem;
+  }
+
+  .simple,
+  .compound {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}

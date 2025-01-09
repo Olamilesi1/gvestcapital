@@ -49,6 +49,60 @@
   /* align-items: center; */
 }
 
+.period{
+  /* flex-direction: column; */
+}
+
+.document{
+  display: flex;
+  justify-content: center;
+  margin: 1rem 2rem;
+}
+
+.myDocument{
+  background-color: rgba(110, 0, 0, 1);
+  color:  rgba(255, 240, 240, 1);
+  padding: 1rem;
+  flex: 1 1 auto; 
+  text-align: center;
+  border: none;
+}
+
+.companyDocument{
+ color: rgba(110, 0, 0, 1);
+  background-color:  rgba(255, 240, 240, 1);
+  padding: 1rem;
+  flex: 1 1 auto; 
+  text-align: center;
+  border: none;
+}
+
+
+.investText{
+  font-size: 1.2rem;
+}
+
+.simpleCompund{
+  display: flex;
+  gap: 1rem;
+}
+
+.simple{
+  padding: 1rem;
+  border: .1rem solid rgba(110, 0, 0, 1);
+  color: rgba(110, 0, 0, 1);
+  background-color: rgba(255, 240, 240, 1);
+  border-radius: .5rem;
+}
+
+.compound{
+  padding: 1rem;
+  background-color: rgba(110, 0, 0, 1);
+  color: rgba(255, 240, 240, 1);
+  border: none;
+  border-radius: .5rem;
+}
+
 @media (max-width: 768px) {
   .property{
     flex-direction: column;

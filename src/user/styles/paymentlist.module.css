@@ -1,5 +1,4 @@
 .table-container {
-  /* margin: 2rem 0; */
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -15,21 +14,24 @@ table {
 thead th {
   color: black;
   background-color: rgba(255, 240, 240, 1);
-  padding: .5rem 1rem  ;
+  padding: 0.5rem 1rem;
   font-weight: 600;
 }
 
-thead  {
-  border: .1rem solid rgba(110, 0, 0, 1);
+thead {
+  border: 0.1rem solid rgba(110, 0, 0, 1);
 }
-
 
 .pay {
   color: rgba(69, 69, 69, 1);
 }
 
 .view {
-    color: rgba(110, 0, 0, 1);
+  color: rgba(110, 0, 0, 1);
+  padding: 0.5rem 0.7rem;
+  background-color: white;
+  border: 0.1rem solid rgba(110, 0, 0, 1);
+  border-radius: 0.5rem;
 }
 
 tbody td {
@@ -47,24 +49,23 @@ tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-.buton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .buton:hover {
-    background-color: #0056b3;
-  }
+.dash {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  /* Responsive Design */
+.dasl {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .table-container {
-    overflow-x: auto; /* Add horizontal scroll for smaller screens */
-    border: none; /* Optional: Hide the outer border for a cleaner look */
+    overflow-x: auto; 
+    border: none; 
   }
 
   table {
@@ -72,12 +73,12 @@ tbody tr:hover {
   }
 
   thead th {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem; 
     padding: 0.4rem;
   }
 
   tbody td {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem; 
     padding: 0.5rem;
   }
 
@@ -90,7 +91,7 @@ tbody tr:hover {
 @media (max-width: 480px) {
   thead th,
   tbody td {
-    font-size: 0.8rem; /* Further reduce font size for very small screens */
+    font-size: 0.8rem; 
   }
 
   .buton {
