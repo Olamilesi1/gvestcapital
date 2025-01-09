@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+import Footer from "../components/UserFooter";
 import style from "../styles/transactions.module.css"
 function Transactions() {
   const investment = [

@@ -31,7 +31,7 @@
 
 .content {
   width: 90%;
-  margin: 1rem auto;
+  /* margin: 1rem auto; */
   display: flex;
   flex-direction: column;
 }
@@ -42,41 +42,34 @@
   margin-top: 1rem;
 }
 
-.para{
-   
-}
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-  padding: 0;
+.para {
 }
 
 .componentContent {
   display: flex;
-  width: 100%;
-  margin: 0 auto;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .headerContent {
-  /* margin-left: 17rem; */
-  width: 100%;
+  margin-left: 20%;
+  width: calc(100% - 20%);
+  display: flex;
+  flex-direction: column;
 }
 
 .outlines {
-  width: 95%;
-  margin: 0 auto;
+  margin-top: 10vh;
+  padding: 1rem;
+  height: calc(100vh - 10vh);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  margin: 7rem 0 0 0.4rem;
   gap: 1rem;
 }
 
-
 @media (max-width: 768px) {
-
   .outline {
     margin: 4.5rem 0 0 0.4rem;
   }
-
 }

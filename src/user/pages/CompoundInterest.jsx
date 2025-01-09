@@ -4,7 +4,7 @@ import style from "../styles/userinvestments.module.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserPropt from "../components/UserPropt";
-import Footer from "../components/Footer";
+import Footer from "../components/UserFooter";
 function CompoundInterest() {
   const [openIndex, setOpenIndex] = useState(null);
 

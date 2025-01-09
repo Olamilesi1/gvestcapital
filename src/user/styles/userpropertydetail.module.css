@@ -6,23 +6,25 @@
 
 .componentContent {
   display: flex;
-  width: 100%;
-  margin: 0 auto;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .headerContent {
-  /* margin-left: 17rem; */
-  width: 100%;
+  margin-left: 20%; 
+  width: calc(100% - 20%); 
+  display: flex;
+  flex-direction: column;
 }
 
 .outline {
-  width: 95%;
-  margin: 0 auto;
+  margin-top: 10vh; 
+  padding: 1rem;
+  height: calc(100vh - 10vh); 
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  margin: 8rem 0 0 0.4rem;
   gap: 1rem;
-  padding-left: 1rem;
 }
 
 .property {
