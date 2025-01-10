@@ -1,7 +1,7 @@
 
-import style from "../styles/userheader.module.css";
+import style from '../../user/styles/userheader.module.css'
 
-function UserHeader() {
+function AdminHeader() {
   return (
     <>
       <div className={style.haeder}>
@@ -28,4 +28,4 @@ function UserHeader() {
   );
 }
 
-export default UserHeader;
+export default AdminHeader;

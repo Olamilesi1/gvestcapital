@@ -36,6 +36,19 @@ import UserTerm from "../user/pages/UserTerms";
 import UserWallet from "../user/pages/UserWallet";
 import UserCompany from "../user/pages/UserCompany";
 
+// Admin Import
+import AdminPassword from "../admin/pages/AdminPassword";
+import AdminDashboard from "../admin/pages/AdminDashboard";
+import AdminSetting from "../admin/pages/AdminSetting";
+import AdminUser from "../admin/pages/AdminUser";
+import AdminInvestPlans from "../admin/pages/AdminInvestPlans";
+import AdminAllInvest from "../admin/pages/AdminAllInvest";
+import AdminTransaction from "../admin/pages/AdminTransaction";
+import AdminDocument from "../admin/pages/AdminDocument";
+import AdminWallet from "../admin/pages/AdminWallet";
+import AdminTerm from "../admin/pages/AdminTerm";
+import AdminNotification from "../admin/pages/AdminNotification";
+
 function Pages() {
   return (
     <div>
@@ -78,6 +91,20 @@ function Pages() {
         <Route path="/user/setting" element={<UserSetting />} />
         <Route path="/user/password" element={<UserPassword />} />
         <Route path="/user/term" element={<UserTerm />} />
+
+        {/* Admin Pages */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/users" element={<AdminUser />} />
+        <Route path="/admin/invest-plans" element={<AdminInvestPlans/>} />
+        <Route path="/admin/all-investments" element={<AdminAllInvest />} />
+        <Route path="/admin/transactions" element={<AdminTransaction />} />
+        <Route path="/admin/mine" element={<AdminDocument />} />
+        <Route path="/admin/wallet" element={<AdminWallet/>} />
+        <Route path="/admin/term" element={<AdminTerm />} />
+        <Route path="/admin/notification" element={<AdminNotification />} />
+        <Route path="/admin/setting" element={<AdminSetting />} />
+        <Route path="/admin/password" element={<AdminPassword />} />
+       
       </Routes>
     </div>
   );

@@ -1,11 +1,11 @@
-import SideBar from "../components/UserSideBar";
+import SideBar from "../components/AdminSideBar";
 import PaymentList from "../components/PaymentList";
-import Upcoming from "../components/Upcoming";
-import TotalMonthInterest from "../components/TotalMonthInterest";
-import InvestedOptions from "../components/InvestedOptions";
-import UserHeader from "../components/UserHeader";
-import style from "../styles/userdashboard.module.css";
-function UserDashboard() {
+import Upcoming from "../../user/components/Upcoming";
+import TotalMonthInterest from "../../user/components/TotalMonthInterest";
+import InvestedOptions from "../../user/components/InvestedOptions";
+import UserHeader from "../components/AdminHeader";
+import style from "../styles/admindashboard.module.css";
+function AdminDashboard() {
   return (
     <>
       <div className={style.componentContent}>
@@ -22,11 +22,7 @@ function UserDashboard() {
             </div>
 
             <div className={style.overcome}>
-              {/* <img
-                src="/images/overview.png"
-                alt="overview"
-                className={style.overview}
-              /> */}
+            <PaymentList />
               <Upcoming />
             </div>
 
@@ -38,4 +34,4 @@ function UserDashboard() {
   );
 }
 
-export default UserDashboard;
+export default AdminDashboard;
