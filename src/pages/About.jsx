@@ -5,7 +5,7 @@ import AboutCard from "../components/reusables/AboutCard";
 import TeamCard from "../components/reusables/TeamCard";
 
 function About() {
-  return (
+  return ( 
     <div>
       <Header />
       <div className={style.home}>
