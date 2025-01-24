@@ -63,14 +63,13 @@ function Pages() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/ira-info" element={<IRA />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<Register />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/book-an-appointment" element={<Schedule />} />
         <Route path="/testimonial" element={<Testimonial />} />
         <Route path="/email-verify" element={<EmailVerify />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/t&c" element={<TermsCondition />} />
         <Route path="/email-success" element={<EmailSuccess />} />
-        <Route path="/disclosure" element={<Disclosure />} />
         <Route path="/disclosure" element={<Disclosure />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/update-password" element={<UpdatePassword />} />
@@ -102,7 +101,7 @@ function Pages() {
         <Route path="/admin/wallet" element={<AdminWallet/>} />
         <Route path="/admin/term" element={<AdminTerm />} />
         <Route path="/admin/notification" element={<AdminNotification />} />
-        <Route path="/admin/setting" element={<AdminSetting />} />
+        <Route path="/admin/setting" element={<AdminSetting />} /> 
         <Route path="/admin/password" element={<AdminPassword />} />
        
       </Routes>

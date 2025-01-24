@@ -5,7 +5,9 @@ import TotalMonthInterest from "../components/TotalMonthInterest";
 import InvestedOptions from "../components/InvestedOptions";
 import UserHeader from "../components/UserHeader";
 import style from "../styles/userdashboard.module.css";
+
 function UserDashboard() {
+  
   return (
     <>
       <div className={style.componentContent}>

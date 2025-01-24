@@ -1,12 +1,15 @@
 import Pages from "./components/Pages";
+import { UserProvider } from "./components/UserContext";
 import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <Router>
-        <Pages />
-      </Router>
+      <UserProvider>
+        <Router>
+          <Pages />
+        </Router>
+      </UserProvider>
     </div>
   );
 }
