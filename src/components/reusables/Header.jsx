@@ -88,7 +88,7 @@ function Header() {
             </li>
           </ul>
           <button className={style.invest}>
-            <NavLink to="/sign-up">Ready To Invest</NavLink>
+            <NavLink to="/register">Ready To Invest</NavLink>
           </button>
         </div>
       </nav>
@@ -101,7 +101,7 @@ function Header() {
           </li>
         </ul>
         <button className={style.invest}>
-          <NavLink to="/sign-up">Ready To Invest</NavLink>
+          <NavLink to="/register">Ready To Invest</NavLink>
         </button>
       </div>
 
