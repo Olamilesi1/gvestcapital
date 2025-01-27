@@ -15,6 +15,7 @@ function UserSideBar() {
                       <span class="material-symbols-outlined">grid_view</span>
                      <span>Dashboard</span></NavLink></li>
                     <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/properties' ><span class="material-symbols-outlined">apartment</span> <span>Properties</span></NavLink></li>
+                    <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/investment' ><span class="material-symbols-outlined">monitoring</span> <span>Investments</span></NavLink></li>
                     <li className={style.navLi}><NavLink   className={({ isActive }) => (isActive ? style.active : "")} to='/user/investments' ><span class="material-symbols-outlined">monitoring</span> <span>My Investments</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/wallet'><span class="material-symbols-outlined">account_balance_wallet</span> <span>Wallet</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/transactions'><span class="material-symbols-outlined">business_center</span> <span>Transactions</span></NavLink></li>

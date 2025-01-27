@@ -1,7 +1,7 @@
 import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
-import Transactions from "../../user/components/Transactions";
+import AdminInvestment from "../../admin/components/AdminInvestment";
 function AdminAllInvest() {
   return (
     <>
@@ -17,7 +17,7 @@ function AdminAllInvest() {
               <button className={style.newInvest}>All New Investments</button>
             </div>
         
-              <Transactions/>
+              <AdminInvestment/>
       
           </div>
         </div>

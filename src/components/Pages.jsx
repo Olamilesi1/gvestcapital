@@ -25,6 +25,7 @@ import UserPropertyDetail from "../user/pages/UserPropertyDetail";
 import UserProperties from "../user/pages/UserProperties";
 import UserDashboard from "../user/pages/UserDashboard";
 import UserTransactions from "../user/pages/UserTransactions";
+import UserInvestment from "../user/pages/UserInvestment";
 import UserInvestments from "../user/pages/UserInvestments";
 import CompoundInterest from "../user/pages/CompoundInterest";
 import SimpleInterest from "../user/pages/SimpleInterest";
@@ -80,6 +81,7 @@ function Pages() {
         <Route path="/user/properties/:id" element={<UserPropertyDetail />} />
         <Route path="/user/properties" element={<UserProperties />} />
         <Route path="/user/transactions" element={<UserTransactions />} />
+        <Route path="/user/investment" element={<UserInvestment />} />
         <Route path="/user/investments" element={<UserInvestments />} />
         <Route path="/user/compound-interest" element={<CompoundInterest />} />
         <Route path="/user/simple-interest" element={<SimpleInterest />} />

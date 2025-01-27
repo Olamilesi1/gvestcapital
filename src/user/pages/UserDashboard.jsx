@@ -24,11 +24,6 @@ function UserDashboard() {
             </div>
 
             <div className={style.overcome}>
-              {/* <img
-                src="/images/overview.png"
-                alt="overview"
-                className={style.overview}
-              /> */}
               <Upcoming />
             </div>
 
