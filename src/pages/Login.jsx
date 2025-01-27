@@ -247,7 +247,7 @@ function Login() {
             <p>New here? </p>
 
             <li className={style.navLi}>
-              <NavLink to="/sign-up">Create an Account</NavLink>
+              <NavLink to="/register">Create an Account</NavLink>
             </li>
           </div>
 
