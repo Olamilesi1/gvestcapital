@@ -3,12 +3,12 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useHeader } from "../../components/HeaderContext";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../../components/UserContext";
+import { useUser } from "../../components/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 
 function UserHeader() {
-  const context = useContext(UserContext) || {};
+  const context = useContext(useUser) || {};
   const { username, setUsername } = context;
 
   const navigate = useNavigate();
@@ -20,18 +20,18 @@ function UserHeader() {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        let currentUsername = username || localStorage.getItem("username");
+        let currentUsername = username || localStorage.getItem("userUsername");
 
         if (!currentUsername) {
           toast.error("Username is not available. Redirecting to login...");
-          navigate("/user/login");
+          navigate("/login");
           return;
         }
 
-        const token = localStorage.getItem("authToken");
+        const token = localStorage.getItem("userAuthToken");
         if (!token) {
           toast.error("Unauthorized access. Please log in.");
-          navigate("/user/login");
+          navigate("/login");
           return;
         }
 

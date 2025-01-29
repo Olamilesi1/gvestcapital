@@ -7,7 +7,7 @@ import { TailSpin } from "react-loader-spinner"; // Import spinner
 import style from "../styles/Register.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import TextInput from "../components/TextInput";
-import { UserContext } from "../components/UserContext";
+import { useUser } from "../components/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -16,7 +16,7 @@ import axios from "axios";
 function Register() {
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState(null);
-  const { setUsername } = useContext(UserContext); // Access setUsername from UserContext
+  const { setUsername } = useContext(useUser); // Access setUsername from UserContext
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -42,18 +42,19 @@ function Register() {
       .required("Confirm password is required"),
   });
 
-  useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-  }, []); // This will run only once when the component mounts
+  // useEffect(() => {
+  //   const storedUsername = localStorage.getItem("userUsername");
+  //   if (storedUsername) {
+  //     setUsername(storedUsername);
+  //   }
+  // }, []); // This will run only once when the component mounts
 
-  // Handle form submission
+  // User Handle form submission
+ 
+ 
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     // const { confirmPassword, ...userData } = values; // Exclude confirmPassword
     try {
-      
       const API_URL = process.env.REACT_APP_API_URL;
       const response = await axios.post(
         "http://localhost:4000/user/register",
@@ -67,13 +68,12 @@ function Register() {
       // Display success message using toastify
       toast.success("Registration successful", { autoClose: 2000 });
       console.log("Submitting data:", values);
+
       // Redirect to the login page after a short delay
       setTimeout(() => {
         navigate("/login");
       }, 2000); // Delay for 2 seconds before redirecting
     } catch (error) {
-      // console.error("Registration error:", error);
-      // toast.error("Registration failed!");
       console.error("Registration error:", error.response || error.message);
       toast.error(
         error.response?.data?.message ||
@@ -114,12 +114,12 @@ function Register() {
     console.error("Login failed:", error);
   };
 
-  <link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-/>
   return (
     <>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      />
       <div className={style.register}>
         <div className={style.registerForm}>
           <div className={style.Para}>

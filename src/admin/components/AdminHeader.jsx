@@ -3,12 +3,12 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useHeader } from "../../components/HeaderContext";
 import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../../components/UserContext";
+import { useAdmin } from "../../components/AdminContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 
 function AdminHeader() {
-  const context = useContext(UserContext) || {};
+  const context = useContext(useAdmin) || {};
   const { username, setUsername } = context;
 
   const navigate = useNavigate();
@@ -24,14 +24,14 @@ function AdminHeader() {
 
         if (!currentUsername) {
           toast.error("Username is not available. Redirecting to login...");
-          navigate("/login");
+          navigate("/admin/login");
           return;
         }
 
         const token = localStorage.getItem("authToken");
         if (!token) {
           toast.error("Unauthorized access. Please log in.");
-          navigate("/login");
+          navigate("/admin/login");
           return;
         }
 

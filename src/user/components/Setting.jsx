@@ -1,7 +1,70 @@
+import { useState, useContext } from "react";
+import axios from "axios";
 import style from "../styles/usernotification.module.css";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { UserContext } from "../../components/UserContext"; // Make sure you're importing the context
+
 
 function Setting() {
+  // const { username, email } = useContext(UserContext); // Destructure username and email from context
+  const [formData, setFormData] = useState({
+    phoneNumber: "",
+    gender: "",
+    dateOfBirth: "",
+    maritalStatus: "",
+    employmentStatus: "",
+    city: "",
+    state: "",
+    country: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // const handleSubmit = async () => {
+  //   try {
+  //     const userId = "USER_ID_HERE"; // Replace with actual user ID from the user session or context
+  //     const response = await axios.put(`http://localhost:4000/user/profile/${id}`, formData);
+
+  //     alert(response.data.message);
+  //   } catch (error) {
+  //     console.error("Error updating profile:", error);
+  //   }
+  // };
+
+  const handleSubmit = async () => {
+    try {
+      const currentUsername = localStorage.getItem("username");
+      console.log("Current Username:", currentUsername);  // Check the username
+      if (!currentUsername) {
+        toast.error("Username is not available. Please log in again.");
+        return;
+      }
+  
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        toast.error("Unauthorized access. Please log in.");
+        return;
+      }
+      console.log("Sending data to:", `http://localhost:4000/user/profile/${currentUsername}`, formData);  // Log the URL and data
+    
+      // Send the profile update request using username
+      const response = await axios.put(
+        `http://localhost:4000/user/profile/${currentUsername}`, 
+        formData,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+  
+      toast.success(response.data.message);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      toast.error("Failed to update profile.");
+    }
+  };
+  
+
     const navigate = useNavigate();
     
     const handlePasswordClick = () => {
@@ -23,8 +86,8 @@ function Setting() {
           <img src="/images/gVestLogo.png" alt="profile" className={style.prof} />
 
           <div className={style.texts}>
-            <p className={style.text1}>Wade Wrren</p>
-            <p className={style.text2}>wadeweren@gmail.com</p>
+            {/* <p className={style.text1}>{username}</p> */}
+            {/* <p className={style.text2}>{email}</p> */}
           </div>
         </div>
 
@@ -33,13 +96,19 @@ function Setting() {
           <p>edit</p>
         </div>
 
+        <div className={style.edit}>
+        <button className={style.edits} onClick={handleSubmit}>Save</button>
+        <p>edit</p>
+      </div>
+
         <div className={style.labeInpu}>
           <div className={style.labe}>
             <label className={style.lab} htmlFor="">Phone Number</label>
             <input
-              type="number"
-              name=""
+              type="text"
+              name="phoneNumber"
               id=""
+              onChange={handleChange} 
               placeholder="+111-12121212121"
               className={style.input}
             />
@@ -47,28 +116,37 @@ function Setting() {
 
           <div className={style.labe}>
             <label className={style.lab} htmlFor="">Gender</label>
-            <select name="" id="" className={style.input}>
-              <option value="">Male</option>
-              <option value="">Female</option>
+            <select name="gender" onChange={handleChange} id="" className={style.input}>
+            <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
           </div>
         </div>
 
         <div className={style.labeInpu}>
-        <div className={style.labe}>
-          <label className={style.lab} htmlFor="">Marital status</label>
-          <select name="" id="" className={style.input}>
-            <option value="">Single</option>
-            <option value="">Married</option>
-          </select>
-        </div>
+          <div className={style.labe}>
+            <label className={style.lab} htmlFor="">
+              Marital Status
+            </label>
+            <select
+              name="maritalStatus"
+              onChange={handleChange}
+              className={style.input}
+            >
+              <option value="">Select</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+            </select>
+          </div>
 
         <div className={style.labe}>
           <label className={style.lab} htmlFor="">Date of Birth</label>
           <input
             type="date"
-            name=""
+            name="dateOfBirth"
             id=""
+            onChange={handleChange} 
             placeholder="01/01/2025"
             className={style.input}
           />
@@ -78,36 +156,32 @@ function Setting() {
         <div className={style.labeInpu}>
         <div className={style.labe}>
           <label className={style.lab} htmlFor="">Emploment Status</label>
-          <select name="" id="" className={style.input}>
-            <option value="">Employed</option>
-            <option value="">Female</option>
+          <select name="employmentStatus" id="" onChange={handleChange} className={style.input}>
+          <option value="">Select</option>
+            <option value="Employed">Employed</option>
+            <option value="Unemployed">Unemployed</option>
           </select>
         </div>
 
         <div className={style.labe}>
           <label className={style.lab} htmlFor="">City</label>
-          <select name="" id="" className={style.input}>
+          {/* <select name="" id="" className={style.input}>
           <option value="">Lekki</option>
           <option value="">Female</option>
-        </select>
+        </select> */}
+        <input type="text" name="city" onChange={handleChange} className={style.input} />
         </div>
         </div>
 
         <div className={style.labeInpu}>
       <div className={style.labe}>
-        <label className={style.lab} htmlFor="">Status</label>
-        <select name="" id="" className={style.input}>
-          <option value="">Lagos</option>
-          <option value="">Female</option>
-        </select>
+        <label className={style.lab} htmlFor="">State</label>
+        <input type="text" name="state" onChange={handleChange} className={style.input} />
       </div>
 
       <div className={style.labe}>
         <label className={style.lab} htmlFor="">Country</label>
-        <select name="" id="" className={style.input}>
-          <option value="">Nigeria</option>
-          <option value="">Congo</option>
-        </select>
+        <input type="text" name="country" onChange={handleChange} className={style.input} />
       </div>
       </div>
     </div>

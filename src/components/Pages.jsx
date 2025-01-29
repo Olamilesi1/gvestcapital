@@ -1,4 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import { UserProvider } from "../components/UserContext";
+import { AdminProvider } from "../components/AdminContext";
+
 import About from "../pages/About";
 import Team from "../pages/Team";
 import Contact from "../pages/Contact";
@@ -55,62 +58,69 @@ import AdminNotification from "../admin/pages/AdminNotification";
 function Pages() {
   return (
     <div>
-      <Routes>
-        {/* Main website routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/gc-insight" element={<GvestInsight />} />
-        <Route path="/investment/:id" element={<InvestmentDetail />} />
-        <Route path="/investment" element={<Investment />} />
-        <Route path="/contact-us" element={<Contact />} />
-        <Route path="/ira-info" element={<IRA />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/book-an-appointment" element={<Schedule />} />
-        <Route path="/testimonial" element={<Testimonial />} />
-        <Route path="/email-verify" element={<EmailVerify />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/t&c" element={<TermsCondition />} />
-        <Route path="/email-success" element={<EmailSuccess />} />
-        <Route path="/disclosure" element={<Disclosure />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/update-password" element={<UpdatePassword />} />
-        <Route path="*" element={<NotFound />} />
+      <UserProvider>
+        <AdminProvider>
+          
+          <Routes>
+            {/* Main website routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/gc-insight" element={<GvestInsight />} />
+            <Route path="/investment/:id" element={<InvestmentDetail />} />
+            <Route path="/investment" element={<Investment />} />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route path="/ira-info" element={<IRA />} />
 
-        {/* User Pages*/}
-        <Route path="/user/dashboard" element={<UserDashboard />} />
-        <Route path="/user/properties/:id" element={<UserPropertyDetail />} />
-        <Route path="/user/properties" element={<UserProperties />} />
-        <Route path="/user/transactions" element={<UserTransactions />} />
-        <Route path="/user/investment" element={<UserInvestment />} />
-        <Route path="/user/investments" element={<UserInvestments />} />
-        <Route path="/user/compound-interest" element={<CompoundInterest />} />
-        <Route path="/user/simple-interest" element={<SimpleInterest />} />
-        <Route path="/user/mine" element={<Documents />} />
-        <Route path="/user/company" element={<UserCompany />} />
-        <Route path="/user/notification" element={<UserNotification />} />
-        <Route path="/user/wallet" element={<UserWallet />} />
-        <Route path="/user/setting" element={<UserSetting />} />
-        <Route path="/user/password" element={<UserPassword />} />
-        <Route path="/user/term" element={<UserTerm />} />
+            <Route path="/book-an-appointment" element={<Schedule />} />
+            <Route path="/testimonial" element={<Testimonial />} />
+            <Route path="/email-verify" element={<EmailVerify />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/t&c" element={<TermsCondition />} />
+            <Route path="/email-success" element={<EmailSuccess />} />
+            <Route path="/disclosure" element={<Disclosure />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/update-password" element={<UpdatePassword />} />
+            <Route path="*" element={<NotFound />} />
+        
 
-        {/* Admin Pages */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/register" element={<AdminRegister />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/users" element={<AdminUser />} />
-        <Route path="/admin/invest-plans" element={<AdminInvestPlans/>} />
-        <Route path="/admin/all-investments" element={<AdminAllInvest />} />
-        <Route path="/admin/transactions" element={<AdminTransaction />} />
-        <Route path="/admin/mine" element={<AdminDocument />} />
-        <Route path="/admin/wallet" element={<AdminWallet/>} />
-        <Route path="/admin/term" element={<AdminTerm />} />
-        <Route path="/admin/notification" element={<AdminNotification />} />
-        <Route path="/admin/setting" element={<AdminSetting />} /> 
-        <Route path="/admin/password" element={<AdminPassword />} />
-       
-      </Routes>
+          {/* User Pages*/}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/user/dashboard" element={<UserDashboard />} />
+          <Route path="/user/properties/:id" element={<UserPropertyDetail />} />
+          <Route path="/user/properties" element={<UserProperties />} />
+          <Route path="/user/transactions" element={<UserTransactions />} />
+          <Route path="/user/investment" element={<UserInvestment />} />
+          <Route path="/user/investments" element={<UserInvestments />} />
+          <Route path="/user/compound-interest" element={<CompoundInterest />} />
+          <Route path="/user/simple-interest" element={<SimpleInterest />} />
+          <Route path="/user/mine" element={<Documents />} />
+          <Route path="/user/company" element={<UserCompany />} />
+          <Route path="/user/notification" element={<UserNotification />} />
+          <Route path="/user/wallet" element={<UserWallet />} />
+          <Route path="/user/setting" element={<UserSetting />} />
+          <Route path="/user/password" element={<UserPassword />} />
+          <Route path="/user/term" element={<UserTerm />} />
+
+          {/* Admin Pages */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/register" element={<AdminRegister />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/users" element={<AdminUser />} />
+          <Route path="/admin/invest-plans" element={<AdminInvestPlans />} />
+          <Route path="/admin/all-investments" element={<AdminAllInvest />} />
+          <Route path="/admin/transactions" element={<AdminTransaction />} />
+          <Route path="/admin/mine" element={<AdminDocument />} />
+          <Route path="/admin/wallet" element={<AdminWallet />} />
+          <Route path="/admin/term" element={<AdminTerm />} />
+          <Route path="/admin/notification" element={<AdminNotification />} />
+          <Route path="/admin/setting" element={<AdminSetting />} />
+          <Route path="/admin/password" element={<AdminPassword />} />
+          </Routes>
+
+        </AdminProvider>
+      </UserProvider>
     </div>
   );
 }

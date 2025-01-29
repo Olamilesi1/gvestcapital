@@ -1,13 +1,27 @@
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
+import { toast, ToastContainer } from "react-toastify";
 import { useHeader } from "../../components/HeaderContext";
 import style from '../styles/sidebar.module.css'
 
 function UserSideBar() {
   const { setHeaderTitle } = useHeader();
-
+  const navigate = useNavigate();
   const handleLinkClick = (title) => {
     setHeaderTitle(title);
   };
+
+  const handleLogout = () => {
+    // Clear the user session from localStorage
+    localStorage.removeItem("username");
+    localStorage.removeItem("authToken");
+
+    // Optionally, show a toast or alert
+    toast.success("You have successfully logged out.");
+
+    // Redirect to login page
+    navigate("/login");
+  };
+
   return <div className={style.bar}>
     
     <img src='/images/gVestLogo.png' alt="img" className={style.logos}/>
@@ -34,7 +48,7 @@ function UserSideBar() {
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/term' onClick={() => handleLinkClick("Term")}><span class="material-symbols-outlined">sticky_note_2</span> <span>Terms & Conditions</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/setting' onClick={() => handleLinkClick("Setting")}><span class="material-symbols-outlined">settings</span> <span>Settings</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/help' onClick={() => handleLinkClick("Help")}><span class="material-symbols-outlined">help</span> <span>Help</span></NavLink></li>
-                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/login'><span class="material-symbols-outlined">logout</span> <span>Logout</span></NavLink></li>
+                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/login'  onClick={handleLogout}><span class="material-symbols-outlined">logout</span> <span>Logout</span></NavLink></li>
                 </ul>
             </nav>
  </div>;

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import { User } from "../../components/User";
 import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
-import { UserContext } from "../../components/UserContext";
+import {useAdmin } from "../../components/AdminContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { NavLink, useNavigate } from "react-router-dom";
 import TextInput from "../../components/TextInput";
@@ -15,7 +15,7 @@ import style from "../../styles/Register.module.css";
 function Login() {
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState(null);
-  const { setUsername } = useContext(UserContext); // Access UserContext
+  const { setUsername } = useContext(useAdmin); // Access UserContext
   const [showPassword, setShowPassword] = useState(false); // Password visibility toggle
   const navigate = useNavigate();
  
@@ -34,15 +34,15 @@ function Login() {
         values
       );
 
-      const { userData, authToken: token } = response.data;
+      const { adminData, authToken: token } = response.data;
 
-      if (token && userData.username) {
+      if (token && adminData.username) {
         // Save token and username in localStorage
-        localStorage.setItem("authToken", token);
-        localStorage.setItem("username", userData.username);
+        localStorage.setItem("adminAuthToken", token);
+        localStorage.setItem("adminUsername", adminData.username);
 
         // Update context
-        setUsername(userData.username);
+        setUsername(adminData.username);
         toast.success("Login successful!", { autoClose: 2000 });
 
         // Navigate to dashboard

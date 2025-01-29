@@ -7,7 +7,7 @@ import { TailSpin } from "react-loader-spinner"; // Import spinner
 import style from "../../styles/Register.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import TextInput from "../../components/TextInput";
-import { UserContext } from "../../components/UserContext";
+import { useAdmin } from "../../components/AdminContext";
 import "react-toastify/dist/ReactToastify.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -16,7 +16,7 @@ import axios from "axios";
 function Register() {
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState(null);
-  const { setUsername } = useContext(UserContext); // Access setUsername from UserContext
+  const { setUsername } = useContext(useAdmin); // Access setUsername from UserContext
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -40,15 +40,15 @@ function Register() {
   });
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
+    const storedUsername = localStorage.getItem("adminUsername");
     if (storedUsername) {
       setUsername(storedUsername);
     }
-  }, []); // This will run only once when the component mounts
+  }, []);
 
-  // Handle form submission
+  // Admin Handle form submission
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
-    // const { confirmPassword, ...userData } = values; // Exclude confirmPassword
+    const { confirmPassword, ...adminData } = values; // Exclude confirmPassword
     try {
       
       const API_URL = process.env.REACT_APP_API_URL;
@@ -58,7 +58,9 @@ function Register() {
       );
 
       console.log(response.data);
-      // Save username globally using UserContext
+
+      // Save username globally using local storage UserContext
+    
       setUsername(values.username);
 
       // Display success message using toastify
@@ -127,7 +129,6 @@ function Register() {
           <Formik
             initialValues={{
               username: "",
-              lastname: "",
               email: "",
               password: "",
               confirmPassword: "",

@@ -6,13 +6,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 function App() {
   return (
     <div>
-      <UserProvider>
+      {/* <UserProvider> */}
         <HeaderProvider>
         <Router>
           <Pages />
         </Router>
       </HeaderProvider>
-      </UserProvider>
+      {/* </UserProvider> */}
     </div>
   );
 }

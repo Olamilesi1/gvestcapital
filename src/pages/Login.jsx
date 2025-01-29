@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import { User } from "../components/User";
 import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
-import { UserContext } from "../components/UserContext";
+import { useUser } from "../components/UserContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { NavLink, useNavigate } from "react-router-dom";
 import TextInput from "../components/TextInput";
@@ -15,13 +15,10 @@ import style from "../styles/Register.module.css";
 function Login() {
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState(null);
-  const { setUsername } = useContext(UserContext); // Access UserContext
+  const { setUsername } = useContext(useUser); // Access UserContext
   const [showPassword, setShowPassword] = useState(false); // Password visibility toggle
   const navigate = useNavigate();
-  <link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-/>
+
   // Validation schema for Formik
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -30,10 +27,9 @@ function Login() {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      
       const API_URL = process.env.REACT_APP_API_URL;
       const response = await axios.post(
-        "http://localhost:4000/user/login" ,
+        "http://localhost:4000/user/login",
         values
       );
 
@@ -41,9 +37,14 @@ function Login() {
 
       if (token && userData.username) {
         // Save token and username in localStorage
-        localStorage.setItem("authToken", token);
-        localStorage.setItem("username", userData.username);
+        localStorage.setItem("userAuthToken", token);
+        localStorage.setItem("userUsername", userData.username);
 
+
+  // Debugging logs
+  console.log("Token saved:", localStorage.getItem("userAuthToken"));
+  console.log("Username saved:", localStorage.getItem("userUsername"));
+  
         // Update context
         setUsername(userData.username);
         toast.success("Login successful!", { autoClose: 2000 });
@@ -91,6 +92,10 @@ function Login() {
   };
   return (
     <>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      />
       <div className={style.register}>
         <div className={style.registerForm}>
           <div className={style.Para}>
@@ -108,13 +113,13 @@ function Login() {
                 <div className={style.textInputs}>
                   <h4 className={style.label}>Email</h4>
                   <div className={style.inputP}>
-                  <Field
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    component={TextInput}
-                    ariaLabel="Enter Your Email"
-                  />
+                    <Field
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      component={TextInput}
+                      ariaLabel="Enter Your Email"
+                    />
                   </div>
                   <ErrorMessage
                     name="email"
@@ -129,30 +134,22 @@ function Login() {
                     style={{ position: "relative" }}
                   >
                     <h4 className={style.label}>Password</h4>
-                    <div className={style.inputP}>
-                    <Field
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      placeholder="Enter Your Password"
-                      component={TextInput}
-                      style={{ position: "relative" }}
-                      ariaLabel="Enter Your Password"
-                    />
-
-                    <span
-                      onClick={togglePasswordVisibility}
-                      style={{
-                        position: "absolute",
-                        right: "10px",
-                        top: "52%",
-                        transform: "translateY(-50%)",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {/* {showPassword ? "<span class="material-symbols-outlined">visibility</span>" : "<span class="material-symbols-outlined">visibility_off</span>"} */}
-                      {showPassword ? "👁️" : "🙈"}
-                    </span>
-                  </div>
+                    <div className={style.pass}>
+                      <Field
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Enter Your Password"
+                        component={TextInput}
+                        style={{ position: "relative" }}
+                        ariaLabel="Enter Your Password"
+                      />
+                      <span
+                        onClick={togglePasswordVisibility}
+                        className="material-symbols-outlined"
+                      >
+                        {showPassword ? "visibility" : "visibility_off"}
+                      </span>
+                    </div>
                   </div>
                   <ErrorMessage
                     name="password"
@@ -160,6 +157,43 @@ function Login() {
                     style={{ color: "red" }}
                   />
                 </div>
+                
+                {/* <div>
+                  <div
+                    className={style.textInputs}
+                    style={{ position: "relative" }}
+                  >
+                    <h4 className={style.label}>Password</h4>
+                    <div className={style.inputP}>
+                      <Field
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Enter Your Password"
+                        component={TextInput}
+                        style={{ position: "relative" }}
+                        ariaLabel="Enter Your Password"
+                      />
+
+                      <span
+                        onClick={togglePasswordVisibility}
+                        style={{
+                          position: "absolute",
+                          right: "10px",
+                          top: "52%",
+                          transform: "translateY(-50%)",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {showPassword ? "👁️" : "🙈"}
+                      </span>
+                    </div>
+                  </div>
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    style={{ color: "red" }}
+                  />
+                </div> */}
 
                 <div className={style.forgt}>
                   <div className={style.checkme}>
