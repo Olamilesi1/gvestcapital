@@ -1,7 +1,7 @@
 import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
-import Transactions from "../../user/components/Transactions";
+import Transactions from "../components/Transaction";
 function AdminAllInvest() {
   return (
     <>
@@ -16,9 +16,8 @@ function AdminAllInvest() {
               <p>Transactions table</p>
               <button className={style.newInvest}>Add New transaction</button>
             </div>
-        
-              <Transactions/>
-      
+
+            <Transactions />
           </div>
         </div>
       </div>

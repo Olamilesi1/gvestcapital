@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
-import { User } from "../components/User";
+import { User } from "../../components/User";
 import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TailSpin } from "react-loader-spinner"; // Import spinner
-import style from "../styles/Register.module.css";
+import style from "../../styles/Register.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import TextInput from "../components/TextInput";
-import { UserContext } from "../components/UserContext";
+import TextInput from "../../components/TextInput";
+import { UserContext } from "../../components/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -25,14 +25,11 @@ function Register() {
 
   const validationSchema = Yup.object().shape({
     username: Yup.string()
-      .required("First name is required")
-      .min(5, "First name must be at least 5 characters"),
-    lastname: Yup.string()
-      .required("Last name is required")
-      .min(5, "Last name must be at least 5 characters"),
+      .required("User name is required")
+      .min(5, "User name must be at least 5 characters"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
-      .min(8, "Password must be at least 8 characters")
+      .min(5, "Password must be at least 8 characters")
       .required("Password is required")
       .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
       .matches(/[a-z]/, "Password must contain at least one lowercase letter")
@@ -56,7 +53,7 @@ function Register() {
       
       const API_URL = process.env.REACT_APP_API_URL;
       const response = await axios.post(
-        "http://localhost:4000/user/register",
+        "http://localhost:4000/admin/register",
         values
       );
 
@@ -69,7 +66,7 @@ function Register() {
       console.log("Submitting data:", values);
       // Redirect to the login page after a short delay
       setTimeout(() => {
-        navigate("/login");
+        navigate("/admin/login");
       }, 2000); // Delay for 2 seconds before redirecting
     } catch (error) {
       // console.error("Registration error:", error);
@@ -107,19 +104,19 @@ function Register() {
     setProfile(data);
 
     // Redirect to dashboard after processing login
-    window.location.href = "/user/dashboard";
+    window.location.href = "/admin/dashboard";
   };
 
   const handleLoginReject = (error) => {
     console.error("Login failed:", error);
   };
 
-  <link
+  return (
+    <>
+     <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
 />
-  return (
-    <>
       <div className={style.register}>
         <div className={style.registerForm}>
           <div className={style.Para}>
@@ -147,30 +144,12 @@ function Register() {
                       type="text"
                       name="username"
                       component={TextInput}
-                      placeholder="Enter Your First Name"
-                      ariaLabel="Enter Your First Name"
+                      placeholder="Enter Your User Name"
+                      ariaLabel="Enter Your User Name"
                     />
                   </div>
                   <ErrorMessage
                     name="username"
-                    component="div"
-                    style={{ color: "red" }}
-                  />
-                </div>
-
-                <div className={style.textInputs}>
-                  <h4 className={style.label}>Last Name</h4>
-                  <div className={style.inputP}>
-                    <Field
-                      type="text"
-                      name="lastname"
-                      component={TextInput}
-                      placeholder="Enter Your Last Name"
-                      ariaLabel="Enter Your Last Name"
-                    />
-                  </div>
-                  <ErrorMessage
-                    name="lastname"
                     component="div"
                     style={{ color: "red" }}
                   />
@@ -303,7 +282,7 @@ function Register() {
               >
                 <div className={style.social}>
                   <img
-                    src="./images/Google.png"
+                    src="/images/Google.png"
                     alt="Googl"
                     className={style.socio}
                   />
@@ -320,7 +299,7 @@ function Register() {
                 onReject={handleLoginReject}
               >
                 <div className={style.social}>
-                  <img src="./images/FB.png" alt="FB" className={style.socio} />
+                  <img src="/images/FB.png" alt="FB" className={style.socio} />
                   <p>Facebook</p>
                 </div>
                 {/* <FacebookLoginButton /> */}
@@ -332,7 +311,7 @@ function Register() {
             <p>Already have an account? </p>
 
             <li className={style.navLi}>
-              <NavLink to="/login">Log in</NavLink>
+              <NavLink to="/admin/login">Log in</NavLink>
             </li>
           </div>
 

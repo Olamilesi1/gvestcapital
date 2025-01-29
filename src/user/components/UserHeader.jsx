@@ -1,6 +1,7 @@
 import style from "../styles/userheader.module.css";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { useHeader } from "../../components/HeaderContext";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../components/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +14,7 @@ function UserHeader() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
+    const { headerTitle } = useHeader();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -76,7 +78,7 @@ function UserHeader() {
         />
 
         <div className={style.dashIcon}>
-          <p className={style.dashboard}>Dashboard</p>
+          <p className={style.dashboard}>{headerTitle}</p>
           <span class="material-symbols-outlined">chevron_left</span>
         </div>
 

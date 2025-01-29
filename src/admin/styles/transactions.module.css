@@ -1,0 +1,130 @@
+.table-container {
+  /* margin: 2rem 0; */
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead th {
+  color: black;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+thead {
+  border: none;
+}
+
+.pay {
+  color: rgba(69, 69, 69, 1);
+}
+
+.view {
+  color: rgba(110, 0, 0, 1);
+}
+
+tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.buton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buton:hover {
+  background-color: #0056b3;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+.foot1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* justify-content: center; */
+}
+
+.foot2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* justify-content: center; */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    font-size: 0.7rem;
+    gap: 1rem; /* Add space between items */
+  }
+
+  .table-container {
+    overflow-x: auto; /* Add horizontal scroll for smaller screens */
+    border: none; /* Optional: Hide the outer border for a cleaner look */
+  }
+
+  table {
+    width: 100%;
+  }
+
+  thead th {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    padding: 0.4rem;
+  }
+
+  tbody td {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    padding: 0.5rem;
+  }
+
+  .buton {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  thead th,
+  tbody td {
+    font-size: 0.8rem; /* Further reduce font size for very small screens */
+  }
+
+  .buton {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+
+  .footer{
+    font-size: .55rem;
+  }
+}

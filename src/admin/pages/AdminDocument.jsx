@@ -1,3 +1,4 @@
+import { HeaderProvider } from "../../components/HeaderContext";
 import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
@@ -5,6 +6,7 @@ import Transactions from "../../user/components/Transactions";
 function AdminAllInvest() {
   return (
     <>
+      {/* <HeaderProvider> */}
       <div className={style.componentContent}>
         <SideBar />
 
@@ -18,6 +20,7 @@ function AdminAllInvest() {
           </div>
         </div>
       </div>
+      {/* </HeaderProvider> */}
     </>
   );
 }

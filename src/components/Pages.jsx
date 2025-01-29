@@ -38,6 +38,8 @@ import UserWallet from "../user/pages/UserWallet";
 import UserCompany from "../user/pages/UserCompany";
 
 // Admin Import
+import AdminLogin from "../admin/pages/AdminLogin";
+import AdminRegister from "../admin/pages/AdminRegister";
 import AdminPassword from "../admin/pages/AdminPassword";
 import AdminDashboard from "../admin/pages/AdminDashboard";
 import AdminSetting from "../admin/pages/AdminSetting";
@@ -94,6 +96,8 @@ function Pages() {
         <Route path="/user/term" element={<UserTerm />} />
 
         {/* Admin Pages */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/register" element={<AdminRegister />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/users" element={<AdminUser />} />
         <Route path="/admin/invest-plans" element={<AdminInvestPlans/>} />

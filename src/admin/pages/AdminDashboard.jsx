@@ -1,10 +1,11 @@
+import { HeaderProvider } from "../../components/HeaderContext";
 import SideBar from "../components/AdminSideBar";
-import PaymentList from "../components/PaymentList";
+import Transaction from "../components/Transaction";
 import Upcoming from "../../user/components/Upcoming";
-import TotalMonthInterest from "../../user/components/TotalMonthInterest";
-import InvestedOptions from "../../user/components/InvestedOptions";
+import AdminTotal from "../components/AdminTotal";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
+import AdminUsers from "../components/AdminUsers";
 function AdminDashboard() {
   return (
     <>
@@ -16,17 +17,35 @@ function AdminDashboard() {
 
           <div className={style.outline}>
             <div className={style.investTotal}>
-              <TotalMonthInterest />
-              <InvestedOptions />
-              <TotalMonthInterest />
+              <AdminTotal />
+              <AdminTotal />
+              <AdminTotal />
             </div>
 
             <div className={style.overcome}>
-            <PaymentList />
-              <Upcoming />
-            </div>
+              <div className={style.come}>
+                <div className={style.dash}>
+                  <p className={style.list}>Investors List </p>
 
-            <PaymentList />
+                  <div className={style.dasl}>
+                    <button className={style.view}>View More</button>
+                  </div>
+                </div>
+
+                <AdminUsers />
+              </div>
+              <div>
+                <Upcoming />
+              </div>
+            </div>
+            <div className={style.dash}>
+              <p className={style.list}>Recent Payment List </p>
+
+              <div className={style.dasl}>
+                <button className={style.view}>View More</button>
+              </div>
+            </div>
+            <Transaction />
           </div>
         </div>
       </div>

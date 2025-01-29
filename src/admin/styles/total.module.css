@@ -1,0 +1,19 @@
+.monthTotal{
+    border: .1rem solid black;
+    width: 30%;
+    padding: .5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    border-radius: .7rem;
+}
+
+.touse{
+    color: #5F6A6A;
+    font-size: 1.1rem;
+}
+
+.big{
+    font-weight: bold;
+    font-size: 1.7rem;
+}
