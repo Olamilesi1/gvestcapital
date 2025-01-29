@@ -20,7 +20,7 @@ function AdminHeader() {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        let currentUsername = username || localStorage.getItem("username");
+        let currentUsername = username || localStorage.getItem("adminUsername");
 
         if (!currentUsername) {
           toast.error("Username is not available. Redirecting to login...");
@@ -28,7 +28,7 @@ function AdminHeader() {
           return;
         }
 
-        const token = localStorage.getItem("authToken");
+        const token = localStorage.getItem("adminAuthToken");
         if (!token) {
           toast.error("Unauthorized access. Please log in.");
           navigate("/admin/login");
