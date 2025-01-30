@@ -33,18 +33,23 @@ function Login() {
         values
       );
 
-      const { userData, authToken: token } = response.data;
+      const {
+        userData,
+        authToken: token,
+        verificationToken: verifyToken,
+      } = response.data;
 
-      if (token && userData.username) {
+      if (verifyToken && token && userData.username) {
         // Save token and username in localStorage
+
         localStorage.setItem("userAuthToken", token);
         localStorage.setItem("userUsername", userData.username);
 
+        // Debugging logs
+        console.log("TokenEmail saved:", localStorage.getItem("VerifyToken"));
+        console.log("Token saved:", localStorage.getItem("userAuthToken"));
+        console.log("Username saved:", localStorage.getItem("userUsername"));
 
-  // Debugging logs
-  console.log("Token saved:", localStorage.getItem("userAuthToken"));
-  console.log("Username saved:", localStorage.getItem("userUsername"));
-  
         // Update context
         setUsername(userData.username);
         toast.success("Login successful!", { autoClose: 2000 });
@@ -104,7 +109,7 @@ function Login() {
           </div>
 
           <Formik
-            initialValues={{ username: "", email: "", password: "" }}
+            initialValues={{ email: "", password: "" }}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
@@ -157,43 +162,6 @@ function Login() {
                     style={{ color: "red" }}
                   />
                 </div>
-                
-                {/* <div>
-                  <div
-                    className={style.textInputs}
-                    style={{ position: "relative" }}
-                  >
-                    <h4 className={style.label}>Password</h4>
-                    <div className={style.inputP}>
-                      <Field
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        placeholder="Enter Your Password"
-                        component={TextInput}
-                        style={{ position: "relative" }}
-                        ariaLabel="Enter Your Password"
-                      />
-
-                      <span
-                        onClick={togglePasswordVisibility}
-                        style={{
-                          position: "absolute",
-                          right: "10px",
-                          top: "52%",
-                          transform: "translateY(-50%)",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {showPassword ? "👁️" : "🙈"}
-                      </span>
-                    </div>
-                  </div>
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    style={{ color: "red" }}
-                  />
-                </div> */}
 
                 <div className={style.forgt}>
                   <div className={style.checkme}>

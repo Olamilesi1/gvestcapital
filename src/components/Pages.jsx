@@ -19,6 +19,7 @@ import EmailSuccess from "../pages/EmailSuccess";
 import ForgotPassword from "../pages/ForgotPassword";
 import UpdatePassword from "../pages/UpdatePassword";
 import EmailVerify from "../pages/EmailVerify";
+import VerifyEmail from "../pages/VerifyEmail";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsCondition from "../pages/TermsCondition";
 import Disclosure from "../pages/Disclosure";
@@ -75,6 +76,7 @@ function Pages() {
             <Route path="/book-an-appointment" element={<Schedule />} />
             <Route path="/testimonial" element={<Testimonial />} />
             <Route path="/email-verify" element={<EmailVerify />} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/t&c" element={<TermsCondition />} />
             <Route path="/email-success" element={<EmailSuccess />} />

@@ -42,16 +42,6 @@ function Register() {
       .required("Confirm password is required"),
   });
 
-  // useEffect(() => {
-  //   const storedUsername = localStorage.getItem("userUsername");
-  //   if (storedUsername) {
-  //     setUsername(storedUsername);
-  //   }
-  // }, []); // This will run only once when the component mounts
-
-  // User Handle form submission
- 
- 
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     // const { confirmPassword, ...userData } = values; // Exclude confirmPassword
     try {
@@ -61,17 +51,24 @@ function Register() {
         values
       );
 
+      const {verificationToken: verifyToken} = response.data;
+      localStorage.setItem("VerifyToken", verifyToken);
+      
+      const {email} = response.data
+      localStorage.setItem("userEmail", email);
+
+
       console.log(response.data);
       // Save username globally using UserContext
       setUsername(values.username);
 
       // Display success message using toastify
-      toast.success("Registration successful", { autoClose: 2000 });
+      toast.success("Registration successful! Please verify your email.", { autoClose: 2000 });
       console.log("Submitting data:", values);
 
       // Redirect to the login page after a short delay
       setTimeout(() => {
-        navigate("/login");
+        navigate("/verify-email");
       }, 2000); // Delay for 2 seconds before redirecting
     } catch (error) {
       console.error("Registration error:", error.response || error.message);

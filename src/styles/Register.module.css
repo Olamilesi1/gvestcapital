@@ -6,6 +6,7 @@
 
 .register {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
@@ -29,6 +30,17 @@
   flex-direction: column;
   gap: 0.6rem;
   /* border: 0.1rem solid black; */
+}
+
+.inputV {
+  width: 100%;
+  display: flex;
+  /* gap: 0.6rem; */
+  /* border: 0.1rem solid black; */
+}
+
+.inputsV{
+  width: 10%;
 }
 
 .cardTitle {
