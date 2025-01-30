@@ -51,19 +51,20 @@ function Register() {
         values
       );
 
-      const {verificationToken: verifyToken} = response.data;
-      localStorage.setItem("VerifyToken", verifyToken);
-      
-      const {email} = response.data
+      const { verificationToken, email } = response.data;
+      localStorage.setItem("VerifyToken", verificationToken);
       localStorage.setItem("userEmail", email);
-
+      console.log("Saved email to localStorage:", email);
+      console.log("Saved verification token to localStorage:", verificationToken);
 
       console.log(response.data);
       // Save username globally using UserContext
       setUsername(values.username);
 
       // Display success message using toastify
-      toast.success("Registration successful! Please verify your email.", { autoClose: 2000 });
+      toast.success("Registration successful! Please verify your email.", {
+        autoClose: 2000,
+      });
       console.log("Submitting data:", values);
 
       // Redirect to the login page after a short delay

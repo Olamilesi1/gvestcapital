@@ -16,6 +16,14 @@ function VerifyEmail() {
       const email = localStorage.getItem("userEmail"); // Assuming the email is saved during registration
       const verificationToken = localStorage.getItem("VerifyToken"); // Assuming the email is saved during registration
 
+      console.log("Email:", localStorage.getItem("userEmail"));
+      console.log("Verification Token:", verificationToken);
+
+      // Add a check to ensure that both values are present
+    if (!email || !verificationToken) {
+        throw new Error("Missing email or verification token.");
+      }
+      
       const response = await axios.post(
         "http://localhost:4000/user/verify-email",
         { email, verificationToken }
@@ -23,9 +31,6 @@ function VerifyEmail() {
 
       // Show success toast
       toast.success("Email verified successfully!", { autoClose: 2000 });
-
-      console.log("Email:", localStorage.getItem("userEmail"));
-      console.log("Verification Token:", verificationToken);
 
       // Redirect to login page
       setTimeout(() => {
