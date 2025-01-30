@@ -33,13 +33,16 @@ function Login() {
         values
       );
 
-      const {
-        userData,
-        authToken: token,
-        verificationToken: verifyToken,
-      } = response.data;
+      const { userData, authToken: token } = response.data;
 
-      if (verifyToken && token && userData.username) {
+      // const {
+      //   userData,
+      //   authToken: token,
+      //   verificationToken: verifyToken,
+      // } = response.data;
+
+      if ( token && userData.username) {
+      // if (verifyToken && token && userData.username) {
         // Save token and username in localStorage
 
         localStorage.setItem("userAuthToken", token);
@@ -63,7 +66,13 @@ function Login() {
       }
     } catch (error) {
       console.error("Login error:", error);
-      toast.error("Login failed! Please check your credentials.");
+      if (error.response && error.response.status === 403) {
+        toast.error(
+          "Your email is not verified. Please check your email for the verification code."
+        );
+      } else {
+        toast.error("Login failed! Please check your credentials.");
+      }
     } finally {
       setSubmitting(false); // Reset the form submission state
     }
@@ -267,6 +276,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }
