@@ -381,109 +381,7 @@ function Setting() {
       setImageSrc(URL.createObjectURL(file)); // Show preview before upload
     }
   };
-  
-  // const handleSubmit = async () => {
-  //   try {
-  //     const currentUsername = localStorage.getItem("userUsername");
-  //     console.log("Current Username:", currentUsername);
-  //     if (!currentUsername) {
-  //       toast.error("Username is not available. Please log in again.");
-  //       return;
-  //     }
 
-  //     const token = localStorage.getItem("authToken");
-  //     if (!token) {
-  //       toast.error("Unauthorized access. Please log in.");
-  //       return;
-  //     }
-
-  //     // Save updated profile to localStorage after submission
-  //     // localStorage.setItem("profileData", JSON.stringify(formData));
-
-  //     const data = new FormData();
-  //     Object.keys(formData).forEach((key) => {
-  //       if (key === "profilePicture" && formData[key] instanceof File) {
-  //         data.append(key, formData[key]);
-  //       } else {
-  //         data.append(key, formData[key] || "");
-  //       }
-  //     });
-  
-  //     const response = await axios.put(
-  //       `http://localhost:4000/user/profile/${currentUsername}`,
-  //       data,
-  //       {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     if (response.data.profilePictureUrl) {
-  //       localStorage.setItem("profileImage", response.data.profilePictureUrl);
-  //       setImageSrc(response.data.profilePictureUrl); // Update image preview
-  //     }
-  //     console.log("Profile Image URL:", imageSrc);
-  //     toast.success("Profile updated successfully!");
-  //     setIsEditing(false); // Disable editing after successful update
-  //   } catch (error) {
-  //     console.error("Error updating profile:", error);
-  //     toast.error("Failed to update profile.");
-  //   }
-  // };
-
-  // const handleSubmit = async () => {
-  //   try {
-  //     const currentUsername = localStorage.getItem("userUsername");
-  //     if (!currentUsername) {
-  //       toast.error("Username is not available. Please log in again.");
-  //       return;
-  //     }
-  
-  //     const token = localStorage.getItem("authToken");
-  //     if (!token) {
-  //       toast.error("Unauthorized access. Please log in.");
-  //       return;
-  //     }
-  
-  //     const data = new FormData();
-  //     Object.keys(formData).forEach((key) => {
-  //       if (key === "profilePicture" && formData[key] instanceof File) {
-  //         data.append(key, formData[key]);
-  //       } else {
-  //         data.append(key, formData[key] || "");
-  //       }
-  //     });
-  
-  //     const response = await fetch(`http://localhost:4000/user/profile/${currentUsername}`, {
-  //       method: "PUT",
-  //       body: data,
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  
-  //     if (!response.ok) {
-  //       throw new Error("Failed to update profile");
-  //     }
-  
-  //     const responseData = await response.json();
-  
-  //     // Save the correct image URL
-  //     if (responseData.profilePictureUrl) {
-  //       localStorage.setItem("profileImage", responseData.profilePictureUrl);
-  //       setImageSrc(responseData.profilePictureUrl);
-  //     }
-  
-  //     toast.success("Profile updated successfully!");
-  //     setIsEditing(false); // Disable editing after successful update
-  //   } catch (error) {
-  //     console.error("Error updating profile:", error);
-  //     toast.error("Failed to update profile.");
-  //   }
-  // };
-  
   const handleSubmit = async () => {
     try {
       const currentUsername = localStorage.getItem("userUsername");
@@ -519,7 +417,8 @@ function Setting() {
       );
   
       if (response.data.profilePictureUrl) {
-        const imageUrl = `http://localhost:4000/uploads/${response.data.profilePictureFilename}`; // Ensure correct path
+        // const imageUrl = `http://localhost:4000/uploads/${response.data.profilePictureFilename}`; // Ensure correct path
+        const imageUrl = response.data.profilePictureUrl; // Ensure correct path
   
         // Save the correct image URL
         localStorage.setItem("profileImage", imageUrl);
@@ -533,6 +432,43 @@ function Setting() {
       toast.error("Failed to update profile.");
     }
   };
+  
+  // useEffect(() => {
+  //   const fetchUserProfile = async () => {
+  //     const currentUsername = localStorage.getItem("userUsername");
+  //     const token = localStorage.getItem("authToken");
+  
+  //     if (!currentUsername || !token) {
+  //       toast.error("User not found or unauthorized. Please log in.");
+  //       return;
+  //     }
+  
+  //     const savedData = localStorage.getItem("profileData");
+  //     if (savedData) {
+  //       const profileData = JSON.parse(savedData);
+  //       setFormData(profileData);
+  //       setImageSrc(profileData.profilePictureUrl || "defaultImagePath.jpg");
+  //     } else {
+  //       try {
+  //         const response = await axios.get(
+  //           `http://localhost:4000/user/profile/${currentUsername}`,
+  //           { headers: { Authorization: `Bearer ${token}` } }
+  //         );
+  
+  //         localStorage.setItem("profileData", JSON.stringify(response.data));
+  //         localStorage.setItem("profileImage", response.data.profilePictureUrl);
+          
+
+  //         setFormData(response.data);
+  //         setImageSrc(response.data.profilePictureUrl || "defaultImagePath.jpg");
+  //       } catch (error) {
+  //         toast.error("Failed to fetch profile data.");
+  //       }
+  //     }
+  //   };
+  
+  //   fetchUserProfile();
+  // }, []);
   
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -548,8 +484,14 @@ function Setting() {
       if (savedData) {
         const profileData = JSON.parse(savedData);
         setFormData(profileData);
-        // setImageSrc(profileData.profilePictureUrl || "defaultImagePath.jpg");
-      } else {
+      }
+  
+      const savedImageUrl = localStorage.getItem("profileImage");
+      if (savedImageUrl) {
+        setImageSrc(savedImageUrl); // Load from storage if available
+      } else  {
+        setImageSrc("defaultImagePath.jpg"); // Set a default image if no URL exists
+      } {
         try {
           const response = await axios.get(
             `http://localhost:4000/user/profile/${currentUsername}`,
@@ -557,20 +499,20 @@ function Setting() {
           );
   
           localStorage.setItem("profileData", JSON.stringify(response.data));
-          localStorage.setItem("profileImage", response.data.profilePictureUrl);
-          
-
+  
           setFormData(response.data);
-          // setImageSrc(response.data.profilePictureUrl || "defaultImagePath.jpg");
-
+  
+          // Ensure correct image URL handling
           if (response.data.profilePictureUrl) {
+            localStorage.setItem("profileImage", response.data.profilePictureUrl);
+            setImageSrc(response.data.profilePictureUrl);
+          } else if (response.data.profilePictureFilename) {
             const imageUrl = `http://localhost:4000/uploads/${response.data.profilePictureFilename}`;
             localStorage.setItem("profileImage", imageUrl);
             setImageSrc(imageUrl);
           } else {
             setImageSrc("defaultImagePath.jpg"); // Set default if no image exists
           }
-      
         } catch (error) {
           toast.error("Failed to fetch profile data.");
         }
