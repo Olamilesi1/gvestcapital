@@ -23,7 +23,7 @@ function VerifyEmail() {
   //   if (!email || !verificationToken) {
   //       throw new Error("Missing email or verification token.");
   //     }
-      
+
   //     const response = await axios.post(
   //       "http://localhost:4000/user/verify-email",
   //       { email, verificationToken }
@@ -51,31 +51,32 @@ function VerifyEmail() {
     setLoading(true);
     try {
       const email = localStorage.getItem("userEmail");
-  
+
       if (!email || !verificationToken) {
         throw new Error("Missing email or verification token.");
       }
-  
+
       const response = await axios.post(
         "http://localhost:4000/user/verify-email",
         { email, verificationToken } // Use the state value, not localStorage
       );
-  
+
       toast.success("Email verified successfully!", { autoClose: 2000 });
-  
+
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     } catch (error) {
       console.error("Verification error:", error.response || error.message);
       toast.error(
-        error.response?.data?.message || "Verification failed! Please try again."
+        error.response?.data?.message ||
+          "Verification failed! Please try again."
       );
     } finally {
       setLoading(false);
     }
   };
-  
+
   return (
     <>
       <div className={style.register}>
@@ -118,7 +119,7 @@ function VerifyEmail() {
           </div>
         </div>
       </div>
-            <ToastContainer/>
+      <ToastContainer />
     </>
   );
 }
