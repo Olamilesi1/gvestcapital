@@ -1,58 +1,36 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
-
-import { User } from "../components/User";
-import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import style from "../styles/Register.module.css";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
-function Login() {
-  const [provider, setProvider] = useState("");
-  const [profile, setProfile] = useState(null);
-  // State to track password visibility
-  const [showPassword, setShowPassword] = useState(false);
+function ForgotPassword() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false); // State to manage loading
 
-  const onLoginStart = useCallback(() => {
-    alert("login start");
-  }, []);
-
-  const onLogoutSuccess = useCallback(() => {
-    setProfile(null);
-    setProvider("");
-    alert("Logged out successfully");
-  }, []);
-
-  // Toggle password visibility
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await axios.post(`http://localhost:4000/user/forgot-password`, { email });
+      toast.success("Check your email for reset instructions.");
+      //  setEmail(""); // Clear input after successful request
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Error sending reset email."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleLoginResolve = ({ provider, data }) => {
-    setProvider(provider);
-    setProfile(data);
-
-    // Redirect to dashboard after processing login
-    window.location.href = "/";
-  };
-
-  const handleLoginReject = (error) => {
-    console.error("Login failed:", error);
-  };
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />{" "}
+      {/* Toast Notifications */}
       <div className={style.register}>
         <div className={style.Para}>
-          <div className={style.logoH}>
-            <NavLink to="/">
-              <img
-                src="./images/gVestLogo.png"
-                alt="gVest Logo"
-                className={style.logo}
-              />
-            </NavLink>
-          </div>
           <p className={style.cardTitle}>Reset your password</p>
           <p>
             Enter your registered email address, and we’ll send you password
@@ -60,25 +38,24 @@ function Login() {
           </p>
         </div>
 
-        <form action="" className={style.action}>
+        <form action="" className={style.action} onSubmit={handleSubmit}>
           <div className={style.input}>
             <label htmlFor="" className={style.registered}>
               Registered Email
-            </label>
+            </label>{" "}
+            <br />
             <input
               type="email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className={style.inputs}
               placeholder="Input Your Registered Email Address"
             />
           </div>
 
           <button className={style.investConsult4}>
-            <NavLink to="/update-password">Submit</NavLink>{" "}
-          </button>
-
-          <button className={style.investConsult3}>
-            <NavLink to="/login">Back To Login</NavLink>{" "}
+          {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
 
@@ -99,4 +76,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgotPassword;
