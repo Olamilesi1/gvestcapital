@@ -27,16 +27,12 @@ function Setting() {
 
   const [isEditing, setIsEditing] = useState(false); // Controls edit mode
   const [loading, setLoading] = useState(false); // Loading state to improve user experience
+  const [formattedDate, setFormattedDate] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   setFormData((prevData) => ({ ...prevData, profilePicture: file }));
-  // };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -54,21 +50,14 @@ function Setting() {
         return;
       }
 
-      const token = localStorage.getItem("authToken");
+      const token = localStorage.getItem("userAuthToken");
       if (!token) {
         toast.error("Unauthorized access. Please log in.");
         return;
       }
 
       const data = new FormData();
-      // Object.keys(formData).forEach((key) => {
-      //   if (key === "profilePicture" && formData[key] instanceof File) {
-      //     data.append(key, formData[key]);
-      //   } else {
-      //     data.append(key, formData[key] || "");
-      //   }
-      // });
-
+   
       Object.keys(formData).forEach((key) => {
         if (key === "profilePicture") {
           // Only append the image if a new file is selected
@@ -80,6 +69,9 @@ function Setting() {
         }
       });
 
+      console.log("Form data before submission:", formData);
+
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const response = await axios.put(
         `http://localhost:4000/user/profile/${currentUsername}`,
         data,
@@ -87,20 +79,7 @@ function Setting() {
       );
 
       toast.success(response.data.message);
-      // localStorage.setItem(
-      //   "profileData",
-      //   JSON.stringify({
-      //     ...formData,
-      //     profilePictureUrl: response.data.profilePictureUrl,
-      //   })
-      // );
-
-      // localStorage.setItem("profileImage", response.data.profilePictureUrl);
-
-      // setIsEditing(false);
-
-      // Update localStorage with new data but keep existing image if not updated
-
+    
       const updatedProfileData = {
         ...formData,
         profilePictureUrl: response.data.profilePictureUrl || imageSrc, // Keep existing image if not updated
@@ -113,6 +92,7 @@ function Setting() {
       );
 
       setImageSrc(updatedProfileData.profilePictureUrl); // Keep the same profile picture
+      
       setIsEditing(false);
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -127,37 +107,99 @@ function Setting() {
         toast.error("User not found. Please log in.");
         return;
       }
-
-      const token = localStorage.getItem("authToken");
+  
+      const token = localStorage.getItem("userAuthToken");
+      console.log("Retrieved Token:", token); // Debugging
+  
       if (!token) {
         toast.error("Unauthorized access. Please log in.");
         return;
       }
-
-      const savedData = localStorage.getItem("profileData");
-      if (savedData) {
-        const profileData = JSON.parse(savedData);
-        setFormData(profileData);
-        setImageSrc(profileData.profilePictureUrl); // Ensure the profile picture URL is correctly set
-      } else {
-        try {
-          const response = await axios.get(
-            `http://localhost:4000/user/profile/${currentUsername}`,
-            { headers: { Authorization: `Bearer ${token}` } }
-          );
-          setFormData(response.data);
-          localStorage.setItem("profileData", JSON.stringify(response.data));
-          localStorage.setItem("profileImage", response.data.profilePictureUrl);
-        } catch (error) {
-          console.error("Error fetching profile:", error);
-          toast.error("Failed to fetch profile data.");
+  
+      try {
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+        const response = await axios.get(
+          `http://localhost:4000/user/profile/${currentUsername}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+  
+        console.log("Fetched Profile Data:", response.data); // Debugging
+  
+        setFormData(response.data.data);
+         // Ensure profile picture updates correctly
+         if (response.data.data.profilePictureUrl) {
+          const updatedImageUrl = `${response.data.data.profilePictureUrl}?t=${new Date().getTime()}`; // Prevent caching
+          setImageSrc(updatedImageUrl);
+          localStorage.setItem("profileImage", updatedImageUrl);
         }
+        // setImageSrc(response.data.data.profilePictureUrl); // Ensure profile picture updates
+        // setImageSrc(response.data.data.profilePictureUrl || imageSrc); // Ensure the latest image is set
+
+  
+        // Save fresh data in localStorage
+        localStorage.setItem("profileData", JSON.stringify(response.data.data));
+        // localStorage.setItem("profileImage", response.data.data.profilePictureUrl);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+        toast.error("Failed to fetch profile data.");
       }
     };
-
+  
     fetchUserProfile();
   }, []);
+  
 
+  useEffect(() => {
+    // Convert the ISO date string to the correct format (yyyy-MM-dd)
+    if (formData.dateOfBirth) {
+      const date = new Date(formData.dateOfBirth);
+      const formatted = date.toISOString().split("T")[0]; // "yyyy-MM-dd"
+      setFormattedDate(formatted);
+    }
+  }, [formData.dateOfBirth]);
+
+  // useEffect(() => {
+  //   const fetchUserProfile = async () => {
+  //     const currentUsername = localStorage.getItem("userUsername");
+  //     if (!currentUsername) {
+  //       toast.error("User not found. Please log in.");
+  //       return;
+  //     }
+
+  //     const token = localStorage.getItem("userAuthToken");
+  //     console.log("Retrieved Token:", token); // Debugging
+
+  //     if (!token) {
+  //       toast.error("Unauthorized access. Please log in.");
+  //       return;
+  //     }
+
+  //     const savedData = localStorage.getItem("profileData");
+  //     if (savedData) {
+  //       const profileData = JSON.parse(savedData);
+  //       setFormData(profileData);
+  //       setImageSrc(profileData.profilePictureUrl); // Ensure the profile picture URL is correctly set
+  //     } else {
+  //       try {
+  //         const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  //         const response = await axios.get(
+  //           `http://localhost:4000/user/profile/${currentUsername}`,
+  //           { headers: { Authorization: `Bearer ${token}` } }
+  //         );
+  //         setFormData(response.data);
+  //         localStorage.setItem("profileData", JSON.stringify(response.data));
+  //         localStorage.setItem("profileImage", response.data.profilePictureUrl);
+  //       } catch (error) {
+  //         console.error("Error fetching profile:", error);
+  //         toast.error("Failed to fetch profile data.");
+  //       }
+  //     }
+  //   };
+
+  //   fetchUserProfile();
+  // }, []);
+
+  
   const handlePasswordClick = () => {
     navigate("/user/setting"); // Navigate to the '/compound' page
   };
@@ -165,6 +207,9 @@ function Setting() {
   const handleProfileClick = () => {
     navigate("/user/password"); // Navigate to the '/compound' page
   };
+
+  // console.log("isEditing:", isEditing);
+
   return (
     <div>
       <div className={style.set}>
@@ -178,16 +223,6 @@ function Setting() {
         </div>
 
         <div className={style.imageText}>
-          {/* <img
-            src={
-              formData.profilePicture instanceof File
-                ? URL.createObjectURL(formData.profilePicture)
-                : `http://localhost:4000/uploads/${formData.profilePicture}`
-            }
-            alt="Profile Picture" // Just "Profile Picture" is enough
-            style={{ width: "100px", height: "100px", borderRadius: "50%" }}
-          /> */}
-
           {imageSrc ? (
             <img
               src={imageSrc}
@@ -283,7 +318,8 @@ function Setting() {
             <input
               type="date"
               name="dateOfBirth"
-              value={formData.dateOfBirth}
+              // value={formData.dateOfBirth}
+              value={formattedDate}
               onChange={handleChange}
               placeholder="01/01/2025"
               className={style.input}
@@ -355,6 +391,7 @@ function Setting() {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 }

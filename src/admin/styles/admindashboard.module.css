@@ -155,11 +155,11 @@
   align-items: center;
 }
 
-.das{
-display: flex;
-flex-direction: column;
-gap: 1rem;
-width: 100%;
+.das {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 }
 
 .dasl {
@@ -168,18 +168,18 @@ width: 100%;
   align-items: center;
 }
 
-.come{
+.come {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.invtFilt{
+.invtFilt {
   display: flex;
   justify-content: space-between;
 }
 
-.drum{
+.drum {
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -191,6 +191,15 @@ width: 100%;
   background-color: white;
   border: 0.1rem solid rgba(110, 0, 0, 1);
   border-radius: 0.5rem;
+}
+
+.edi {
+  background-color: black;
+  padding: 0.8rem;
+  color: white;
+  border: none;
+  border-radius: 0.4rem;
+  /* width: 10%; */
 }
 
 @media (max-width: 768px) {

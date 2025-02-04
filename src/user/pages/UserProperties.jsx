@@ -798,8 +798,9 @@ function UserProperties() {
 
   useEffect(() => {
     // Fetch properties data from backend API
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     axios
-      .get("http://localhost:4000/admin/properties") // Replace with your backend URL
+      .get(`${API_BASE_URL}/admin/properties`) // Replace with your backend URL
       .then((response) => {
         setProperties(response.data);
         setLoading(false);
@@ -826,6 +827,8 @@ function UserProperties() {
   if (error) {
     return <p className={style.error}>{error}</p>; // Display error message
   }
+
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   return (
     <>
@@ -860,7 +863,7 @@ function UserProperties() {
                       {images && images.length > 0 && (
                         <div className={style.propertyImages}>
                           <img
-                            src={`http://localhost:4000/${images[0].propertyUrl}`} // Adjust URL path if necessary
+                            src={`${API_BASE_URL}/${images[0].propertyUrl}`} // Adjust URL path if necessary
                             alt="Property"
                           />
                         </div>

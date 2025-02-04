@@ -35,9 +35,10 @@ function UserHeader() {
           return;
         }
 
-        const API_URL = process.env.REACT_APP_API_URL;
+        const API_BASE_URL = process.env.REACT_APP_API_URL;
         const response = await axios.get(
-          `http://localhost:4000/user/user?username=${currentUsername}`,
+          // `http://localhost:7000/user/user?username=${currentUsername}`,
+          `${API_BASE_URL}/user/${currentUsername}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

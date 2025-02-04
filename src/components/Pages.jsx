@@ -47,7 +47,7 @@ import AdminRegister from "../admin/pages/AdminRegister";
 import AdminPassword from "../admin/pages/AdminPassword";
 import AdminDashboard from "../admin/pages/AdminDashboard";
 import AdminSetting from "../admin/pages/AdminSetting";
-import AdminUser from "../admin/pages/AdminUser";
+import AdminUser from "../admin/pages/AdminUsers";
 import AdminInvestPlans from "../admin/pages/AdminInvestPlans";
 import AdminAllInvest from "../admin/pages/AdminAllInvest";
 import AdminTransaction from "../admin/pages/AdminTransaction";
@@ -82,7 +82,7 @@ function Pages() {
             <Route path="/email-success" element={<EmailSuccess />} />
             <Route path="/disclosure" element={<Disclosure />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/update-password" element={<UpdatePassword />} />
+            <Route path="/reset-password" element={<UpdatePassword />} />
             <Route path="*" element={<NotFound />} />
         
 

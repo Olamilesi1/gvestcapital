@@ -20,6 +20,7 @@ function VerifyEmail() {
         throw new Error("Missing email or verification token.");
       }
 
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const response = await axios.post(
         "http://localhost:4000/user/verify-email",
         { email, verificationToken } // Use the state value, not localStorage

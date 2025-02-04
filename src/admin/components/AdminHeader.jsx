@@ -2,7 +2,7 @@ import style from "../../user/styles/userheader.module.css";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useHeader } from "../../components/HeaderContext";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css"
 import { useAdmin } from "../../components/AdminContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
@@ -37,7 +37,7 @@ function AdminHeader() {
 
         const API_URL = process.env.REACT_APP_API_URL;
         const response = await axios.get(
-          `http://localhost:4000/user/user?username=${currentUsername}`,
+          `http://localhost:4000/admin/${currentUsername}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -49,7 +49,7 @@ function AdminHeader() {
         //   console.log(response.data.userData.username);
         // }
 
-        setUserData(response.data.userData);
+        setUserData(response.data.adminData);
       } catch (error) {
         console.error("Error fetching user data:", error);
         if (error.response?.status === 404) {

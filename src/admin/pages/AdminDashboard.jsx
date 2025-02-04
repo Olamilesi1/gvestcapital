@@ -5,7 +5,7 @@ import Upcoming from "../../user/components/Upcoming";
 import AdminTotal from "../components/AdminTotal";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
-import AdminUsers from "../components/AdminUsers";
+import AdminUsers from "../components/AdminUser";
 function AdminDashboard() {
   return (
     <>

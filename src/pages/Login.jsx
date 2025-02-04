@@ -27,9 +27,9 @@ function Login() {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      const API_URL = process.env.REACT_APP_API_URL;
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const response = await axios.post(
-        "http://localhost:4000/user/login",
+        `http://localhost:4000/user/login`,
         values
       );
 
@@ -41,8 +41,8 @@ function Login() {
       //   verificationToken: verifyToken,
       // } = response.data;
 
-      if ( token && userData.username) {
-      // if (verifyToken && token && userData.username) {
+      if (token && userData.username) {
+        // if (verifyToken && token && userData.username) {
         // Save token and username in localStorage
 
         localStorage.setItem("userAuthToken", token);
