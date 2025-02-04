@@ -32,7 +32,7 @@ function AdminDashboard() {
                   </div>
                 </div>
 
-                <AdminUsers />
+                {/* <AdminUsers /> */}
               </div>
               <div>
                 <Upcoming />

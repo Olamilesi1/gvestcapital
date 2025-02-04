@@ -21,6 +21,7 @@ function AdminHeader() {
       setLoading(true);
       try {
         let currentUsername = username || localStorage.getItem("adminUsername");
+        // console.log(localStorage.getItem("adminUsername"))
 
         if (!currentUsername) {
           toast.error("Username is not available. Redirecting to login...");

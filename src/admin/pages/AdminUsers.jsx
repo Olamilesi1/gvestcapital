@@ -205,7 +205,7 @@ function AdminUsers() {
                             <th>Recent Payment</th>
                             <th>No of Investments</th>
                             <th></th>
-                          </tr>
+                          </tr> 
                         </thead>
                         <tbody>
                           {investors.map((investor, index) => (
