@@ -57,7 +57,7 @@ function Register() {
       localStorage.setItem("userEmail", email);
       console.log("Saved email to localStorage:", email);
       console.log("Saved verification token to localStorage:", verificationToken);
-
+ 
       console.log(response.data);
       // Save username globally using UserContext
       setUsername(values.username);
