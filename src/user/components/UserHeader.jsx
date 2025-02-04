@@ -14,7 +14,7 @@ function UserHeader() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
-    const { headerTitle } = useHeader();
+  const { headerTitle } = useHeader();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -37,18 +37,13 @@ function UserHeader() {
 
         const API_BASE_URL = process.env.REACT_APP_API_URL;
         const response = await axios.get(
-          // `http://localhost:7000/user/user?username=${currentUsername}`,
-          `${API_BASE_URL}/user/${currentUsername}`,
+          `http://localhost:4000/user/one-user/${currentUsername}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
 
         console.log(response.data); // Check the response format
-
-        // if (response.data && response.data.userData?.username) {
-        //   console.log(response.data.userData.username);
-        // }
 
         setUserData(response.data.userData);
       } catch (error) {
@@ -58,7 +53,6 @@ function UserHeader() {
         } else {
           toast.error("Failed to fetch user data.");
         }
-       
       } finally {
         setLoading(false);
       }
@@ -92,10 +86,7 @@ function UserHeader() {
               className={style.person}
             /> */}
             <img
-              src={
-                userData?.profilePicture ||
-                "/images/default-profile.jpg"
-              }
+              src={userData?.profilePicture || "/images/default-profile.jpg"}
               alt="person"
               className={style.person}
             />

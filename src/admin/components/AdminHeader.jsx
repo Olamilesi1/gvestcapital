@@ -38,7 +38,7 @@ function AdminHeader() {
 
         const API_URL = process.env.REACT_APP_API_URL;
         const response = await axios.get(
-          `http://localhost:4000/admin/${currentUsername}`,
+          `http://localhost:4000/admin/one-admin/${currentUsername}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
