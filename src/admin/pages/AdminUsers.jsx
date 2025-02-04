@@ -140,8 +140,10 @@ function AdminUsers() {
           return;
         }
 
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
         const response = await axios.get(
-          "http://localhost:4000/admin/all-users",
+          `${API_BASE_URL}/admin/all-users`,
+          // "http://localhost:4000/admin/all-users",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

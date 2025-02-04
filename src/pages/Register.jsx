@@ -45,9 +45,10 @@ function Register() {
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     // const { confirmPassword, ...userData } = values; // Exclude confirmPassword
     try {
-      const API_BASE_URL = process.env.REACT_APP_API_URL;
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
       const response = await axios.post(
-        "http://localhost:4000/user/register",
+        `${API_BASE_URL}/user/register`,
+        // "http://localhost:4000/user/register",
         values
       );
 

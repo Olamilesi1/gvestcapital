@@ -14,7 +14,9 @@ function ForgotPassword() {
     setLoading(true);
     try {
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-      await axios.post(`http://localhost:4000/user/forgot-password`, { email });
+      await axios.post(
+        `${API_BASE_URL}/user/forgot-password`, { email });
+        // `http://localhost:4000/user/forgot-password`, { email });
       toast.success("Check your email for reset instructions.");
       //  setEmail(""); // Clear input after successful request
     } catch (error) {

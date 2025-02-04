@@ -51,9 +51,10 @@ function Register() {
     const { confirmPassword, ...adminData } = values; // Exclude confirmPassword
     try {
       
-      const API_URL = process.env.REACT_APP_API_URL;
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
       const response = await axios.post(
-        "http://localhost:4000/admin/register",
+        `${API_BASE_URL}/admin/register`,
+        // "http://localhost:4000/admin/register",
         values
       );
 

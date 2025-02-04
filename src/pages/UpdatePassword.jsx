@@ -58,7 +58,8 @@ const ResetPassword = () => {
       // });
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const response = await axios.post(
-        `http://localhost:4000/user/reset-password`,
+        `${API_BASE_URL}/user/reset-password`,
+        // `http://localhost:4000/user/reset-password`,
         { token, email, newPassword },
         { headers: { "Content-Type": "application/json" } }
       );

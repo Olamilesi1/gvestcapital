@@ -51,8 +51,11 @@ function AdminUser({ user, goBack }) {
         formData.append("profilePicture", selectedFile);
       }
 
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
       const response = await fetch(
-        `http://localhost:4000/user/profile/${user.username}`,
+        `${API_BASE_URL}/user/profile/${user.username}`,
+        // `http://localhost:4000/user/profile/${user.username}`,
         {
           method: "PUT",
           body: formData, // Send FormData instead of JSON
@@ -75,8 +78,10 @@ function AdminUser({ user, goBack }) {
       return;
 
     try {
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const response = await fetch(
-        `http://localhost:4000/admin/delete-user/${user._id}`,
+        `${API_BASE_URL}/admin/delete-user/${user._id}`,
+        // `http://localhost:4000/admin/delete-user/${user._id}`,
         {
           method: "DELETE",
         }

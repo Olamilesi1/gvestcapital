@@ -49,7 +49,7 @@ function AdminSideBar() {
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/admin/term' onClick={() => handleLinkClick("Term")}><span class="material-symbols-outlined">sticky_note_2</span> <span>Terms & Conditions</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/admin/setting' onClick={() => handleLinkClick("Setting")}><span class="material-symbols-outlined">settings</span> <span>Settings</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/admin/help' onClick={() => handleLinkClick("Help")}><span class="material-symbols-outlined">help</span> <span>Help</span></NavLink></li>
-                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/login' onClick={handleLogout} ><span class="material-symbols-outlined">logout</span> <span>Logout</span></NavLink></li>
+                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/admin/login' onClick={handleLogout} ><span class="material-symbols-outlined">logout</span> <span>Logout</span></NavLink></li>
                 </ul>
             </nav>
  </div>;
