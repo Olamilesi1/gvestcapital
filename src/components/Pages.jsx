@@ -55,13 +55,17 @@ import AdminDocument from "../admin/pages/AdminDocument";
 import AdminWallet from "../admin/pages/AdminWallet";
 import AdminTerm from "../admin/pages/AdminTerm";
 import AdminNotification from "../admin/pages/AdminNotification";
+import AdminVerifyEmail from "../admin/components/AdminVerifyEmail";
+import AdminEmailVerify from "../admin/components/AdminEmailVerify";
+import AdminForgotPassword from "../admin/components/AdminForgotPassword";
+import AdminEmailSuccess from "../admin/components/AdminEmailSuccess";
+import AdminUpdatePassword from "../admin/components/AdminUpdatePassword";
 
 function Pages() {
   return (
     <div>
       <UserProvider>
         <AdminProvider>
-          
           <Routes>
             {/* Main website routes */}
             <Route path="/" element={<Home />} />
@@ -84,43 +88,52 @@ function Pages() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<UpdatePassword />} />
             <Route path="*" element={<NotFound />} />
-        
 
-          {/* User Pages*/}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/user/dashboard" element={<UserDashboard />} />
-          <Route path="/user/properties/:id" element={<UserPropertyDetail />} />
-          <Route path="/user/properties" element={<UserProperties />} />
-          <Route path="/user/transactions" element={<UserTransactions />} />
-          <Route path="/user/investment" element={<UserInvestment />} />
-          <Route path="/user/investments" element={<UserInvestments />} />
-          <Route path="/user/compound-interest" element={<CompoundInterest />} />
-          <Route path="/user/simple-interest" element={<SimpleInterest />} />
-          <Route path="/user/mine" element={<Documents />} />
-          <Route path="/user/company" element={<UserCompany />} />
-          <Route path="/user/notification" element={<UserNotification />} />
-          <Route path="/user/wallet" element={<UserWallet />} />
-          <Route path="/user/setting" element={<UserSetting />} />
-          <Route path="/user/password" element={<UserPassword />} />
-          <Route path="/user/term" element={<UserTerm />} />
+            {/* User Pages*/}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/user/dashboard" element={<UserDashboard />} />
+            <Route
+              path="/user/properties/:id"
+              element={<UserPropertyDetail />}
+            />
+            <Route path="/user/properties" element={<UserProperties />} />
+            <Route path="/user/transactions" element={<UserTransactions />} />
+            <Route path="/user/investment" element={<UserInvestment />} />
+            <Route path="/user/investments" element={<UserInvestments />} />
+            <Route
+              path="/user/compound-interest"
+              element={<CompoundInterest />}
+            />
+            <Route path="/user/simple-interest" element={<SimpleInterest />} />
+            <Route path="/user/mine" element={<Documents />} />
+            <Route path="/user/company" element={<UserCompany />} />
+            <Route path="/user/notification" element={<UserNotification />} />
+            <Route path="/user/wallet" element={<UserWallet />} />
+            <Route path="/user/setting" element={<UserSetting />} />
+            <Route path="/user/password" element={<UserPassword />} />
+            <Route path="/user/term" element={<UserTerm />} />
 
-          {/* Admin Pages */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/register" element={<AdminRegister />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/users" element={<AdminUser />} />
-          <Route path="/admin/invest-plans" element={<AdminInvestPlans />} />
-          <Route path="/admin/all-investments" element={<AdminAllInvest />} />
-          <Route path="/admin/transactions" element={<AdminTransaction />} />
-          <Route path="/admin/mine" element={<AdminDocument />} />
-          <Route path="/admin/wallet" element={<AdminWallet />} />
-          <Route path="/admin/term" element={<AdminTerm />} />
-          <Route path="/admin/notification" element={<AdminNotification />} />
-          <Route path="/admin/setting" element={<AdminSetting />} />
-          <Route path="/admin/password" element={<AdminPassword />} />
+            {/* Admin Pages */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/register" element={<AdminRegister />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/users" element={<AdminUser />} />
+            <Route path="/admin/invest-plans" element={<AdminInvestPlans />} />
+            <Route path="/admin/all-investments" element={<AdminAllInvest />} />
+            <Route path="/admin/transactions" element={<AdminTransaction />} />
+            <Route path="/admin/mine" element={<AdminDocument />} />
+            <Route path="/admin/wallet" element={<AdminWallet />} />
+            <Route path="/admin/term" element={<AdminTerm />} />
+            <Route path="/admin/notification" element={<AdminNotification />} />
+            <Route path="/admin/setting" element={<AdminSetting />} />
+            <Route path="/admin/password" element={<AdminPassword />} />
+            <Route path="/admin/email-success" element={<AdminEmailSuccess />}/>
+            <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
+            <Route path="/admin/email-verify" element={<AdminEmailVerify />} />
+            <Route path="/admin/verify-email" element={<AdminVerifyEmail />} />
+            <Route path="/admin/reset-password" element={<AdminUpdatePassword />} />
           </Routes>
-
         </AdminProvider>
       </UserProvider>
     </div>

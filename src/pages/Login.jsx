@@ -33,6 +33,7 @@ function Login() {
         // `http://localhost:4000/user/login`,
         values
       );
+      console.log("API BASE URL:", process.env.REACT_APP_API_BASE_URL);
 
       const { userData, authToken: token } = response.data;
 

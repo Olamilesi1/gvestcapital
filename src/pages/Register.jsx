@@ -67,6 +67,8 @@ function Register() {
         autoClose: 2000,
       });
       console.log("Submitting data:", values);
+      console.log("API BASE URL:", process.env.REACT_APP_API_BASE_URL);
+
 
       // Redirect to the login page after a short delay
       setTimeout(() => {
