@@ -162,7 +162,7 @@ function Login() {
                   </div>
 
                   <li className={style.navLi}>
-                    <NavLink to="/forgot-password">Forgot Password</NavLink>
+                    <NavLink to="/admin/forgot-password">Forgot Password</NavLink>
                   </li>
                 </div>
 
