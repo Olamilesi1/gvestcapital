@@ -1,11 +1,7 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
-
-import { User } from "../components/User";
-import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
-// import style from "../styles/authentication.module.css"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import style from "../styles/Register.module.css";
+import style from "../../styles/Register.module.css";
 import { NavLink } from "react-router-dom";
 
 function Login() {

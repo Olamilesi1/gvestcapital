@@ -2,6 +2,8 @@ import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
 import AdminInvestment from "../../admin/components/AdminInvestment";
+import AddInvestmentScheme from "../components/AddInvestmentScheme";
+import AddPropertyScheme from "../components/AddPropertyScheme";
 function AdminAllInvest() {
   return (
     <>
@@ -14,11 +16,22 @@ function AdminAllInvest() {
           <div className={style.outline}>
             <div className={style.allInvest}>
               <p>Investment Plan</p>
-              <button className={style.newInvest}>All New Investments</button>
+              <button className={style.newInvest}>Add New Investment Plan</button>
+
+              <div className={style.all}>
+                <p>Filter</p>
+                <select name="" id="">
+                  <option value="">All</option>
+                  <option value="">Trek</option>
+                  <option value="">Run</option>
+                  <option value="">Fly</option>
+                </select>
+              </div>
             </div>
-        
-              <AdminInvestment/>
-      
+
+            {/* <AddPropertyScheme /> */}
+            {/* <AddInvestmentScheme /> */}
+            <AdminInvestment />
           </div>
         </div>
       </div>

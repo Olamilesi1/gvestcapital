@@ -61,6 +61,12 @@ import AdminForgotPassword from "../admin/components/AdminForgotPassword";
 import AdminEmailSuccess from "../admin/components/AdminEmailSuccess";
 import AdminUpdatePassword from "../admin/components/AdminUpdatePassword";
 
+import AddInvestmentScheme from "../admin/components/AddInvestmentScheme";
+import AddPropertyScheme from "../admin/components/AddPropertyScheme";
+
+import AddPropertyInvestment from "../admin/components/AddPropertyInvestmentForm";
+import AddInvestmentSchemeForm from "../admin/components/AddInvestmentSchemeForm";
+
 function Pages() {
   return (
     <div>
@@ -133,6 +139,11 @@ function Pages() {
             <Route path="/admin/email-verify" element={<AdminEmailVerify />} />
             <Route path="/admin/verify-email" element={<AdminVerifyEmail />} />
             <Route path="/admin/reset-password" element={<AdminUpdatePassword />} />
+            <Route path="/admin/add-invest" element={<AddInvestmentScheme />} />
+            <Route path="/admin/add-property" element={<AddPropertyScheme />} />
+
+            <Route path="/admin/add-propertyinvest" element={<AddPropertyInvestment />} />
+            <Route path="/admin/add-investscheme" element={<AddInvestmentSchemeForm />} />
           </Routes>
         </AdminProvider>
       </UserProvider>

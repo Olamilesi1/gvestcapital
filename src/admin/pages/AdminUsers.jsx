@@ -12,8 +12,6 @@ function AdminUsers() {
   const [error, setError] = useState("");
   const [selectedUser, setSelectedUser] = useState(null); // Track selected user
 
-
-
   useEffect(() => {
     const fetchInvestors = async () => {
       try {
@@ -61,7 +59,7 @@ function AdminUsers() {
                 goBack={() => setSelectedUser(null)}
               />
             ) : (
-              <div>
+              <div className={style.users}>
                 <div className={style.invtFilt}>
                   <p>Investors List</p>
 

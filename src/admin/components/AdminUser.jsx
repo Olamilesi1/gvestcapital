@@ -1,22 +1,38 @@
 import { useState, useEffect } from "react";
 import style from "../../user/styles/usernotification.module.css";
 
-function AdminUser({ user, goBack }) {
+// function AdminUser({ user, goBack }) {
+function AdminUser({ user = {}, goBack }) {
   const [activeTab, setActiveTab] = useState("profile"); // Track active tab
 
+  // const [imageSrc, setImageSrc] = useState(
+  //   user.profilePicture || "defaultImagePath.jpg"
+  // );
+
   const [imageSrc, setImageSrc] = useState(
-    user.profilePicture || "defaultImagePath.jpg"
+    user?.profilePicture || "defaultImagePath.jpg"
   );
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [updatedUser, setUpdatedUser] = useState(user);
+  // const [updatedUser, setUpdatedUser] = useState(user);
+  const [updatedUser, setUpdatedUser] = useState(user || {});
+
   const [formattedDate, setFormattedDate] = useState("");
 
   useEffect(() => {
+    console.log("User data in AdminUser:", user);
     // Convert the ISO date string to the correct format (yyyy-MM-dd)
-    if (updatedUser.dateOfBirth) {
-      const date = new Date(updatedUser.dateOfBirth);
-      const formatted = date.toISOString().split("T")[0]; // "yyyy-MM-dd"
+    // if (updatedUser.dateOfBirth) {
+    if (updatedUser && updatedUser.dateOfBirth) {
+      // const date = new Date(updatedUser.dateOfBirth);
+      const date = updatedUser?.dateOfBirth
+        ? new Date(updatedUser.dateOfBirth)
+        : null;
+
+      // const formatted = date.toISOString().split("T")[0]; // "yyyy-MM-dd"
+      const formatted = date ? date.toISOString().split("T")[0] : "";
+
       setFormattedDate(formatted);
     }
   }, [updatedUser.dateOfBirth]);
@@ -61,6 +77,8 @@ function AdminUser({ user, goBack }) {
           body: formData, // Send FormData instead of JSON
         }
       );
+
+      console.log("User Data in AdminUser:", user);
 
       if (response.ok) {
         alert("Profile updated successfully");
@@ -108,7 +126,8 @@ function AdminUser({ user, goBack }) {
 
       <div className={style.imageText}>
         <img
-          src={imageSrc}
+          // src={imageSrc}
+          src={imageSrc || "defaultImagePath.jpg"}
           alt="Profile"
           style={{ width: "100px", height: "100px", borderRadius: "50%" }}
         />
@@ -116,8 +135,10 @@ function AdminUser({ user, goBack }) {
           <input type="file" accept="image/*" onChange={handleFileChange} />
         )}
         <div className={style.texts}>
-          <p className={style.text1}>{user.username}</p>
-          <p className={style.text2}>{user.email}</p>
+          {/* <p className={style.text1}>{user.username}</p>
+          <p className={style.text2}>{user.email}</p> */}
+          <p className={style.text1}>{user?.username || "N/A"}</p>
+          <p className={style.text2}>{user?.email || "N/A"}</p>
         </div>
       </div>
 
