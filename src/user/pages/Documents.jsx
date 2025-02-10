@@ -3,6 +3,7 @@ import Transactions from "../components/Transactions";
 import UserHeader from "../components/UserHeader";
 import style from "../styles/userdashboard.module.css";
 import { useNavigate } from "react-router-dom";
+import UserDocumentList from "../components/UserDocumentList";
 function Documents() {
   const navigate = useNavigate();
   const company = () => {
@@ -21,11 +22,7 @@ function Documents() {
           <UserHeader />
 
           <div className={style.outline}>
-          <div className={style.document}>
-            <button className={style.myDocument} onClick={mine}>My Documents</button>
-            <button className={style.companyDocument} onClick={company}>Company Documents</button>
-          </div>
-            <Transactions />
+            <UserDocumentList />
             </div>
 
         </div>

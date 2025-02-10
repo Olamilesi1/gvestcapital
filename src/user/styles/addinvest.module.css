@@ -99,4 +99,34 @@ margin: 0 auto;
   margin: 1rem auto;
 }
 
+.toggleSection {
+  display: flex;
+  /* justify-content: center; */
+  margin: 20px 0;
+}
+
+.toggleSection button {
+  background-color: rgb(255,240,240);
+  border: none;
+  color: rgb(110,0,0);
+  padding: 1rem;
+  flex: 1 1 auto;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.toggleSection button:hover {
+  background-color: #ddd;
+}
+
+.toggleSection .active {
+  background-color: rgb(110,0,0);
+  color: white;
+  border-color: rgb(110,0,0);
+  font-weight: bold;
+  /* box-shadow: 0px 2px 5px rgb(110,0,0); */
+}
 

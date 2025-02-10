@@ -21,7 +21,7 @@ function AdminUsers() {
           return;
         }
 
-        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
         const response = await axios.get(
           `${API_BASE_URL}/admin/all-users`,
           // "http://localhost:4000/admin/all-users",
@@ -88,7 +88,7 @@ function AdminUsers() {
                             <th>Recent Payment</th>
                             <th>No of Investments</th>
                             <th></th>
-                          </tr> 
+                          </tr>
                         </thead>
                         <tbody>
                           {investors.map((investor, index) => (
@@ -99,7 +99,7 @@ function AdminUsers() {
                               <td>{investor.investmentNumber}</td>
                               <td>
                                 <button
-                                className={style.edi}
+                                  className={style.edi}
                                   onClick={() => setSelectedUser(investor)}
                                 >
                                   View Details

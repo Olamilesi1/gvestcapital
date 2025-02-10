@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import style from "../../user/styles/usernotification.module.css";
+import UserInvestments from "../../user/pages/UserInvestments";
 
 // function AdminUser({ user, goBack }) {
 function AdminUser({ user = {}, goBack }) {
@@ -318,15 +319,18 @@ function AdminUser({ user = {}, goBack }) {
           <h3>Investments</h3>
           <p>
             <strong>Number of Investments:</strong> {user.investmentNumber}
+            {/* <UserInvestments/> */}
           </p>
         </div>
       )}
+
       {activeTab === "transactions" && (
         <div>
           <h3>Transactions</h3>
           <p>Transaction details will be fetched dynamically.</p>
         </div>
       )}
+
       {activeTab === "documents" && (
         <div>
           <h3>Documents</h3>

@@ -2,7 +2,8 @@ import { HeaderProvider } from "../../components/HeaderContext";
 import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
-import Transactions from "../../user/components/Transactions";
+import AdminDocumentList from "../components/AdminDocumentList";
+
 function AdminAllInvest() {
   return (
     <>
@@ -16,7 +17,7 @@ function AdminAllInvest() {
           <div className={style.outline}>
             <p>List of User Documents</p>
 
-            <Transactions />
+            <AdminDocumentList />
           </div>
         </div>
       </div>
