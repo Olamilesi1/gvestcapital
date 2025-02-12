@@ -4,6 +4,7 @@ import UserHeader from "../components/UserHeader";
 import style from "../styles/userdashboard.module.css";
 import { useNavigate } from "react-router-dom";
 import UserDocumentList from "../components/UserDocumentList";
+import UploadDocument from "../components/UploadDocument";
 function Documents() {
   const navigate = useNavigate();
   const company = () => {
@@ -23,6 +24,7 @@ function Documents() {
 
           <div className={style.outline}>
             <UserDocumentList />
+            <UploadDocument/>
             </div>
 
         </div>

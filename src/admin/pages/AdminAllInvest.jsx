@@ -3,6 +3,7 @@ import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
 import AdminInvestmentTable from "../components/UsersInvestmentTable";
+
 function AdminAllInvest() {
   return (
     <>
@@ -35,6 +36,7 @@ function AdminAllInvest() {
                 </select>
               </div>
             </div>
+
 
             <AdminInvestmentTable />
           </div>

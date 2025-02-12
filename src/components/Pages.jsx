@@ -23,6 +23,8 @@ import VerifyEmail from "../pages/VerifyEmail";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsCondition from "../pages/TermsCondition";
 import Disclosure from "../pages/Disclosure";
+// import {App} from "./Stripe";
+import PaymentForm from "./Transaction";
 
 // User Import
 import UserPropertyDetail from "../user/pages/UserPropertyDetail";
@@ -60,12 +62,11 @@ import AdminEmailVerify from "../admin/components/AdminEmailVerify";
 import AdminForgotPassword from "../admin/components/AdminForgotPassword";
 import AdminEmailSuccess from "../admin/components/AdminEmailSuccess";
 import AdminUpdatePassword from "../admin/components/AdminUpdatePassword";
-
 import AddInvestmentScheme from "../admin/components/AddInvestmentScheme";
 import AddPropertyScheme from "../admin/components/AddPropertyScheme";
-
-import AddPropertyInvestment from "../admin/components/AddPropertyInvestmentForm";
-import AddInvestmentSchemeForm from "../admin/components/AddInvestmentSchemeForm";
+import AddPropertyInvestment from "../admin/components/AddAllPropertySchemeTable";
+import AddInvestmentSchemeForm from "../admin/components/AddAllInvestmentSchemeTable";
+import AdminPropertySchemeInfo  from "../admin/components/AdminPropertySchemeInfo";
 
 function Pages() {
   return (
@@ -134,17 +135,35 @@ function Pages() {
             <Route path="/admin/notification" element={<AdminNotification />} />
             <Route path="/admin/setting" element={<AdminSetting />} />
             <Route path="/admin/password" element={<AdminPassword />} />
-            <Route path="/admin/email-success" element={<AdminEmailSuccess />}/>
-            <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
+            <Route
+              path="/admin/email-success"
+              element={<AdminEmailSuccess />}
+            />
+            <Route
+              path="/admin/forgot-password"
+              element={<AdminForgotPassword />}
+            />
             <Route path="/admin/email-verify" element={<AdminEmailVerify />} />
             <Route path="/admin/verify-email" element={<AdminVerifyEmail />} />
-            <Route path="/admin/reset-password" element={<AdminUpdatePassword />} />
+            <Route
+              path="/admin/reset-password"
+              element={<AdminUpdatePassword />}
+            />
             <Route path="/admin/add-invest" element={<AddInvestmentScheme />} />
             <Route path="/admin/add-property" element={<AddPropertyScheme />} />
-
-            <Route path="/admin/add-propertyinvest" element={<AddPropertyInvestment />} />
-            <Route path="/admin/add-investscheme" element={<AddInvestmentSchemeForm />} />
+            <Route path="/property/:id" element={<AdminPropertySchemeInfo />}/>
+            <Route
+              path="/admin/add-propertyinvest"
+              element={<AddPropertyInvestment />}
+            />
+            <Route
+              path="/admin/add-investscheme"
+              element={<AddInvestmentSchemeForm />}
+            />
+            <Route path="/user/stripe" element={<PaymentForm />} />
           </Routes>
+
+         
         </AdminProvider>
       </UserProvider>
     </div>

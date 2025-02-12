@@ -1,6 +1,6 @@
 import SideBar from "../components/AdminSideBar";
 import { NavLink } from "react-router-dom";
-import Transaction from "../components/Transaction";
+import Transaction from "../components/AdminTransactionHistory";
 import Upcoming from "../../user/components/Upcoming";
 import AdminTotal from "../components/AdminTotal";
 import UserHeader from "../components/AdminHeader";

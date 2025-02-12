@@ -1,8 +1,8 @@
-import { HeaderProvider } from "../../components/HeaderContext";
 import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
 import AdminDocumentList from "../components/AdminDocumentList";
+import UploadDocument from "../components/UploadDocument";
 
 function AdminAllInvest() {
   return (
@@ -18,10 +18,10 @@ function AdminAllInvest() {
             <p>List of User Documents</p>
 
             <AdminDocumentList />
+            {/* <UploadDocument/> */}
           </div>
         </div>
       </div>
-      {/* </HeaderProvider> */}
     </>
   );
 }

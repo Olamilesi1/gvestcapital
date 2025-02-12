@@ -3,7 +3,9 @@ import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
 import AdminInvestment from "../../admin/components/AdminInvestment";
 import AddInvestmentScheme from "../components/AddInvestmentScheme";
+// import AdminInvestmentSchemeForm from "../components/AddInvestmentSchemeForm";
 import AddPropertyScheme from "../components/AddPropertyScheme";
+import AdminPropertySchemeTable from "../components/AdminPropertySchemeTable";
 function AdminAllInvest() {
   return (
     <>
@@ -29,9 +31,11 @@ function AdminAllInvest() {
               </div>
             </div>
 
-            {/* <AddPropertyScheme /> */}
+          <AdminPropertySchemeTable/>
+
+            <AddPropertyScheme />
             {/* <AddInvestmentScheme /> */}
-            <AdminInvestment />
+            {/* <AdminInvestment /> */}
           </div>
         </div>
       </div>

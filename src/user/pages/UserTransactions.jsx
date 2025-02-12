@@ -2,6 +2,8 @@ import SideBar from "../components/UserSideBar";
 import Transactions from "../components/Transactions";
 import UserHeader from "../components/UserHeader";
 import style from "../styles/userdashboard.module.css";
+import Transaction from "../../components/Transaction"
+import TransactionHistory from "../../components/TransactionHistory";
 function UserTransactions() {
   return (
     <>
@@ -13,7 +15,8 @@ function UserTransactions() {
 
           <div className={style.outline}>
           
-            <Transactions />
+            <TransactionHistory/>
+            <Transaction/>
             </div>
 
         </div>

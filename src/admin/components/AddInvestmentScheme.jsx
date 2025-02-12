@@ -61,6 +61,91 @@ function AdminInvestmentScheme() {
 
         <div className={style.labe}>
           <label className={style.lab} htmlFor="">
+            Investment Start Date
+          </label>
+          <input
+            type="date"
+            name=""
+            id=""
+            placeholder="12/02/2025"
+            className={style.input}
+          />
+        </div>
+
+        <div className={style.labe}>
+          <label className={style.lab} htmlFor="">
+            Investment End Date
+          </label>
+          <input
+            type="date"
+            name=""
+            id=""
+            placeholder="12/02/2028"
+            className={style.input}
+          />
+        </div>
+
+        <div className={style.labe}>
+          <label className={style.lab} htmlFor="">
+            Investment Option
+          </label>
+          <select name="" id="" className={style.input}>
+            <option value="">Buy Invest</option>
+            <option value="">Buy House</option>
+          </select>
+        </div>
+
+        <div className={style.labe}>
+          <label className={style.lab} htmlFor="">
+            Duration
+          </label>
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="24 Months"
+            className={style.input}
+          />
+        </div>
+
+        <div className={style.labe}>
+          <label className={style.lab} htmlFor="">
+            ROI Percentage
+          </label>
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Enter your ROI percentage"
+            className={style.input}
+          />
+        </div>
+
+        <div className={style.labe}>
+          <label className={style.lab} htmlFor="">
+            Investment Year
+          </label>
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="100"
+            className={style.input}
+          />
+        </div>
+
+        <div className={style.labe}>
+          <label className={style.lab} htmlFor="">
+            ROI Type
+          </label>
+          <select name="" id="" className={style.input}>
+            <option value="">Simple Interest</option>
+            <option value="">Buy House</option>
+          </select>
+        </div>
+
+        <div className={style.labe}>
+          <label className={style.lab} htmlFor="">
             ROI Percentage
           </label>
           <input
