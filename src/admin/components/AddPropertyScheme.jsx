@@ -71,7 +71,8 @@ function AdminPropertyScheme() {
     images.forEach((image) => data.append("images", image));
 
     try {
-      await axios.post("http://localhost:4000/admin/properties", data);
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+      await axios.post(`${API_BASE_URL}/admin/properties`, data);
       toast.success("Property added successfully!");
       setFormData({
         title: "",
@@ -239,8 +240,18 @@ function AdminPropertyScheme() {
           <div className={style.imagePreviewContainer}>
             {images.map((image, index) => (
               <div key={index} className={style.imagePreview}>
-                <img src={URL.createObjectURL(image)} alt="Preview" style={{ width: "100px", height: "100px", borderRadius: "50%" }} />
-                <button type="button" onClick={() => handleRemoveImage(index)}>X</button>
+                <img
+                  src={URL.createObjectURL(image)}
+                  alt="Preview"
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    borderRadius: "50%",
+                  }}
+                />
+                <button type="button" onClick={() => handleRemoveImage(index)}>
+                  X
+                </button>
               </div>
             ))}
           </div>

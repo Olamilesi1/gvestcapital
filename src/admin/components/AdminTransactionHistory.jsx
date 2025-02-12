@@ -134,8 +134,9 @@ const Transactions = () => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
         const response = await axios.get(
-          "http://localhost:4000/user/transactions"
+          `${API_BASE_URL}/user/transactions`
         );
         setTransactions(response.data);
       } catch (error) {

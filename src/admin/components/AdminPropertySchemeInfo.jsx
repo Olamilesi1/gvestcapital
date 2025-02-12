@@ -12,7 +12,9 @@ function PropertyDetails() {
   useEffect(() => {
     const fetchProperty = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/admin/property/${id}`);
+
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+        const res = await axios.get(`${API_BASE_URL}/admin/property/${id}`);
         setProperty(res.data);
       } catch (error) {
         console.error("Error fetching property:", error);

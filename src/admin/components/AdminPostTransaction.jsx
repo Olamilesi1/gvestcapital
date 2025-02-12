@@ -24,8 +24,9 @@ const TransactionForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const response = await axios.post(
-        "http://localhost:4000/admin/admin-transaction",
+        `${API_BASE_URL}/admin/admin-transaction`,
         formData
       );
       alert("Transaction posted successfully!");

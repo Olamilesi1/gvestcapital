@@ -120,7 +120,7 @@ function Setting() {
       try {
         const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
         const response = await axios.get(
-          `http://localhost:4000/user/profile/${currentUsername}`,
+          `${API_BASE_URL}/user/profile/${currentUsername}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
   

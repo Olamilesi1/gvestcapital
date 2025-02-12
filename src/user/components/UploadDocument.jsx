@@ -30,7 +30,8 @@ const UserUploadDocument = () => {
     formData.append("username", username);
 
     try {
-      const response = await axios.post("http://localhost:4000/user/document", formData, {
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+      const response = await axios.post(`${API_BASE_URL}/user/document`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setMessage(response.data.message);

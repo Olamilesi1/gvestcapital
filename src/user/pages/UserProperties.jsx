@@ -20,8 +20,9 @@ function UserProperties() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
         const res = await axios.get(
-          "http://localhost:4000/admin/all-properties"
+          `${API_BASE_URL}/admin/all-properties`
         );
         setProperties(res.data);
       } catch (error) {

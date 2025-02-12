@@ -9,7 +9,8 @@ function PropertyList() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/admin/all-properties");
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+        const res = await axios.get(`${API_BASE_URL}/admin/all-properties`);
         setProperties(res.data);
       } catch (error) {
         console.error("Error fetching properties:", error);

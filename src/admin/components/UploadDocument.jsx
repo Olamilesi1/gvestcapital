@@ -190,7 +190,8 @@ const AdminUploadDocument = () => {
     formData.append("username", username);
 
     try {
-      const response = await axios.post("http://localhost:4000/admin/document", formData, {
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+      const response = await axios.post(`${API_BASE_URL}/admin/document`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       toast.success(response.data.message || "Document uploaded successfully");      
