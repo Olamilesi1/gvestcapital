@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-const PaymentForm = () => {
+const AddTransaction = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [amount, setAmount] = useState("");
@@ -14,7 +14,11 @@ const PaymentForm = () => {
   //   const email = params.get("email");
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
-  const [method, setMethod] = useState("card");
+  const [type, setType] = useState("");
+  const [investmentName, setInvestmentName] = useState("");
+  const [investmentDuration, setInvestmentDuration] = useState("");
+  // const [title, setTitle] = useState("");
+  const [method, setMethod] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -49,7 +53,7 @@ const PaymentForm = () => {
 
       // Send payment details to backend
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-      const response = await axios.post(`${API_BASE_URL}user/payment`, {
+      const response = await axios.post(`${API_BASE_URL}/user/payment`, {
         email,
         amount: amount * 100, // Convert to cents
         currency,
@@ -57,6 +61,10 @@ const PaymentForm = () => {
         username, // Include username in the request
         description,
         method,
+      
+        investmentName, 
+        investmentDuration, 
+        type
       });
 
       setMessage(
@@ -85,26 +93,52 @@ const PaymentForm = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+
+         <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
+          <option value="usd">$</option>
+          <option value="eur">EUR</option>
+          {/* Add other currencies as needed */}
+        </select>
         <input
           type="number"
           placeholder="Amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
-          <option value="usd">USD</option>
-          <option value="eur">EUR</option>
-          {/* Add other currencies as needed */}
-        </select>
+       
         <input
           type="text"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+        /> 
+        {/* <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        /> */}
+        <input
+          type="text"
+          placeholder="Investment Name"
+          value={investmentName}
+          onChange={(e) => setInvestmentName(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Method"
+          placeholder="Investment Duration"
+          value={investmentDuration}
+          onChange={(e) => setInvestmentDuration(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Transaction Type"
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Transaction Method"
           value={method}
           onChange={(e) => setMethod(e.target.value)}
         />
@@ -118,4 +152,4 @@ const PaymentForm = () => {
   );
 };
 
-export default PaymentForm;
+export default AddTransaction;

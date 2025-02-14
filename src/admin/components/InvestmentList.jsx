@@ -79,3 +79,64 @@ function PaymentList() {
 }
 
 export default PaymentList;
+
+// import { useEffect, useState } from "react";
+// import axios from "axios";
+
+// function InvestmentList({ onSelect }) {
+//   const [investments, setInvestments] = useState([]);
+//   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+//   useEffect(() => {
+//     fetchInvestments();
+//   }, []);
+
+//   const fetchInvestments = async () => {
+//     try {
+//       const response = await axios.get(`${API_BASE_URL}/admin/all-investmentscheme`);
+//       setInvestments(response.data);
+//     } catch (error) {
+//       console.error("Error fetching investments:", error);
+//     }
+//   };
+
+//   const handleDelete = async (id) => {
+//     if (window.confirm("Are you sure you want to delete this investment?")) {
+//       try {
+//         await axios.delete(`${API_BASE_URL}/admin/delete-investmentscheme/${id}`);
+//         fetchInvestments(); // Refresh list after deletion
+//       } catch (error) {
+//         console.error("Error deleting investment:", error);
+//       }
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h2>Investment Schemes</h2>
+//       {investments.length === 0 ? (
+//         <p>No investments available.</p>
+//       ) : (
+//         investments.map((investment) => (
+//           <div key={investment._id} style={{ border: "1px solid #ddd", padding: "10px", margin: "10px 0" }}>
+//             <h3>{investment.investmentType}</h3>
+//             <p>
+//               <strong>Amount:</strong> {investment.currency} {investment.investmentAmount}
+//             </p>
+//             <p><strong>Duration:</strong> {investment.duration} years</p>
+
+//             {/* View Details */}
+//             <button onClick={() => onSelect(investment)}>View Details</button>
+            
+//             {/* Delete Investment */}
+//             <button onClick={() => handleDelete(investment._id)} style={{ marginLeft: "10px", backgroundColor: "red", color: "white" }}>
+//               Delete
+//             </button>
+//           </div>
+//         ))
+//       )}
+//     </div>
+//   );
+// }
+
+// export default InvestmentList;

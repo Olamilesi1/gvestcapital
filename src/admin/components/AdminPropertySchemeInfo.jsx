@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import style from "../styles/addinvest.module.css";
 
-import Transaction from "../../components/Transaction"
+import Transaction from "../../user/components/AddTransaction"
 
 function PropertyDetails() {
   const { id } = useParams();

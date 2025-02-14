@@ -1,26 +1,25 @@
 .table-container {
-  /* margin: 2rem 0; */
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
+  padding: 1rem;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  text-align: center;
 }
 
-thead th {
-  color: black;
-  background-color: white;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
+thead th,
+tbody td {
+  text-align: center;
+  padding: 1rem;
 }
 
-thead {
-  border: none;
+.history{
+  /* margin-bottom: 1rem; */
 }
 
 .pay {
@@ -29,13 +28,6 @@ thead {
 
 .view {
   color: rgba(110, 0, 0, 1);
-}
-
-tbody td {
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
-  font-size: 1rem;
-  text-align: left;
 }
 
 tbody tr:nth-child(even) {
@@ -47,16 +39,19 @@ tbody tr:hover {
 }
 
 .buton {
-  background-color: #007bff;
+  background-color: rgba(110, 0, 0, 1);
   color: white;
   border: none;
-  padding: 6px 12px;
+  padding: .8rem;
   border-radius: 4px;
   cursor: pointer;
+  display: block;
+  text-align: center;
+  width: 100%;
 }
 
 .buton:hover {
-  background-color: #0056b3;
+  background-color: darkred;
 }
 
 .footer {
@@ -71,26 +66,83 @@ tbody tr:hover {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  /* justify-content: center; */
 }
 
 .foot2 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  /* justify-content: center; */
 }
 
+.blur {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.detailContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.detailBox h3 {
+  margin-bottom: 1rem;
+}
+
+.detailBox p {
+  margin: 0.5rem 0;
+}
+
+.detailButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.downloadBtn {
+  background: green;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.downloadBtn:hover {
+  background: darkgreen;
+}
+
+.closeBtn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.closeBtn:hover {
+  background: darkred;
+}
+
+
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .footer {
     font-size: 0.7rem;
-    gap: 1rem; /* Add space between items */
+    gap: 1rem;
   }
 
   .table-container {
-    overflow-x: auto; /* Add horizontal scroll for smaller screens */
-    border: none; /* Optional: Hide the outer border for a cleaner look */
+    overflow-x: auto; 
+    border: none; 
   }
 
   table {
@@ -98,12 +150,12 @@ tbody tr:hover {
   }
 
   thead th {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem; 
     padding: 0.4rem;
   }
 
   tbody td {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem; 
     padding: 0.5rem;
   }
 
@@ -116,7 +168,7 @@ tbody tr:hover {
 @media (max-width: 480px) {
   thead th,
   tbody td {
-    font-size: 0.8rem; /* Further reduce font size for very small screens */
+    font-size: 0.8rem; 
   }
 
   .buton {
@@ -124,7 +176,7 @@ tbody tr:hover {
     padding: 3px 6px;
   }
 
-  .footer{
-    font-size: .55rem;
+  .footer {
+    font-size: 0.55rem;
   }
-}
+} */

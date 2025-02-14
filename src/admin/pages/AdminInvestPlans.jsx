@@ -6,6 +6,8 @@ import AddInvestmentScheme from "../components/AddInvestmentScheme";
 // import AdminInvestmentSchemeForm from "../components/AddInvestmentSchemeForm";
 import AddPropertyScheme from "../components/AddPropertyScheme";
 import AdminPropertySchemeTable from "../components/AdminPropertySchemeTable";
+import AdminInvestSchemeTable from "../components/AdminInvestSchemeTable";
+import InvestmentList from "../components/InvestmentList";
 function AdminAllInvest() {
   return (
     <>
@@ -31,7 +33,9 @@ function AdminAllInvest() {
               </div>
             </div>
 
-          <AdminPropertySchemeTable/>
+          {/* <AdminPropertySchemeTable/> */}
+          <AdminInvestSchemeTable/>
+          {/* <InvestmentList/> */}
 
             <AddPropertyScheme />
             {/* <AddInvestmentScheme /> */}

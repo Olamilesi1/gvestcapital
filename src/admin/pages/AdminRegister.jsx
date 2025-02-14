@@ -50,18 +50,16 @@ function Register() {
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     const { confirmPassword, ...adminData } = values; // Exclude confirmPassword
     try {
-      
-      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const response = await axios.post(
         `${API_BASE_URL}/admin/register`,
-        // "http://localhost:4000/admin/register",
         values
       );
 
       console.log(response.data);
 
       // Save username globally using local storage UserContext
-    
+
       setUsername(values.username);
 
       // Display success message using toastify
@@ -116,10 +114,10 @@ function Register() {
 
   return (
     <>
-     <link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-/>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      />
       <div className={style.register}>
         <div className={style.registerForm}>
           <div className={style.Para}>

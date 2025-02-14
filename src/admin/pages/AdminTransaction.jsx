@@ -1,8 +1,8 @@
 import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
-import Transactions from "../components/AdminTransactionHistory";
-import TransactionForm from "../components/AdminPostTransaction";
+import TransactionHistory from "../components/AdminTransactionHistory";
+import TransactionForm from "../components/AdminTransactionForm";
 function AdminAllInvest() {
   return (
     <>
@@ -13,13 +13,10 @@ function AdminAllInvest() {
           <UserHeader />
 
           <div className={style.outline}>
-            <div className={style.allInvest}>
-              <p>Transactions table</p>
-              <button className={style.newInvest}>Add New transaction</button>
-            </div>
+        
 
-            {/* <Transactions /> */}
-            <TransactionForm/>
+            <TransactionHistory />
+            {/* <TransactionForm/> */}
           </div>
         </div>
       </div>

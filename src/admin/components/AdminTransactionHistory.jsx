@@ -1,143 +1,104 @@
-// import Footer from "../../user/components/UserFooter";
-// import style from "../styles/transactions.module.css"
-// function Transaction() {
-//   const investment = [
-//     {
-//         date: "Dec 15, 2023",
-//         estate: "Urban Heights Residences",
-//         cost: "$4,000",
-//         means: "Bank Transfer",
-//         status: "Pending",
-//         view: "View"
-//       },
-//       {
-//         date: "Dec 15, 2023",
-//         estate: "Urban Heights Residences",
-//         cost: "$4,000",
-//         means: "Bank Transfer",
-//         status: "Pending",
-//         view: "View"
-//       },
-//       {
-//         date: "Dec 15, 2023",
-//         estate: "Urban Heights Residences",
-//         cost: "$4,000",
-//         means: "Bank Transfer",
-//         status: "Pending",
-//         view: "View"
-//       },
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import style from "../styles/admindashboard.module.css";
+// import TransactionForm from "./AdminTransactionForm";
+// const Transactions = () => {
+//   const [transactions, setTransactions] = useState([]);
+//   const [expandedRow, setExpandedRow] = useState(null);
 
-//     {
-//       date: "Dec 15, 2023",
-//       estate: "Urban Heights Residences",
-//       cost: "$4,000",
-//       means: "Bank Transfer",
-//       status: "Pending",
-//       view: "View"
-//     },
-//     {
-//       date: "Dec 15, 2023",
-//       estate: "Urban Heights Residences",
-//       cost: "$4,000",
-//       means: "Bank Transfer",
-//       status: "Pending",
-//       view: "View"
-//     },
-//     {
-//       date: "Dec 15, 2023",
-//       estate: "Urban Heights Residences",
-//       cost: "$4,000",
-//       means: "Bank Transfer",
-//       status: "Pending",
-//       view: "View"
-//     },
-//     {
-//       date: "Dec 15, 2023",
-//       estate: "Urban Heights Residences",
-//       cost: "$4,000",
-//       means: "Bank Transfer",
-//       status: "Pending",
-//       view: "View"
-//     },
-//     {
-//       date: "Dec 15, 2023",
-//       estate: "Urban Heights Residences",
-//       cost: "$4,000",
-//       means: "Bank Transfer",
-//       status: "Pending",
-//       view: "View"
-//     },
-//     {
-//       date: "Dec 15, 2023",
-//       estate: "Urban Heights Residences",
-//       cost: "$4,000",
-//       means: "Bank Transfer",
-//       status: "Pending",
-//       view: "View"
-//     },
-//     {
-//       date: "Dec 15, 2023",
-//       estate: "Urban Heights Residences",
-//       cost: "$4,000",
-//       means: "Bank Transfer",
-//       status: "Pending",
-//       view: "View"
-//     },
+//   useEffect(() => {
+//     const fetchTransactions = async () => {
+//       try {
+//         const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+//         const response = await axios.get(`${API_BASE_URL}/user/transactions`);
+//         setTransactions(response.data);
+//       } catch (error) {
+//         console.error("Error fetching transactions:", error);
+//       }
+//     };
 
-//   ];
+//     fetchTransactions();
+//   }, []);
+
 //   return (
-//     <>
+//     <div>
+//       <div className={style.allInvest}>
+//         <p>Transactions table</p>
+//         <button className={style.newInvest}>Add New transaction</button>
+//       </div> <br />
 
-//         <div className="table-container">
-//           <table>
-//             <thead className={style.head}>
-//               <tr>
-//                 <th className={style.headr}>Date</th>
-//                 <th className={style.headr}>Investment Options</th>
-//                 <th className={style.headr}>Amount</th>
-//                 <th className={style.headr}>Payment Method</th>
-//                 <th className={style.headr}>Status</th>
-//                 <th className={style.headr}></th>
+//       <table>
+//         <thead>
+//           <tr>
+//             <th>Transaction ID</th>
+//             <th>Username</th>
+//             <th>Amount</th>
+//             <th>Date</th>
+//             <th>Status</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {transactions.map((transaction, index) => (
+//             <React.Fragment key={transaction.transactionId}>
+//               <tr
+//                 onClick={() =>
+//                   setExpandedRow(expandedRow === index ? null : index)
+//                 }
+//               >
+//                 <td>{transaction.transactionId}</td>
+//                 <td>{transaction.username}</td>
+//                 <td>{transaction.amount}</td>
+//                 <td>{new Date(transaction.createdAt).toLocaleDateString()}</td>
+//                 <td>{transaction.status}</td>
 //               </tr>
-//             </thead>
-//             <tbody>
-//               {investment.map((investments, index) => (
-//                 <tr key={index}>
-//                   <td>{investments.date}</td>
-//                   <td>{investments.estate}</td>
-//                   <td>{investments.cost}</td>
-//                   <td>{investments.means}</td>
-//                   <td>{investments.status}</td>
-//                   <td>{investments.view}</td>
-//                   {/* <p className={style.buton}> View Detail</p> */}
+//               {expandedRow === index && (
+//                 <tr>
+//                   <td colSpan="4">
+//                     {/* Render additional transaction details here */}
+//                     <div>
+//                       <p>
+//                         <strong>Description:</strong> {transaction.description}
+//                       </p>
+//                       <p>
+//                         <strong>Method:</strong> {transaction.method}
+//                       </p>
+//                       <p>
+//                         <strong>Status:</strong> {transaction.status}
+//                       </p>
+//                       {/* Add more details as needed */}
+//                     </div>
+//                   </td>
 //                 </tr>
-//               ))}
-//             </tbody>
-//           </table>
+//               )}
+//             </React.Fragment>
+//           ))}
+//         </tbody>
+//       </table>
 
-//           <Footer/>
-//         </div>
-
-//     </>
+//       <TransactionForm />
+//     </div>
 //   );
-// }
 
-// export default Transaction;
+// };
+
+// export default Transactions;
+
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import style from "../styles/admindashboard.module.css";
+import TransactionForm from "./AdminTransactionForm";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [expandedRow, setExpandedRow] = useState(null);
+  const [showForm, setShowForm] = useState(false); // State to toggle transaction form
 
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
         const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-        const response = await axios.get(
-          `${API_BASE_URL}/user/transactions`
-        );
+        const response = await axios.get(`${API_BASE_URL}/user/transactions`);
         setTransactions(response.data);
       } catch (error) {
         console.error("Error fetching transactions:", error);
@@ -147,59 +108,80 @@ const Transactions = () => {
     fetchTransactions();
   }, []);
 
-  // Inside the TransactionsTable component
-
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Transaction ID</th>
-          <th>Username</th>
-          <th>Amount</th>
-          <th>Date</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {transactions.map((transaction, index) => (
-          <React.Fragment key={transaction.transactionId}>
-            <tr
-              onClick={() =>
-                setExpandedRow(expandedRow === index ? null : index)
-              }
-            >
-              <td>{transaction.transactionId}</td>
-              <td>{transaction.username}</td>
-              <td>{transaction.amount}</td>
-              <td>{new Date(transaction.createdAt).toLocaleDateString()}</td>
-              <td>{transaction.status}</td>
-            </tr>
-            {expandedRow === index && (
-              <tr>
-                <td colSpan="4">
-                  {/* Render additional transaction details here */}
-                  <div>
-                    <p>
-                      <strong>Description:</strong> {transaction.description}
-                    </p>
-                    <p>
-                      <strong>Method:</strong> {transaction.method}
-                    </p>
-                    <p>
-                      <strong>Status:</strong> {transaction.status}
-                    </p>
-                    {/* Add more details as needed */}
-                  </div>
-                </td>
-              </tr>
-            )}
-          </React.Fragment>
-        ))}
-      </tbody>
-    </table>
-  );
+    <div className={style.container}>
+      {/* Blur Effect when form is open */}
+      <div className={`${style.content} ${showForm ? style.blur : ""}`}>
+        <div className={style.allInvest}>
+          <p>Transactions Table</p>
+          <button className={style.newInvest} onClick={() => setShowForm(true)}>
+            Add New Transaction
+          </button>
+        </div>
+        <br />
 
-  // Rest of the component...
+        <table>
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>Username</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map((transaction, index) => (
+              <React.Fragment key={transaction.transactionId}>
+                <tr
+                  onClick={() =>
+                    setExpandedRow(expandedRow === index ? null : index)
+                  }
+                >
+                  <td>{transaction.transactionId}</td>
+                  <td>{transaction.username}</td>
+                  <td>{transaction.amount}</td>
+                  <td>{new Date(transaction.createdAt).toLocaleDateString()}</td>
+                  <td>{transaction.status}</td>
+                </tr>
+                {expandedRow === index && (
+                  <tr>
+                    <td colSpan="5">
+                      {/* Render additional transaction details here */}
+                      <div>
+                        <p>
+                          <strong>Description:</strong> {transaction.description}
+                        </p>
+                        <p>
+                          <strong>Method:</strong> {transaction.method}
+                        </p>
+                        <p>
+                          <strong>Status:</strong> {transaction.status}
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Show Transaction Form as a Modal */}
+      {showForm && (
+        <div className={style.modal}>
+          <div className={style.modalContent}>
+            <button className={style.closeBtn} onClick={() => setShowForm(false)}>
+              ✖
+            </button>
+            <TransactionForm />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Transactions;
+

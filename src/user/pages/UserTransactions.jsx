@@ -1,9 +1,8 @@
 import SideBar from "../components/UserSideBar";
-import Transactions from "../components/Transactions";
 import UserHeader from "../components/UserHeader";
 import style from "../styles/userdashboard.module.css";
-import Transaction from "../../components/Transaction"
-import TransactionHistory from "../../components/TransactionHistory";
+import AddTransaction from "../components/AddTransaction";
+import TransactionHistory from "../components/TransactionHistory";
 function UserTransactions() {
   return (
     <>
@@ -14,11 +13,10 @@ function UserTransactions() {
           <UserHeader />
 
           <div className={style.outline}>
-          
-            <TransactionHistory/>
-            <Transaction/>
-            </div>
-
+            <TransactionHistory /> 
+            {/* <AddTransaction /> */}
+            {/* <Transactions /> */}
+          </div>
         </div>
       </div>
     </>

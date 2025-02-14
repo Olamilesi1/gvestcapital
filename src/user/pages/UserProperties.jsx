@@ -6,7 +6,7 @@ import UserHeader from "../components/UserHeader";
 import style from "../styles/userdashboard.module.css";
 import { Link } from "react-router-dom";
 
-import Transaction from "../../components/Transaction"
+import Transaction from "../components/AddTransaction"
 
 function UserProperties() {
   // const [openIndex, setOpenIndex] = useState(null); // To toggle property details

@@ -23,8 +23,7 @@ import VerifyEmail from "../pages/VerifyEmail";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsCondition from "../pages/TermsCondition";
 import Disclosure from "../pages/Disclosure";
-// import {App} from "./Stripe";
-import PaymentForm from "./Transaction";
+import PaymentForm from "../user/components/AddTransaction";
 
 // User Import
 import UserPropertyDetail from "../user/pages/UserPropertyDetail";
@@ -66,7 +65,8 @@ import AddInvestmentScheme from "../admin/components/AddInvestmentScheme";
 import AddPropertyScheme from "../admin/components/AddPropertyScheme";
 import AddPropertyInvestment from "../admin/components/AddAllPropertySchemeTable";
 import AddInvestmentSchemeForm from "../admin/components/AddAllInvestmentSchemeTable";
-import AdminPropertySchemeInfo  from "../admin/components/AdminPropertySchemeInfo";
+import AdminPropertySchemeInfo from "../admin/components/AdminPropertySchemeInfo";
+import AdminInvestSchemeInfo from "../admin/components/AdminInvestSchemeInfo";
 
 function Pages() {
   return (
@@ -83,7 +83,6 @@ function Pages() {
             <Route path="/investment" element={<Investment />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/ira-info" element={<IRA />} />
-
             <Route path="/book-an-appointment" element={<Schedule />} />
             <Route path="/testimonial" element={<Testimonial />} />
             <Route path="/email-verify" element={<EmailVerify />} />
@@ -151,7 +150,7 @@ function Pages() {
             />
             <Route path="/admin/add-invest" element={<AddInvestmentScheme />} />
             <Route path="/admin/add-property" element={<AddPropertyScheme />} />
-            <Route path="/property/:id" element={<AdminPropertySchemeInfo />}/>
+            <Route path="/property/:id" element={<AdminPropertySchemeInfo />} />
             <Route
               path="/admin/add-propertyinvest"
               element={<AddPropertyInvestment />}
@@ -160,10 +159,12 @@ function Pages() {
               path="/admin/add-investscheme"
               element={<AddInvestmentSchemeForm />}
             />
+            <Route
+              path="/admin/investmentscheme/:id"
+              element={<AdminInvestSchemeInfo />}
+            />
             <Route path="/user/stripe" element={<PaymentForm />} />
           </Routes>
-
-         
         </AdminProvider>
       </UserProvider>
     </div>

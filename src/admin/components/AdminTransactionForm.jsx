@@ -9,6 +9,7 @@ const TransactionForm = () => {
     description: "",
     email: "",
     method: "",
+    type: "",
     status: "",
     paymentIntentId: "", // Add status field
   });
