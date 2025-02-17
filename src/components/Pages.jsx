@@ -34,7 +34,7 @@ import UserInvestment from "../user/pages/UserInvestment";
 import UserInvestments from "../user/pages/UserInvestments";
 import CompoundInterest from "../user/pages/CompoundInterest";
 import SimpleInterest from "../user/pages/SimpleInterest";
-import Documents from "../user/pages/Documents";
+import Documents from "../user/pages/UserDocuments";
 import UserNotification from "../user/pages/UserNotification";
 import UserSetting from "../user/pages/UserSettings";
 import UserPassword from "../user/pages/UserPassword";
@@ -61,8 +61,6 @@ import AdminEmailVerify from "../admin/components/AdminEmailVerify";
 import AdminForgotPassword from "../admin/components/AdminForgotPassword";
 import AdminEmailSuccess from "../admin/components/AdminEmailSuccess";
 import AdminUpdatePassword from "../admin/components/AdminUpdatePassword";
-import AddInvestmentScheme from "../admin/components/AddInvestmentScheme";
-import AddPropertyScheme from "../admin/components/AddPropertyScheme";
 import AddPropertyInvestment from "../admin/components/AddAllPropertySchemeTable";
 import AddInvestmentSchemeForm from "../admin/components/AddAllInvestmentSchemeTable";
 import AdminPropertySchemeInfo from "../admin/components/AdminPropertySchemeInfo";
@@ -148,8 +146,6 @@ function Pages() {
               path="/admin/reset-password"
               element={<AdminUpdatePassword />}
             />
-            <Route path="/admin/add-invest" element={<AddInvestmentScheme />} />
-            <Route path="/admin/add-property" element={<AddPropertyScheme />} />
             <Route path="/property/:id" element={<AdminPropertySchemeInfo />} />
             <Route
               path="/admin/add-propertyinvest"

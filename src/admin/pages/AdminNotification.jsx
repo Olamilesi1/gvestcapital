@@ -16,7 +16,7 @@ function AdminAllInvest() {
           <div className={style.outline}>
             <div className={style.allInvest}>
               <p>Investment Plan</p>
-              <button className={style.newInvest}>All New Investments</button>
+              <button className={style.newInvest}>Add New Notification</button>
             </div>
 
             <AdminNotificationForm />

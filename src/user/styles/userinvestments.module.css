@@ -273,6 +273,40 @@
   margin-top: 1rem;
 }
 
+.scheme {
+  color: white;
+  background-color: rgb(110, 0, 0);
+  padding: 0.6rem 1rem;
+  border: none;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.scheme a {
+  text-decoration: none;
+  color: white;
+}
+
+.amountButtons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.investmentButton {
+  background-color: rgb(110, 0, 0);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.investmentButton:hover {
+  background-color: darkred;
+}
+
 @media (max-width: 768px) {
   .outline {
     margin: 4.5rem 0 0 0.4rem;

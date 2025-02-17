@@ -21,31 +21,51 @@ function PropertyList() {
 
   return (
     <div className={style.container}>
-      <h2>Available Properties</h2>
-      <div className={style.propertyGrid}>
-        {properties.map((property) => (
-          <div key={property._id} className={style.propertyCard}>
-            <img
-              src={property.images.length > 0 ? property.images[0] : "/default-image.jpg"}
-              alt={property.title}
-              className={style.propertyImage}
-              style={{ width: "100px", height: "100px", borderRadius: "50%" }}
-        
-            />
-            <h3>{property.title}</h3>
-            <p>{property.description.substring(0, 50)}...</p>
-            <p>
-              <strong>Location:</strong> {property.propertyLocation}
-            </p>
-            <p>
-              <strong>Price:</strong> {property.currency} {property.amount}
-            </p>
-            <Link to={`/property/${property._id}`} className={style.detailsButton}>
-              View Details
-            </Link>
-          </div>
-        ))}
-      </div>
+      <h2 className={style.eme}> Property Schemes</h2>
+
+      <table>
+        <thead className={style.head}>
+          <tr>
+            <th className={style.headr}>ID</th>
+            {/* <th className={style.headr}>Image</th> */}
+            <th className={style.headr}>Title</th>
+            <th className={style.headr}>Type</th>
+            <th className={style.headr}>Amount</th>
+            <th className={style.headr}>Property Unit</th>
+            <th className={style.headr}></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {properties.map((property) => (
+            <tr key={property._id}>
+              <td>{property.date}</td>
+
+              <td className={style.eyl}>
+                <img className={style.contain} src={property.images.length > 0 ? property.images[0] : "/default-image.jpg" }/>
+                {property.title}
+              </td>
+
+              {/* <td>{property.description.substring(0, 50)}...</td> */}
+             
+              <td>{property.propertyType}</td>
+              
+              <td>
+                {property.currency}
+                {property.amount}
+              </td>
+
+              <td>{property.propertyUnit}</td>
+
+              <td>
+                <Link to={`/property/${property._id}`} className={style.scheme}>
+                  View Details
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

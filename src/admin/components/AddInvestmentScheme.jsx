@@ -4,48 +4,85 @@
 // import { useHeader } from "../../components/HeaderContext";
 // import "react-toastify/dist/ReactToastify.css";
 // import { useAdmin } from "../../components/AdminContext";
-// import {NavLink, useNavigate} from 'react-router-dom'
+// import { NavLink, useNavigate } from "react-router-dom";
 // import { useContext, useState, useEffect } from "react";
 
 // function AdminInvestmentScheme() {
+//   const [investment, setInvestment] = useState({
+//     investmentAmount: "",
+//     duration: "",
+//     roiPercentage: "",
+//     roi: "",
+//     currency: "",
+//     investmentType: "",
+//     investmentStartDate: "",
+//     investmentEndDate: "",
+//   });
+
+//   const handleChange = (e) => {
+//     setInvestment({ ...investment, [e.target.name]: e.target.value });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault(); // Ensure this is within an event handler
+//     try {
+//       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+//       const response = await axios.post(
+//         `${API_BASE_URL}/admin/investmentscheme`,
+//         investment // Send the state data
+//       );
+
+//       alert("Investment Scheme Created Successfully");
+//       setInvestment({
+//         investmentAmount: "",
+//         duration: "",
+//         roiPercentage: "",
+//         roi: "",
+//         currency: "",
+//         investmentType: "",
+//         investmentStartDate: "",
+//         investmentEndDate: "",
+//       });
+//     } catch (error) {
+//       console.error("Error creating investment scheme:", error);
+//     }
+//   };
+
 //   return (
 //     <>
-//       <div className={style.investScheme}>
+//       <form className={style.investScheme} onSubmit={handleSubmit}>
 //         <link
 //           rel="stylesheet"
 //           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
 //         />
 
-//         <p className={style.pHead}>Investment Plan Detail</p>
-
-//         <div className={style.schemes}>
-//           <button className={style.scheme}> <NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/admin/add-invest' ><span>Investment Scheme</span></NavLink></button>
-//           <button className={style.scheme2}> <NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/admin/add-property' ><span>Property Scheme</span></NavLink></button>
-//         </div>
+//         <p className={style.pHead}> Add Investment Detail</p>
 
 //         <div className={style.labe}>
 //           <label className={style.lab} htmlFor="">
 //             Title
 //           </label>
 //           <input
-//             type="text"
-//             name=""
-//             id=""
-//             placeholder="Enter investment title. Min 3 Character"
 //             className={style.input}
+//             type="number"
+//             name="investmentAmount"
+//             placeholder="Investment Amount"
+//             onChange={handleChange}
+//             required
 //           />
 //         </div>
 
 //         <div className={style.labe}>
 //           <label className={style.lab} htmlFor="">
-//             Description
+//             Duration
 //           </label>
 //           <input
-//             type="text"
-//             name=""
-//             id=""
-//             placeholder="Enter investment description. Min 3 Character"
 //             className={style.input}
+//             type="text"
+//             name="duration"
+//             placeholder="Duration (Years)"
+//             onChange={handleChange}
+//             required
 //           />
 //         </div>
 
@@ -53,10 +90,18 @@
 //           <label className={style.lab} htmlFor="">
 //             Select Currency
 //           </label>
-//           <select name="" id="" className={style.input}>
+//           {/* <select name="" id="" className={style.input }>
 //             <option value="">NGN</option>
 //             <option value="">Dollar</option>
-//           </select>
+//           </select> */}
+
+//           <input
+//             className={style.input}
+//             type="text"
+//             name="currency"
+//             placeholder="Currency"
+//             onChange={handleChange}
+//           />
 //         </div>
 
 //         <div className={style.labe}>
@@ -64,11 +109,11 @@
 //             Investment Start Date
 //           </label>
 //           <input
-//             type="date"
-//             name=""
-//             id=""
-//             placeholder="12/02/2025"
 //             className={style.input}
+//             type="date"
+//             name="investmentStartDate"
+//             placeholder="investmentStartDate"
+//             onChange={handleChange}
 //           />
 //         </div>
 
@@ -77,34 +122,24 @@
 //             Investment End Date
 //           </label>
 //           <input
+//             className={style.input}
 //             type="date"
-//             name=""
-//             id=""
-//             placeholder="12/02/2028"
-//             className={style.input}
+//             name="investmentEndDate"
+//             placeholder="investmentEndDate"
+//             onChange={handleChange}
 //           />
 //         </div>
 
 //         <div className={style.labe}>
 //           <label className={style.lab} htmlFor="">
-//             Investment Option
-//           </label>
-//           <select name="" id="" className={style.input}>
-//             <option value="">Buy Invest</option>
-//             <option value="">Buy House</option>
-//           </select>
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Duration
+//             Investment Type
 //           </label>
 //           <input
-//             type="text"
-//             name=""
-//             id=""
-//             placeholder="24 Months"
 //             className={style.input}
+//             type="text"
+//             name="investmentType"
+//             placeholder="Investment Type"
+//             onChange={handleChange}
 //           />
 //         </div>
 
@@ -113,211 +148,141 @@
 //             ROI Percentage
 //           </label>
 //           <input
-//             type="text"
-//             name=""
-//             id=""
-//             placeholder="Enter your ROI percentage"
 //             className={style.input}
+//             type="text"
+//             name="roiPercentage"
+//             placeholder="ROI %"
+//             onChange={handleChange}
 //           />
 //         </div>
 
 //         <div className={style.labe}>
 //           <label className={style.lab} htmlFor="">
-//             Investment Year
+//             ROI
 //           </label>
 //           <input
-//             type="text"
-//             name=""
-//             id=""
-//             placeholder="100"
 //             className={style.input}
+//             type="number"
+//             name="roi"
+//             placeholder="ROI"
+//             onChange={handleChange}
+//             required
 //           />
 //         </div>
 
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             ROI Type
-//           </label>
-//           <select name="" id="" className={style.input}>
-//             <option value="">Simple Interest</option>
-//             <option value="">Buy House</option>
-//           </select>
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             ROI Percentage
-//           </label>
-//           <input
-//             type="text"
-//             name=""
-//             id=""
-//             placeholder="Enter your ROI percentage"
-//             className={style.input}
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Amount
-//           </label>
-//           <input
-//             type="text"
-//             name=""
-//             id=""
-//             placeholder="100"
-//             className={style.input}
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Type
-//           </label>
-//           <select name="" id="" className={style.input}>
-//             <option value="">Buy Land</option>
-//             <option value="">Buy House</option>
-//           </select>
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Investment Year
-//           </label>
-//           <input
-//             type="text"
-//             name=""
-//             id=""
-//             placeholder="100"
-//             className={style.input}
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//            Attach File (png, jpeg, etc)
-//           </label>
-//           <input
-//             type="file"
-//             name=""
-//             id=""
-//              accept="image/*"
-//             placeholder="Click to Upload or Drag & Drop a File"
-//             className={style.inputFill}
-//           />
-//         </div>
-
-//         <button className={style.send}>
-//           Send{" "}
-//           <span class="material-symbols-outlined">keyboard_arrow_right</span>{" "}
+//         <button className={style.send} type="submit">
+//           Create Investment Scheme
+//           <span class="material-symbols-outlined">
+//             keyboard_arrow_right
+//           </span>{" "}
 //         </button>
-//       </div>
+//       </form>
 //     </>
 //   );
 // }
 
 // export default AdminInvestmentScheme;
 
+
 import { useState } from "react";
 import axios from "axios";
+import style from "../styles/addinvest.module.css";
 
-function InvestmentForm() {
-  const [investment, setInvestment] = useState({
-    investmentAmount: "",
-    duration: "",
-    roiPercentage: "",
-    roi: "",
-    currency: "",
-    investmentType: "",
-    investmentStartDate: "",
-    investmentEndDate: "",
-  });
+function AdminInvestmentScheme() {
+  const [investmentAmount, setInvestmentAmount] = useState("");
+  const [currency, setCurrency] = useState("$");
+  const [investmentType, setInvestmentType] = useState("");
+  const [durations, setDurations] = useState([]);
+  const [duration, setDuration] = useState("");
+  const [roiPercentage, setRoiPercentage] = useState("");
 
-  const handleChange = (e) => {
-    setInvestment({ ...investment, [e.target.name]: e.target.value });
+  const handleAddDuration = () => {
+    if (duration && roiPercentage) {
+      const roi = (investmentAmount * roiPercentage) / 100;
+      setDurations([...durations, { duration, roiPercentage, roi }]);
+      setDuration("");
+      setRoiPercentage("");
+    }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Ensure this is within an event handler
+    e.preventDefault();
     try {
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-      const response = await axios.post(
-        `${API_BASE_URL}/admin/investmentscheme`,
-        investment // Send the state data
-      );
-
-      alert("Investment Scheme Created Successfully");
-      setInvestment({
-        investmentAmount: "",
-        duration: "",
-        roiPercentage: "",
-        roi: "",
-        currency: "",
-        investmentType: "",
-        investmentStartDate: "",
-        investmentEndDate: "",
+      const res = await axios.post(`${API_BASE_URL}/admin/investmentscheme`, {
+        investmentAmount,
+        currency,
+        investmentType,
+        durations,
       });
+      alert("Investment Scheme Created Successfully!");
+      setInvestmentAmount("");
+      setInvestmentType("");
+      setDurations([]);
     } catch (error) {
-      console.error("Error creating investment scheme:", error);
+      console.error("Error posting investment scheme:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="number"
-        name="investmentAmount"
-        placeholder="Investment Amount"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="duration"
-        placeholder="Duration (Years)"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="roiPercentage"
-        placeholder="ROI %"
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="roi"
-        placeholder="ROI"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="currency"
-        placeholder="Currency"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="investmentType"
-        placeholder="Investment Type"
-        onChange={handleChange}
-      />
-      <input
-        type="date"
-        name="investmentStartDate"
-        placeholder="investmentStartDate"
-        onChange={handleChange}
-      />
-      <input
-        type="date"
-        name="investmentEndDate"
-        placeholder="investmentEndDate"
-        onChange={handleChange}
-      />
-      <button type="submit">Create Investment Scheme</button>
-    </form>
+    <div className={style.componentContent}>
+      <h2>Create Investment Scheme</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Investment Amount:</label>
+        <input
+          type="number"
+          value={investmentAmount}
+          onChange={(e) => setInvestmentAmount(e.target.value)}
+          required
+        />
+
+        <label>Currency:</label>
+        <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
+          <option value="$">$</option>
+          <option value="EUR">EUR</option>
+          <option value="#">NGN</option>
+        </select>
+
+        <label>Investment Type:</label>
+        <input
+          type="text"
+          value={investmentType}
+          onChange={(e) => setInvestmentType(e.target.value)}
+          required
+        />
+
+        <label>Investment Durations & ROI:</label>
+        <div className={style.durationInput}>
+          <input
+            type="text"
+            placeholder="Duration (e.g., 1 Year)"
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="ROI Percentage"
+            value={roiPercentage}
+            onChange={(e) => setRoiPercentage(e.target.value)}
+          />
+          <button type="button" onClick={handleAddDuration}>
+            Add
+          </button>
+        </div>
+
+        {/* Display Added Durations */}
+        <ul>
+          {durations.map((d, index) => (
+            <li key={index}>
+              {d.duration} - {d.roiPercentage}% (ROI: {currency} {d.roi})
+            </li>
+          ))}
+        </ul>
+
+        <button type="submit">Create Investment</button>
+      </form>
+    </div>
   );
 }
 
-export default InvestmentForm;
+export default AdminInvestmentScheme;

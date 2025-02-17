@@ -98,26 +98,7 @@ function AdminPropertyScheme() {
     <>
       <ToastContainer />
       <form className={style.investScheme} onSubmit={handleSubmit}>
-        <p className={style.pHead}>Investment Plan Detail</p>
-
-        <div className={style.schemes}>
-          <button className={style.scheme}>
-            <NavLink
-              className={({ isActive }) => (isActive ? style.active : "")}
-              to="/admin/add-invest"
-            >
-              <span>Investment Scheme</span>
-            </NavLink>
-          </button>
-          <button className={style.scheme2}>
-            <NavLink
-              className={({ isActive }) => (isActive ? style.active : "")}
-              to="/admin/add-property"
-            >
-              <span>Property Scheme</span>
-            </NavLink>
-          </button>
-        </div>
+        <p className={style.pHead}> Add Property Detail</p>
 
         <div className={style.labe}>
           <label className={style.lab}>Title</label>

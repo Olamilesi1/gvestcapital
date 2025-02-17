@@ -18,8 +18,68 @@
 .schemes {
   display: flex;
   gap: 1rem;
-  /* background-color: red; */
   margin: 1rem 0;
+}
+
+/* .contain {
+  width: 100%;
+  aspect-ratio: 16/ 9;
+}
+
+.eyl {
+  border: .1rem solid black;
+  width: 15%;
+  padding: 0.2rem 0 0 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+} */
+
+.contain {
+  width: 100%;
+  height: auto; /* Keep the image proportional */
+  object-fit: cover; /* Ensures the image is properly cropped or scaled */
+  aspect-ratio: 16/9; /* Maintain aspect ratio for image */
+}
+
+.eyl {
+  /* border: .1rem solid black; */
+  width: 50%;
+  padding: 0 0 0 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start; /* Ensure content is aligned to the start */
+}
+
+table {
+  width: 100%; /* Ensure the table takes up the full width */
+  table-layout: fixed; /* Makes sure the columns take equal space */
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: center; /* Align text to the left */
+}
+
+.headr {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.eme{
+  margin-bottom: 1rem;
 }
 
 .scheme {
@@ -27,8 +87,8 @@
   background-color: rgb(110, 0, 0);
   padding: 0.6rem 1rem;
   border: none;
-  /* border: 0.1rem solid black; */
   font-size: 1.1rem;
+  text-decoration: none;
 }
 
 .scheme a {
@@ -41,13 +101,56 @@
   color: rgb(110, 0, 0);
   padding: 0.6rem 1.2rem;
   border: none;
-  /* border: 0.1rem solid black; */
   font-size: 1.1rem;
 }
 
 .scheme2 a {
   text-decoration: none;
   color: rgb(110, 0, 0);
+}
+
+/* Apply blur effect when modal is open */
+.blurBackground {
+  filter: blur(5px);
+  pointer-events: none; /* Prevent interaction with blurred content */
+  user-select: none; /* Disable text selection */
+}
+
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modalContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
 }
 
 .labe {
@@ -145,7 +248,7 @@
 }
 
 .documentForm button {
-  background-color: rgb(110,0,0);
+  background-color: rgb(110, 0, 0);
   color: white;
   padding: 10px;
   border: none;
@@ -155,14 +258,13 @@
 }
 
 .documentForm button:hover {
-  background-color: rgb(110,0,0);
+  background-color: rgb(110, 0, 0);
 }
 
 .documentForm button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
-
 
 .toggleSection button:hover {
   background-color: #ddd;
@@ -175,6 +277,8 @@
   font-weight: bold;
   /* box-shadow: 0px 2px 5px rgb(110,0,0); */
 }
+
+
 
 .spinner {
   width: 20px;
@@ -196,3 +300,39 @@ button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+.amountButtons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.investmentButton {
+  background-color: rgb(110, 0, 0);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.investmentButton:hover {
+  background-color: darkred;
+}
+
+
+
+.investButton {
+  background-color: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.investButton:hover {
+  background-color: #218838;
+}
+
