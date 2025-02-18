@@ -5,32 +5,31 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [expandedRow, setExpandedRow] = useState(null);
 
-//   useEffect(() => {
-//     const fetchnotifications = async () => {
-//       try {
-//         const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-//         const response = await axios.get(`${API_BASE_URL}/admin/notification`);
+  // useEffect(() => {
+  //   const fetchNotifications = async () => {
+  //     try {
+  //       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  //       const response = await axios.get(`${API_BASE_URL}/admin/notification`);
+  
+  //       console.log("API Response:", response.data); // Debugging log
+  
+  //       if (response.data && Array.isArray(response.data.allNotifications)) {
+  //       //   setNotifications(response.data.allNotifications);
+  //       setNotifications(response.data.allNotifications.flatMap(user => user.notifications));
 
-//         console.log("API Response:", response.data); // Debugging log
-
-//         if (Array.isArray(response.data)) {
-//           setNotifications(response.data);
-//         } else {
-//           console.error("Invalid data format:", response.data);
-//           setNotifications([]); // Set empty array if response is incorrect
-//         }
-//       } catch (error) {
-//         console.error("Error fetching notifications:", error);
-//         setNotifications([]); // Set empty array in case of error
-//       }
-//     };
-
-//     fetchnotifications();
-//   }, []);
-
-  // Inside the notificationsTable component
-
-
+  //       } else {
+  //         console.error("Invalid data format:", response.data);
+  //         setNotifications([]); // Set empty array if response is incorrect
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching notifications:", error);
+  //       setNotifications([]); // Set empty array in case of error
+  //     }
+  //   };
+  
+  //   fetchNotifications();
+  // }, []);
+  
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
@@ -40,16 +39,21 @@ const Notifications = () => {
         console.log("API Response:", response.data); // Debugging log
   
         if (response.data && Array.isArray(response.data.allNotifications)) {
-        //   setNotifications(response.data.allNotifications);
-        setNotifications(response.data.allNotifications.flatMap(user => user.notifications));
-
+          const formattedNotifications = response.data.allNotifications.flatMap(user =>
+            user.notifications.map(notification => ({
+              ...notification,
+              username: user.username // Attach username to each notification
+            }))
+          );
+  
+          setNotifications(formattedNotifications);
         } else {
           console.error("Invalid data format:", response.data);
-          setNotifications([]); // Set empty array if response is incorrect
+          setNotifications([]);
         }
       } catch (error) {
         console.error("Error fetching notifications:", error);
-        setNotifications([]); // Set empty array in case of error
+        setNotifications([]);
       }
     };
   

@@ -36,6 +36,7 @@ function AdminAllInvest() {
             <AdminPropertySchemeTable />
             <AdminInvestSchemeTable />
           </div>
+          
         </div>
       </div>
 

@@ -61,8 +61,8 @@ import AdminEmailVerify from "../admin/components/AdminEmailVerify";
 import AdminForgotPassword from "../admin/components/AdminForgotPassword";
 import AdminEmailSuccess from "../admin/components/AdminEmailSuccess";
 import AdminUpdatePassword from "../admin/components/AdminUpdatePassword";
-import AddPropertyInvestment from "../admin/components/AddAllPropertySchemeTable";
-import AddInvestmentSchemeForm from "../admin/components/AddAllInvestmentSchemeTable";
+import AddPropertyInvestment from "../admin/components/AllUsersPropertySchemeForm";
+import AddInvestmentSchemeForm from "../admin/components/AllUsersInvestmentSchemeForm";
 import AdminPropertySchemeInfo from "../admin/components/AdminPropertySchemeInfo";
 import AdminInvestSchemeInfo from "../admin/components/AdminInvestSchemeInfo";
 

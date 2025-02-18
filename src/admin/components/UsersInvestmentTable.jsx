@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import SideBar from "./AdminSideBar";
 import AdminHeader from "./AdminHeader";
-import InvestmentDetailsModal from "./InvestmentDetailsModal"; // Modal for detailed view
+import InvestmentDetailsModal from "./UserInvestmentDetailsModal"; // Modal for detailed view
 import style from "../styles/addinvest.module.css";
 
 function AdminInvestmentsTable() {
@@ -71,7 +71,7 @@ fetchInvestments();
       <div className={style.headerContent}>
         <AdminHeader />
         <div className={style.outline}>
-          <h2>All Users' Investments</h2>
+          <h2>All Users' Investments</h2> <br/>
 
           {loading ? (
             <p>Loading investments...</p>
@@ -80,7 +80,7 @@ fetchInvestments();
           ) : (
             <>
               {/* Property Investments Table */}
-              <h3>Property Investments</h3>
+              <h3>Property Investments</h3> 
               <table>
                 <thead>
                   <tr>
@@ -105,12 +105,12 @@ fetchInvestments();
               </table>
 
               {/* Investment Schemes Table */}
-              <h3>Investment Schemes</h3>
+              <h3 className={style.shim}>Investment Schemes</h3>
               <table>
                 <thead>
                   <tr>
                     <th>Investment ID</th>
-                    <th>Type</th>
+                   
                     <th>Amount</th>
                     <th>Next ROI Date</th>
                     <th>Username</th>
@@ -122,7 +122,7 @@ fetchInvestments();
                     <tr key={investment.investmentId} onClick={() => setSelectedInvestment(investment)}>
                       <td>{investment.investmentId}</td>
                       <td>{investment.type}</td>
-                      <td>{investment.amountPaid}</td>
+                
                       <td>{investment.nextRoiDate}</td>
                       <td>{investment.username}</td>
                       <td>{investment.status}</td>

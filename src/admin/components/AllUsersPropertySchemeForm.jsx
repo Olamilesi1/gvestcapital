@@ -64,29 +64,8 @@ function AdminPropertyInvestmentForm() {
   return (
     <div className={style.formContainer}>
       <ToastContainer />
-      <h2>Add Property Investment</h2>
-      
-      <div className={style.schemes}>
-                <button className={style.scheme}>
-                
-                  <NavLink
-                    className={({ isActive }) => (isActive ? style.active : "")}
-                    to="/admin/add-propertyinvest"
-                  > 
-                    <span>Add Property Investment</span>
-                   </NavLink>
-                </button>
-
-                <button className={style.scheme2}>
-               
-                  <NavLink
-                    className={({ isActive }) => (isActive ? style.active : "")}
-                    to="/admin/add-investscheme"
-                  > 
-                    <span>Add Investment Scheme</span>
-                  </NavLink>
-                </button>
-              </div>
+      <h2>Add User Property Scheme Investment</h2>
+     
       <form onSubmit={handleSubmit} className={style.form}>
         <input
           type="text"

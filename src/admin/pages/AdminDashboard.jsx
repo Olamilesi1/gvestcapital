@@ -44,17 +44,7 @@ function AdminDashboard() {
                 <Upcoming />
               </div>
             </div>
-            <div className={style.dash}>
-              <p className={style.list}>Recent Payment List </p>
-
-              <div className={style.dasl}>
-                <button className={style.view}>
-                  <NavLink to="/admin/users" className={style.link}>
-                    View More
-                  </NavLink>
-                </button>
-              </div>
-            </div>
+          
             <Transaction />
           </div>
         </div>

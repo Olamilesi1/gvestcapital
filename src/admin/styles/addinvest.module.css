@@ -82,6 +82,10 @@ tbody tr:hover {
   margin-bottom: 1rem;
 }
 
+.shim{
+  margin-top: 2rem;
+}
+
 .scheme {
   color: white;
   background-color: rgb(110, 0, 0);
