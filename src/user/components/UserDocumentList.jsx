@@ -45,7 +45,7 @@ function UserDocumentList() {
             <p>Loading documents...</p>
           ) : (
             <>
-              <h3>My Documents</h3>
+              {/* <h3>My Documents</h3> */}
 
               <div className={style.toggleSection}>
                 <button

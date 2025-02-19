@@ -23,18 +23,6 @@ thead {
   border: 0.1rem solid rgba(110, 0, 0, 1);
 } 
 
-/* .pay {
-  color: rgba(69, 69, 69, 1);
-}
-
-.view {
-  color: rgba(110, 0, 0, 1);
-  padding: 0.5rem 0.7rem;
-  background-color: white;
-  border: 0.1rem solid rgba(110, 0, 0, 1);
-  border-radius: 0.5rem;
-} */
-
 tbody td {
   padding: 1rem;
   border-bottom: 1px solid #ddd;

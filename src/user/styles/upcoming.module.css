@@ -53,6 +53,23 @@
     font-weight: 600;
 }
 
+.view {
+    color: rgba(110, 0, 0, 1);
+    padding: 0.5rem 0.7rem;
+    background-color: white;
+    border: 0.1rem solid rgba(110, 0, 0, 1);
+    border-radius: 0.5rem;
+  }
+  
+  .view a{
+    color: rgba(110, 0, 0, 1);
+    text-decoration: none;
+  }
+
+  .linke{
+    color: black;
+  }
+
 .color{
     color: rgba(110, 0, 0, 1);
     font-weight: 600;

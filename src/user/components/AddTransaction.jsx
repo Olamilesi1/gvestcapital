@@ -61,7 +61,6 @@ const AddTransaction = () => {
         username, // Include username in the request
         description,
         method,
-      
         investmentName, 
         investmentDuration, 
         type

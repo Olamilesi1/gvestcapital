@@ -16,10 +16,7 @@ function UserNotification() {
           <UserHeader />
 
           <div className={style.outline}>
-            <Notification />
-            <Notification />
-            <Notification />
-            <Notification />
+            <h3>My Notification</h3>
             <Notification />
           </div>
         </div>

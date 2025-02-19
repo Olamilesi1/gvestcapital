@@ -53,14 +53,14 @@
 }
 
 table {
-  width: 100%; /* Ensure the table takes up the full width */
-  table-layout: fixed; /* Makes sure the columns take equal space */
+  width: 100%; 
+  table-layout: fixed; 
 }
 
 th,
 td {
   padding: 1rem;
-  text-align: center; /* Align text to the left */
+  text-align: center;
 }
 
 .headr {

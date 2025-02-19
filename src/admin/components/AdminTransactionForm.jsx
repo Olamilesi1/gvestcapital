@@ -11,6 +11,8 @@ const TransactionForm = () => {
     method: "",
     type: "",
     status: "",
+    investmentName: "",
+    investmentDuration: "",
     paymentIntentId: "", // Add status field
   });
 
@@ -22,8 +24,37 @@ const TransactionForm = () => {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  //     const response = await axios.post(
+  //       `${API_BASE_URL}/admin/admin-transaction`,
+  //       formData
+  //     );
+  //     alert("Transaction posted successfully!");
+  //     // Optionally, reset the form
+  //     setFormData({
+  //       username: "",
+  //       amount: "",
+  //       currency: "",
+  //       email: "",
+  //       description: "",
+  //       method: "",
+  //       status: "", // Reset status
+  //       paymentIntentId: "",
+  //       investmentName: "",
+  //       investmentDuration: "",
+  //     });
+  //   } catch (error) {
+  //     console.error("Error posting transaction:", error);
+  //     alert("Failed to post transaction.");
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting transaction:", formData); // Debugging line
     try {
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const response = await axios.post(
@@ -31,7 +62,6 @@ const TransactionForm = () => {
         formData
       );
       alert("Transaction posted successfully!");
-      // Optionally, reset the form
       setFormData({
         username: "",
         amount: "",
@@ -39,15 +69,18 @@ const TransactionForm = () => {
         email: "",
         description: "",
         method: "",
-        status: "", // Reset status
+        status: "",
         paymentIntentId: "",
+        investmentName: "",
+        investmentDuration: "",
+        type: "",
       });
     } catch (error) {
       console.error("Error posting transaction:", error);
       alert("Failed to post transaction.");
     }
   };
-
+  
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -81,20 +114,6 @@ const TransactionForm = () => {
         />
       </div>
       <div>
-        <label>Currency:</label>
-        <select
-          name="currency"
-          value={formData.currency}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Currency</option>
-          <option value="usd">USD</option>
-          <option value="eur">EUR</option>
-          {/* Add other currencies as needed */}
-        </select>
-      </div>
-      <div>
         <label>Description:</label>
         <textarea
           name="description"
@@ -103,6 +122,48 @@ const TransactionForm = () => {
           required
         />
       </div>
+      <div>
+        <label>Investment Duration:</label>
+        <textarea
+          name="investmentDuration"
+          value={formData.investmentDuration}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Investment Name:</label>
+        <textarea
+          name="investmentName"
+          value={formData.investmentName}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Investment Type:</label>
+        <textarea
+          name="type"
+          value={formData.type}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Currency:</label>
+        <select
+          name="currency"
+          value={formData.currency}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select Currency</option>
+          <option value="$">$</option>
+          <option value="eur">EUR</option>
+          {/* Add other currencies as needed */}
+        </select>
+      </div>
+
       <div>
         <label>Method:</label>
         <input
@@ -115,13 +176,17 @@ const TransactionForm = () => {
       </div>
       <div>
         <label>Status:</label>
-        <input
-          type="text"
+        <select
           name="status"
           value={formData.status}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">Select Status</option>
+          <option value="completed">Completed</option>
+          <option value="pending">Not Completed</option>
+          {/* Add other currencies as needed */}
+        </select>
       </div>
       <div>
         <label>Payment Intent ID:</label>

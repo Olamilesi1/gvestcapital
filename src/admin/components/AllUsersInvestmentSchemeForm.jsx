@@ -11,43 +11,95 @@ function AdminInvestmentSchemeForm() {
     username: "",
     nextRoiDate: "",
     paymentMethod: "",
+    amountPaid: "",
     status: "",
+    roi: "",
   });
 
   const handleChange = (e) => {
     setInvestmentData({ ...investmentData, [e.target.name]: e.target.value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  //     const token = localStorage.getItem("adminAuthToken");
+
+  //     await axios.post(
+  //       `${API_BASE_URL}/admin/add-investment-scheme`,
+  //       investmentData,
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       }
+  //     );
+
+  //     toast.success("Investment scheme added successfully!");
+  //     setInvestmentData({
+  //       username: "",
+  //       investmentId: "",
+  //       type: "",
+  //       nextRoiDate: "",
+  //       paymentMethod: "",
+  //       status: "",
+  //       amountPaid: "",
+  //     });
+  //   } catch (error) {
+  //     console.error("Error adding investment scheme", error);
+  //     toast.error("Failed to add investment scheme.");
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       const token = localStorage.getItem("adminAuthToken");
+  
+      const investmentPayload = {
+        username: investmentData.username,
+        roi: investmentData.roi,
+        investmentId: investmentData.investmentId,
+        type: investmentData.type,
+        amountPaid: investmentData.amountPaid ? Number(investmentData.amountPaid) : 0, // Ensure it's a number
+        nextRoiDate: investmentData.nextRoiDate,
+        paymentMethod: investmentData.paymentMethod,
+        status: investmentData.status,
+        dateInvested: new Date().toISOString(), // Automatically add current date
+      };
 
+      console.log("Investment Payload:", investmentPayload);
+
+  
       await axios.post(
         `${API_BASE_URL}/admin/add-investment-scheme`,
-        investmentData,
+        investmentPayload,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
+  
       toast.success("Investment scheme added successfully!");
       setInvestmentData({
         username: "",
         investmentId: "",
-        // dateInvested: "",
         type: "",
+        amountPaid: "",
         nextRoiDate: "",
         paymentMethod: "",
         status: "",
+        roi: "",
       });
+
+   
     } catch (error) {
       console.error("Error adding investment scheme", error);
-      toast.error("Failed to add investment scheme.");
+      toast.error(
+        error.response?.data?.message || "Failed to add investment scheme."
+      );
     }
   };
-
+  
   return (
     <div className={style.formContainer}>
       <ToastContainer />
@@ -93,7 +145,7 @@ function AdminInvestmentSchemeForm() {
           required
           className={style.input}
         /> */}
-        {/* <input
+        <input
           type="number"
           name="amountPaid"
           placeholder="Amount Paid"
@@ -101,7 +153,16 @@ function AdminInvestmentSchemeForm() {
           onChange={handleChange}
           required
           className={style.input}
-        /> */}
+        />
+        <input
+          type="number"
+          name="roi"
+          placeholder="Enter User Roi"
+          value={investmentData.roi}
+          onChange={handleChange}
+          required
+          className={style.input}
+        />
         {/* <input
           type="date"
           name="dateInvested"

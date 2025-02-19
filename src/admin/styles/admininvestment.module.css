@@ -1,5 +1,4 @@
-.table-container {
-  /* margin: 2rem 0; */
+/* .table-container {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -21,6 +20,47 @@ thead th {
 
 thead {
   border: none;
+} */
+
+.table-container {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead th {
+  color: black;
+  background-color: rgba(255, 240, 240, 1);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+thead {
+  border: 0.1rem solid rgba(110, 0, 0, 1);
+} 
+
+tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
 .pay {

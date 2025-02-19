@@ -5,6 +5,9 @@ import UserHeader from "../components/UserHeader";
 import InvestmentDetailsModal from "../components/InvestmentDetailsModal"; // Modal for details
 import style from "../styles/userinvestments.module.css";
 import { toast, ToastContainer } from "react-toastify";
+import TotalInvestment from "../components/TotalInvestment";
+import TotalMonthlyInterest from "../components/TotalMonthlyInterest";
+import TotalInvestedAmount from "../components/TotalInvestedAmount";
 
 function UserInvestments({ username }) {
   const [investments, setInvestments] = useState({
@@ -70,6 +73,23 @@ function UserInvestments({ username }) {
       return matchesSearch && matchesType && matchesStatus;
     });
   };
+
+  // ✅ Calculate totals
+  const totalInvestmentAmount =
+    investments.propertyInvestments.reduce(
+      (sum, inv) => sum + inv.amountPaid,
+      0
+    ) +
+    investments.investmentSchemes.reduce((sum, inv) => sum + inv.amountPaid, 0);
+
+  const totalMonthlyInterest = investments.investmentSchemes.reduce(
+    (sum, inv) => sum + (inv.roi|| 0),
+    0
+  );
+
+  const totalInvestments =
+    investments.propertyInvestments.length +
+    investments.investmentSchemes.length;
 
   return (
     <div className={style.componentContent}>
@@ -178,6 +198,10 @@ function UserInvestments({ username }) {
               onClose={() => setSelectedInvestment(null)}
             />
           )}
+
+          {/* <TotalInvestment totalInvestments={totalInvestments} />
+          <TotalMonthlyInterest totalMonthlyInterest={totalMonthlyInterest} />
+          <TotalInvestedAmount totalInvestmentAmount={totalInvestmentAmount} /> */}
         </div>
       </div>
     </div>
