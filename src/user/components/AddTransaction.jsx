@@ -1,26 +1,120 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-const AddTransaction = () => {
+const AddTransaction = ({ transactionData }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [amount, setAmount] = useState("");
-  const [currency, setCurrency] = useState("usd");
-  //   const username = localStorage.getItem("userUsername");
   const [username, setUsername] = useState(
     localStorage.getItem("userUsername") || ""
   );
-  //   const email = params.get("email");
   const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
-  const [type, setType] = useState("");
-  const [investmentName, setInvestmentName] = useState("");
-  const [investmentDuration, setInvestmentDuration] = useState("");
-  // const [title, setTitle] = useState("");
   const [method, setMethod] = useState("");
+  const [plot, setPlot] = useState(1);
+  const [unit, setUnit] = useState(1);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [baseAmount, setBaseAmount] = useState(transactionData?.amount || "");
+  const [amount, setAmount] = useState(transactionData?.amount || "");
+  const [currency, setCurrency] = useState(transactionData?.currency || "usd");
+  const [description, setDescription] = useState(
+    transactionData?.description || ""
+  );
+  const [type, setType] = useState(transactionData?.type || "");
+  const [roi, setRoi] = useState(transactionData?.roi || "");
+  const [nextRoiDate, setNextRoiDate] = useState(
+    transactionData?.nextRoiDate || ""
+  );
+
+  // Compute visibility dynamically
+  const showRoiFields = ["5million", "8million", "10million"].includes(type);
+  const showUnit = type === "house";
+  const showPlot = type === "land";
+
+  useEffect(() => {
+    setBaseAmount(transactionData?.amount || ""); // Ensure baseAmount is set
+    setAmount(transactionData?.amount || ""); // Reset amount when transactionData changes
+    setCurrency(transactionData?.currency || "usd"); // Reset currency when transactionData changes
+  }, [transactionData]);
+
+  useEffect(() => {
+    if (transactionData?.amount) {
+      if (type === "land") {
+        setAmount(transactionData.amount * plot);
+      } else if (type === "house") {
+        setAmount(transactionData.amount * unit);
+      } else {
+        setAmount(transactionData.amount);
+      }
+    }
+  }, [plot, unit, type, transactionData]);
+
+//   useEffect(() => {
+//   if (transactionData?.durations?.length > 0) {
+//     const selectedInvestment = transactionData.durations[0]; // Get first duration
+
+//     if (selectedInvestment?.duration) {
+//       const today = new Date();
+//       const roiDurationMonths = parseInt(selectedInvestment.duration, 10);
+
+//       if (!isNaN(roiDurationMonths)) {
+//         const nextRoiDate = new Date(today);
+//         nextRoiDate.setMonth(today.getMonth() + roiDurationMonths);
+
+//         // If the day is automatically adjusted (e.g., Feb 30 → March 2), fix it
+//         if (nextRoiDate.getDate() < today.getDate()) {
+//           nextRoiDate.setDate(0); // Move to last valid day of the previous month
+//         }
+
+//         setNextRoiDate(nextRoiDate.toISOString().split("T")[0]);
+//       }
+//     }
+//   }
+// }, [transactionData]);
+
+useEffect(() => {
+  console.log("transactionData:", transactionData); // Debugging
+
+  if (transactionData?.durations?.length > 0) {
+    const selectedInvestment = transactionData.durations[0]; // Get first duration
+    console.log("Selected Investment:", selectedInvestment); // Debugging
+
+    if (selectedInvestment?.duration) {
+      const today = new Date();
+      const roiDurationMonths = parseInt(selectedInvestment.duration, 10);
+
+      console.log("ROI Duration (Months):", roiDurationMonths); // Debugging
+
+      if (!isNaN(roiDurationMonths)) {
+        const nextRoiDate = new Date(today);
+        nextRoiDate.setMonth(today.getMonth() + roiDurationMonths);
+
+        // Handle month-end issues
+        if (nextRoiDate.getDate() < today.getDate()) {
+          nextRoiDate.setDate(0); // Moves to the last valid day of previous month
+        }
+
+        console.log("Computed Next ROI Date:", nextRoiDate); // Debugging
+
+        setNextRoiDate(nextRoiDate.toISOString().split("T")[0]);
+      }
+    }
+  }
+}, [transactionData]);
+
+  const handleCurrencyChange = (e) => {
+    const newCurrency = e.target.value;
+    const conversionRates = { usd: 1, ngn: 1500, eur: 0.92, gbp: 0.78 };
+
+    if (conversionRates[newCurrency]) {
+      // Always convert from USD to the selected currency
+      const convertedAmount =
+        (baseAmount / conversionRates["usd"]) * conversionRates[newCurrency];
+      setAmount(parseFloat(convertedAmount.toFixed(2)));
+    }
+
+    setCurrency(newCurrency);
+  };
 
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -39,7 +133,6 @@ const AddTransaction = () => {
     setMessage("");
 
     try {
-      // Create payment method
       const { paymentMethod, error } = await stripe.createPaymentMethod({
         type: "card",
         card: elements.getElement(CardElement),
@@ -51,20 +144,31 @@ const AddTransaction = () => {
         return;
       }
 
-      // Send payment details to backend
+      const token = localStorage.getItem("authToken");
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-      const response = await axios.post(`${API_BASE_URL}/user/payment`, {
-        email,
-        amount: amount * 100, // Convert to cents
-        currency,
-        paymentMethodId: paymentMethod.id,
-        username, // Include username in the request
-        description,
-        method,
-        investmentName, 
-        investmentDuration, 
-        type
-      });
+
+      const response = await axios.post(
+        `${API_BASE_URL}/user/payment`,
+        {
+          email,
+          amount: amount * 100, // Convert to cents
+          currency,
+          paymentMethodId: paymentMethod.id,
+          username,
+          description,
+          method,
+          unit: showUnit ? unit : null,
+          plot: showPlot ? plot : null,
+          type,
+          roi: showRoiFields ? roi : null,
+          nextRoiDate: showRoiFields ? nextRoiDate : null,
+          duration:
+            transactionData?.durations?.find((d) => d.duration)?.duration || "",
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       setMessage(
         `${response.data.message} Transaction ID: ${response.data.transactionId}`
@@ -81,66 +185,97 @@ const AddTransaction = () => {
       <h2>Make a Payment</h2>
       <form onSubmit={handlePayment}>
         <input
-          type="text"
+          type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
 
-         <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
-          <option value="usd">$</option>
-          <option value="eur">EUR</option>
-          {/* Add other currencies as needed */}
-        </select>
-        <input
-          type="number"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-       
         <input
           type="text"
           placeholder="Description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        /> 
-        {/* <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        /> */}
-        <input
-          type="text"
-          placeholder="Investment Name"
-          value={investmentName}
-          onChange={(e) => setInvestmentName(e.target.value)}
+          readOnly
         />
-        <input
-          type="text"
-          placeholder="Investment Duration"
-          value={investmentDuration}
-          onChange={(e) => setInvestmentDuration(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Transaction Type"
+
+        <select value={currency} onChange={handleCurrencyChange}>
+          <option value="usd">$ (USD)</option>
+          <option value="ngn"># (NGN)</option>
+          <option value="eur">€ (EUR)</option>
+          <option value="gbp">£ (GBP)</option>
+        </select>
+        <input type="number" value={amount} readOnly />
+
+        {showPlot && (
+          <input
+            type="number"
+            placeholder="How many Plots?"
+            value={plot}
+            onChange={(e) => setPlot(Number(e.target.value))}
+          />
+        )}
+
+        {showUnit && (
+          <input
+            type="number"
+            placeholder="How many Units?"
+            value={unit}
+            onChange={(e) => setUnit(Number(e.target.value))}
+          />
+        )}
+
+        <select
           value={type}
           onChange={(e) => setType(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Transaction Method"
-          value={method}
-          onChange={(e) => setMethod(e.target.value)}
-        />
+          disabled={!!transactionData?.type} // Disables if type exists in transactionData
+        >
+          <option value="">Select Transaction Type</option>
+          <option value="5million">5 Million</option>
+          <option value="8million">8 Million</option>
+          <option value="10million">10 Million</option>
+          <option value="land">Buy Land</option>
+          <option value="house">Buy House</option>
+          <option value="Bought Fractional Ownership">
+            Buy Fractional Ownership
+          </option>
+        </select>
+
+        <select value={method} onChange={(e) => setMethod(e.target.value)}>
+          <option value="">Select Payment Method</option>
+          <option value="Bank Transfer">Credit/Debit Card</option>
+          <option value="Wallet">Wallet</option>
+        </select>
+
+        {showRoiFields && (
+          <>
+            <input
+              type="number"
+              name="roi"
+              placeholder="Enter User ROI"
+              value={roi}
+              onChange={(e) => setRoi(e.target.value)}
+              required
+              disabled={!!transactionData?.roi}
+            />
+
+            <input
+              type="date"
+              name="nextRoiDate"
+              value={nextRoiDate}
+              onChange={(e) => setNextRoiDate(e.target.value)}
+              required
+            />
+          </>
+        )}
+
         <CardElement />
         <button type="submit" disabled={loading || !stripe}>
           {loading ? "Processing..." : "Pay Now"}

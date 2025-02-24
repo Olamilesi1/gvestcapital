@@ -47,7 +47,7 @@ function UserInvestments() {
             className={style.investmentButton}
             onClick={() => handleInvestmentSelect(investment)}
           >
-            {investment.currency} {investment.investmentAmount}
+            {investment.description}
           </button>
         ))}
       </div>

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-// import style from "../styles/addinvest.module.css";
-
 import style from "../../user/styles/userinvestments.module.css";
 import SideBar from "../../user/components/UserSideBar";
 import UserHeader from "../../user/components/UserHeader";
@@ -143,19 +141,26 @@ function PropertyDetails() {
                       </div>
 
                       <div className={style.butins}>
-                        {/* <Link
-                          to={`/property/${property._id}`}
+                        {/* <button
                           className={style.investDetail}
+                          onClick={() => setShowTransaction(true)}
                         >
-                          View Details
-                          <span className="material-symbols-outlined">
-                            arrow_forward
-                          </span>
-                        </Link> */}
+                          Invest Now
+                        </button> */}
 
                         <button
                           className={style.investDetail}
-                          onClick={() => setShowTransaction(true)}
+                          onClick={() =>
+                            setShowTransaction({
+                              show: true,
+                              transactionData: {
+                                amount: property.amount,
+                                currency: property.currency,
+                                description: property.description,
+                                type: property.propertyType,
+                            },
+                            })
+                          }
                         >
                           Invest Now
                         </button>
@@ -167,12 +172,23 @@ function PropertyDetails() {
             </div>
           </div>
 
-          {showTransaction && (
+          {/* {showTransaction && (
             <div className={style.transactionModal}>
               <Transaction />
               <button
                 className={style.closeButton}
                 onClick={() => setShowTransaction(false)}
+              >
+                Close
+              </button> */}
+          {showTransaction.show && (
+            <div className={style.transactionModal}>
+              <Transaction transactionData={showTransaction.transactionData} />
+              <button
+                className={style.closeButton}
+                onClick={() =>
+                  setShowTransaction({ show: false, transactionData: null })
+                }
               >
                 Close
               </button>

@@ -129,8 +129,10 @@ function AdminPropertyScheme() {
             className={style.input}
             onChange={handleChange}
           >
-            <option value="NGN">NGN</option>
-            <option value="USD">USD</option>
+           <option value="usd">$ (USD)</option>          
+          <option value="naira"># (NGN)</option>
+          <option value="eur">€ (EUR)</option>
+          <option value="gbp">£ (GBP)</option>
           </select>
         </div>
 

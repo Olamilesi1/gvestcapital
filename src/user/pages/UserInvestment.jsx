@@ -4,11 +4,15 @@ import UserHeader from "../components/UserHeader";
 import style from "../styles/userinvestments.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
+import Transaction from "..//components/AddTransaction";
 // import style from "../styles/addinvest.module.css";
 
 function UserInvestments() {
   const [investments, setInvestments] = useState([]);
   const [selectedInvestment, setSelectedInvestment] = useState(null);
+
+  const [showTransaction, setShowTransaction] = useState(false);
 
   useEffect(() => {
     const fetchInvestments = async () => {
@@ -25,18 +29,40 @@ function UserInvestments() {
     fetchInvestments();
   }, []);
 
+  // const handleInvestmentSelect = (investment) => {
+  //   setSelectedInvestment(investment);
+  // };
+
   const handleInvestmentSelect = (investment) => {
+    const today = new Date(); // Get the current date
+    const durationInMonths = investment.durations[0]?.duration || 12; // Duration in months
+
+    // const nextRoiDate = new Date(
+    //   today.getFullYear(),
+    //   today.getMonth() + durationInMonths,
+    //   today.getDate()
+    // ); // Ensure correct month addition
+
+    const nextRoiDate = new Date(today);
+    nextRoiDate.setMonth(today.getMonth() + durationInMonths);
+    if (nextRoiDate.getDate() !== today.getDate()) {
+      nextRoiDate.setDate(0); // Set to last day of the month
+    }
+
     setSelectedInvestment(investment);
+    setShowTransaction({
+      show: true,
+      transactionData: {
+        amount: investment.investmentAmount,
+        currency: investment.currency,
+        description: investment.description,
+        type: investment.investmentType,
+        roi: investment.durations[0]?.roi || 0, // Default ROI
+        nextRoiDate: nextRoiDate.toISOString().split("T")[0], // Format as YYYY-MM-DD
+      },
+    });
   };
 
-  const handleInvest = async (amount) => {
-    try {
-      // Redirect to Stripe payment
-      window.location.href = `/checkout?amount=${amount}`;
-    } catch (error) {
-      console.error("Error processing payment:", error);
-    }
-  };
   return (
     <>
       <div className={style.componentContent}>
@@ -46,65 +72,90 @@ function UserInvestments() {
           <UserHeader />
 
           <div className={style.outline}>
-          {/* <div className={style.componentContent}> */}
-      <h2>Invest and Grow Your Wealth</h2>
-      <p>Select an investment amount to see details.</p>
+            {/* <div className={style.componentContent}> */}
+            <h2>Invest and Grow Your Wealth</h2>
+            <p>Select an investment amount to see details.</p>
 
-      {/* Investment Amount Buttons */}
-      <div className={style.amountButtons}>
-        {investments.map((investment) => (
-          <button
-            key={investment._id}
-            className={style.investmentButton}
-            onClick={() => handleInvestmentSelect(investment)}
-          >
-            {investment.currency} {investment.investmentAmount}
-          </button>
-        ))}
-      </div>
-
-      {/* Display Investment Details on Selection */}
-      {selectedInvestment && (
-        <div >
-          <h3>
-            Investment Details for {selectedInvestment.currency}{" "}
-            {selectedInvestment.investmentAmount}
-          </h3>
-
-          <table className={style.table}>
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>ROI Percentage</th>
-                <th>ROI</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selectedInvestment.durations.map((duration, index) => (
-                <tr key={index}>
-                  <td>{duration.duration}</td>
-                  <td>{duration.roiPercentage}%</td>
-                  <td>
-                    {selectedInvestment.currency} {duration.roi}
-                  </td>
-                  <td>
-                    <button
-                      className={style.scheme}
-                      onClick={() =>
-                        handleInvest(selectedInvestment.investmentAmount)
-                      }
-                    >
-                      Invest
-                    </button>
-                  </td>
-                </tr>
+            {/* Investment Amount Buttons */}
+            <div className={style.amountButtons}>
+              {investments.map((investment) => (
+                <button
+                  key={investment._id}
+                  className={style.investmentButton}
+                  onClick={() => handleInvestmentSelect(investment)}
+                >
+                  {investment.investmentType}
+                </button>
               ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-    {/* </div> */}
+            </div>
+
+            {/* Display Investment Details on Selection */}
+            {selectedInvestment && (
+              <div>
+                <h3>
+                  Investment Details for {selectedInvestment.currency}{" "}
+                  {selectedInvestment.investmentAmount}
+                </h3>
+
+                <table className={style.table}>
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>ROI Percentage</th>
+                      <th>ROI</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedInvestment.durations.map((duration, index) => (
+                      <tr key={index}>
+                        <td>{duration.duration}</td>
+                        <td>{duration.roiPercentage}%</td>
+                        <td>
+                          {selectedInvestment.currency} {duration.roi}
+                        </td>
+                        <td>
+                          <button
+                            className={style.scheme}
+                            onClick={() =>
+                              setShowTransaction({
+                                show: true,
+                                transactionData: {
+                                  amount: selectedInvestment.investmentAmount,
+                                  currency: selectedInvestment.currency,
+                                  description: selectedInvestment.description,
+                                  type: selectedInvestment.investmentType,
+                                  roi: selectedInvestment.durations[0].roi, // Get first ROI as default
+                                  nextRoiDate:
+                                    selectedInvestment.durations[0].nextRoiDate, // Get first next ROI date
+                                },
+                              })
+                            }
+                          >
+                            Invest
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {showTransaction.show && (
+              <div className={style.transactionModal}>
+                <Transaction
+                  transactionData={showTransaction.transactionData}
+                />
+                <button
+                  className={style.closeButton}
+                  onClick={() =>
+                    setShowTransaction({ show: false, transactionData: null })
+                  }
+                >
+                  Close
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

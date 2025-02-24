@@ -83,7 +83,7 @@ function UserInvestments({ username }) {
     investments.investmentSchemes.reduce((sum, inv) => sum + inv.amountPaid, 0);
 
   const totalMonthlyInterest = investments.investmentSchemes.reduce(
-    (sum, inv) => sum + (inv.roi|| 0),
+    (sum, inv) => sum + (inv.roi || 0),
     0
   );
 
@@ -100,7 +100,6 @@ function UserInvestments({ username }) {
 
         <div className={style.outline}>
           <h2>My Investments</h2>
-
           {/* Search & Filter Controls */}
           <div className={style.filters}>
             <input
@@ -132,7 +131,6 @@ function UserInvestments({ username }) {
               <option value="Not completed">Not Completed</option>
             </select>
           </div>
-
           {/* Property Investments Table */}
           <h3>Property Investments</h3>
           <table>
@@ -160,7 +158,6 @@ function UserInvestments({ username }) {
               )}
             </tbody>
           </table>
-
           {/* Investment Schemes Table */}
           <h3>Investment Schemes</h3>
           <table>
@@ -190,7 +187,6 @@ function UserInvestments({ username }) {
               )}
             </tbody>
           </table>
-
           {/* Modal for Investment Details */}
           {selectedInvestment && (
             <InvestmentDetailsModal
@@ -198,10 +194,7 @@ function UserInvestments({ username }) {
               onClose={() => setSelectedInvestment(null)}
             />
           )}
-
-          {/* <TotalInvestment totalInvestments={totalInvestments} />
-          <TotalMonthlyInterest totalMonthlyInterest={totalMonthlyInterest} />
-          <TotalInvestedAmount totalInvestmentAmount={totalInvestmentAmount} /> */}
+       
         </div>
       </div>
     </div>

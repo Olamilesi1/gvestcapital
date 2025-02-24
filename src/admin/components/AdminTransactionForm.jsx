@@ -71,8 +71,8 @@ const TransactionForm = () => {
         method: "",
         status: "",
         paymentIntentId: "",
-        investmentName: "",
-        investmentDuration: "",
+        // investmentName: "",
+        // investmentDuration: "",
         type: "",
       });
     } catch (error) {
@@ -122,7 +122,7 @@ const TransactionForm = () => {
           required
         />
       </div>
-      <div>
+      {/* <div>
         <label>Investment Duration:</label>
         <textarea
           name="investmentDuration"
@@ -139,7 +139,7 @@ const TransactionForm = () => {
           onChange={handleChange}
           required
         />
-      </div>
+      </div> */}
       <div>
         <label>Investment Type:</label>
         <textarea

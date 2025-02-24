@@ -1,226 +1,73 @@
-// import style from "../styles/addinvest.module.css";
-// import axios from "axios";
-// import { toast, ToastContainer } from "react-toastify";
-// import { useHeader } from "../../components/HeaderContext";
-// import "react-toastify/dist/ReactToastify.css";
-// import { useAdmin } from "../../components/AdminContext";
-// import { NavLink, useNavigate } from "react-router-dom";
-// import { useContext, useState, useEffect } from "react";
-
-// function AdminInvestmentScheme() {
-//   const [investment, setInvestment] = useState({
-//     investmentAmount: "",
-//     duration: "",
-//     roiPercentage: "",
-//     roi: "",
-//     currency: "",
-//     investmentType: "",
-//     investmentStartDate: "",
-//     investmentEndDate: "",
-//   });
-
-//   const handleChange = (e) => {
-//     setInvestment({ ...investment, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault(); // Ensure this is within an event handler
-//     try {
-//       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-//       const response = await axios.post(
-//         `${API_BASE_URL}/admin/investmentscheme`,
-//         investment // Send the state data
-//       );
-
-//       alert("Investment Scheme Created Successfully");
-//       setInvestment({
-//         investmentAmount: "",
-//         duration: "",
-//         roiPercentage: "",
-//         roi: "",
-//         currency: "",
-//         investmentType: "",
-//         investmentStartDate: "",
-//         investmentEndDate: "",
-//       });
-//     } catch (error) {
-//       console.error("Error creating investment scheme:", error);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <form className={style.investScheme} onSubmit={handleSubmit}>
-//         <link
-//           rel="stylesheet"
-//           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-//         />
-
-//         <p className={style.pHead}> Add Investment Detail</p>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Title
-//           </label>
-//           <input
-//             className={style.input}
-//             type="number"
-//             name="investmentAmount"
-//             placeholder="Investment Amount"
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Duration
-//           </label>
-//           <input
-//             className={style.input}
-//             type="text"
-//             name="duration"
-//             placeholder="Duration (Years)"
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Select Currency
-//           </label>
-//           {/* <select name="" id="" className={style.input }>
-//             <option value="">NGN</option>
-//             <option value="">Dollar</option>
-//           </select> */}
-
-//           <input
-//             className={style.input}
-//             type="text"
-//             name="currency"
-//             placeholder="Currency"
-//             onChange={handleChange}
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Investment Start Date
-//           </label>
-//           <input
-//             className={style.input}
-//             type="date"
-//             name="investmentStartDate"
-//             placeholder="investmentStartDate"
-//             onChange={handleChange}
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Investment End Date
-//           </label>
-//           <input
-//             className={style.input}
-//             type="date"
-//             name="investmentEndDate"
-//             placeholder="investmentEndDate"
-//             onChange={handleChange}
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             Investment Type
-//           </label>
-//           <input
-//             className={style.input}
-//             type="text"
-//             name="investmentType"
-//             placeholder="Investment Type"
-//             onChange={handleChange}
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             ROI Percentage
-//           </label>
-//           <input
-//             className={style.input}
-//             type="text"
-//             name="roiPercentage"
-//             placeholder="ROI %"
-//             onChange={handleChange}
-//           />
-//         </div>
-
-//         <div className={style.labe}>
-//           <label className={style.lab} htmlFor="">
-//             ROI
-//           </label>
-//           <input
-//             className={style.input}
-//             type="number"
-//             name="roi"
-//             placeholder="ROI"
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <button className={style.send} type="submit">
-//           Create Investment Scheme
-//           <span class="material-symbols-outlined">
-//             keyboard_arrow_right
-//           </span>{" "}
-//         </button>
-//       </form>
-//     </>
-//   );
-// }
-
-// export default AdminInvestmentScheme;
-
-
 import { useState } from "react";
 import axios from "axios";
 import style from "../styles/addinvest.module.css";
 
 function AdminInvestmentScheme() {
   const [investmentAmount, setInvestmentAmount] = useState("");
-  const [currency, setCurrency] = useState("$");
+  const [currency, setCurrency] = useState("ngn"); // Default to NGN
   const [investmentType, setInvestmentType] = useState("");
   const [durations, setDurations] = useState([]);
   const [duration, setDuration] = useState("");
+  const [description, setDescription] = useState("");
   const [roiPercentage, setRoiPercentage] = useState("");
 
   const handleAddDuration = () => {
-    if (duration && roiPercentage) {
-      const roi = (investmentAmount * roiPercentage) / 100;
-      setDurations([...durations, { duration, roiPercentage, roi }]);
-      setDuration("");
-      setRoiPercentage("");
+    const parsedDuration = parseInt(duration, 10);
+    const parsedRoiPercentage = parseFloat(roiPercentage);
+    const parsedInvestmentAmount = parseFloat(investmentAmount) || 0; // Ensure it's a number
+
+    if (
+      isNaN(parsedDuration) ||
+      isNaN(parsedRoiPercentage) ||
+      parsedDuration <= 0
+    ) {
+      alert("Please enter valid numeric values for duration and ROI.");
+      return;
     }
+
+    const roi = (parsedInvestmentAmount * parsedRoiPercentage) / 100;
+
+    setDurations([
+      ...durations,
+      { duration: parsedDuration, roiPercentage: parsedRoiPercentage, roi },
+    ]);
+    setDuration("");
+    setRoiPercentage("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-      const res = await axios.post(`${API_BASE_URL}/admin/investmentscheme`, {
+      await axios.post(`${API_BASE_URL}/admin/investmentscheme`, {
         investmentAmount,
         currency,
         investmentType,
         durations,
+        description,
       });
       alert("Investment Scheme Created Successfully!");
       setInvestmentAmount("");
       setInvestmentType("");
       setDurations([]);
+      setDescription("");
     } catch (error) {
       console.error("Error posting investment scheme:", error);
+    }
+  };
+
+  const formatCurrencySymbol = (currencyCode) => {
+    switch (currencyCode.toLowerCase()) {
+      case "ngn":
+        return "₦";
+      case "usd":
+        return "$";
+      case "eur":
+        return "€";
+      case "gbp":
+        return "£";
+      default:
+        return currencyCode.toUpperCase();
     }
   };
 
@@ -238,24 +85,36 @@ function AdminInvestmentScheme() {
 
         <label>Currency:</label>
         <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
-          <option value="$">$</option>
-          <option value="EUR">EUR</option>
-          <option value="#">NGN</option>
+          <option value="ngn">₦ (NGN)</option>
+          <option value="usd">$ (USD)</option>
+          <option value="eur">€ (EUR)</option>
+          <option value="gbp">£ (GBP)</option>
         </select>
 
         <label>Investment Type:</label>
-        <input
-          type="text"
+        <select
           value={investmentType}
           onChange={(e) => setInvestmentType(e.target.value)}
-          required
+        >
+          <option value="">Select Transaction Type</option>
+          <option value="5million">5 Million Investment Option</option>
+          <option value="8million">8 Million Investment Option</option>
+          <option value="10million">10 Million Investment Option</option>
+        </select>
+
+        <label>Description:</label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Enter Investment Scheme Description"
+          rows={3}
         />
 
         <label>Investment Durations & ROI:</label>
         <div className={style.durationInput}>
           <input
-            type="text"
-            placeholder="Duration (e.g., 1 Year)"
+            type="number"
+            placeholder="Duration in Months (e.g., 12)"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
           />
@@ -270,11 +129,11 @@ function AdminInvestmentScheme() {
           </button>
         </div>
 
-        {/* Display Added Durations */}
         <ul>
           {durations.map((d, index) => (
             <li key={index}>
-              {d.duration} - {d.roiPercentage}% (ROI: {currency} {d.roi})
+              {d.duration} Months - {d.roiPercentage}% (ROI:{" "}
+              {formatCurrencySymbol(currency)} {d.roi.toFixed(2)})
             </li>
           ))}
         </ul>

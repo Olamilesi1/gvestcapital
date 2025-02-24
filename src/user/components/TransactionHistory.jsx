@@ -45,8 +45,8 @@ const TransactionHistory = ({ userId }) => {
 
     const {
       transactionId,
-      investmentName,
-      investmentDuration,
+      // investmentName,
+      // investmentDuration,
       type,
       amount,
       method,
@@ -81,10 +81,10 @@ const TransactionHistory = ({ userId }) => {
     y += 10;
     doc.text(`Transaction Type: ${type}`, 20, y);
     y += 10;
-    doc.text(`Investment Name: ${investmentName}`, 20, y);
-    y += 10;
-    doc.text(`Investment Duration: ${investmentDuration}`, 20, y);
-    y += 10;
+    // doc.text(`Plot: ${investmentName}`, 20, y);
+    // y += 10;
+    // doc.text(`Unit: ${investmentDuration}`, 20, y);
+    // y += 10;
     doc.text(`Status: ${status}`, 20, y);
 
     // Save the file
@@ -131,7 +131,7 @@ const TransactionHistory = ({ userId }) => {
             </p>
 
             <hr />
-            <h3>Investment Details</h3>
+            {/* <h3>Investment Details</h3>
             <p>
               <strong>Investment Name:</strong>{" "}
               {selectedTransaction.investmentName}
@@ -139,7 +139,7 @@ const TransactionHistory = ({ userId }) => {
             <p>
               <strong>Investment Duration:</strong>{" "}
               {selectedTransaction.investmentDuration}
-            </p>
+            </p> */}
 
             <hr />
             <h3>Transaction Status</h3>

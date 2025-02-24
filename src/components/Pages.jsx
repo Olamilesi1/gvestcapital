@@ -26,7 +26,6 @@ import Disclosure from "../pages/Disclosure";
 import PaymentForm from "../user/components/AddTransaction";
 
 // User Import
-import UserPropertyDetail from "../user/pages/UserPropertyDetail";
 import UserProperties from "../user/pages/UserProperties";
 import UserDashboard from "../user/pages/UserDashboard";
 import UserTransactions from "../user/pages/UserTransactions";
@@ -92,15 +91,13 @@ function Pages() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<UpdatePassword />} />
             <Route path="*" element={<NotFound />} />
-
+            <Route path="/property/:id" element={<AdminPropertySchemeInfo />} />
+           
             {/* User Pages*/}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/user/dashboard" element={<UserDashboard />} />
-            <Route
-              path="/user/properties/:id"
-              element={<UserPropertyDetail />}
-            />
+           
             <Route path="/user/properties" element={<UserProperties />} />
             <Route path="/user/transactions" element={<UserTransactions />} />
             <Route path="/user/investment" element={<UserInvestment />} />
@@ -146,8 +143,7 @@ function Pages() {
               path="/admin/reset-password"
               element={<AdminUpdatePassword />}
             />
-            <Route path="/property/:id" element={<AdminPropertySchemeInfo />} />
-            <Route
+             <Route
               path="/admin/add-propertyinvest"
               element={<AddPropertyInvestment />}
             />

@@ -15,6 +15,8 @@ function AdminPropertyInvestmentForm() {
     description: "",
     paymentMethod: "",
     status: "",
+    plot: "",
+    unit: "",
   });
 
   const handleChange = (e) => {
@@ -38,6 +40,8 @@ function AdminPropertyInvestmentForm() {
           description: investmentData.description,
           paymentMethod: investmentData.paymentMethod,
           status: investmentData.status,
+          plot: investmentData.plot,
+          unit: investmentData.unit,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -54,6 +58,8 @@ function AdminPropertyInvestmentForm() {
         description: "",
         paymentMethod: "",
         status: "",
+        plot: "",
+        unit: "",
       });
     } catch (error) {
       console.error("Error adding investment", error);
@@ -89,6 +95,24 @@ function AdminPropertyInvestmentForm() {
           name="amountPaid"
           placeholder="Amount Paid"
           value={investmentData.amountPaid}
+          onChange={handleChange}
+          required
+          className={style.input}
+        />
+        <input
+          type="number"
+          name="plot"
+          placeholder="Plot"
+          value={investmentData.plot}
+          onChange={handleChange}
+          required
+          className={style.input}
+        />
+        <input
+          type="number"
+          name="unit"
+          placeholder="Unit"
+          value={investmentData.unit}
           onChange={handleChange}
           required
           className={style.input}

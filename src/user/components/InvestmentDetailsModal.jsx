@@ -7,8 +7,11 @@ function InvestmentDetailsModal({ investment, onClose }) {
         <h2>Investment Details</h2>
         <p><strong>Investment ID:</strong> {investment.investmentId}</p>
         <p><strong>Type:</strong> {investment.type}</p>
-        <p><strong>Username:</strong> {investment.username}</p>
-        <p><strong>User Email:</strong> {investment.userEmail}</p>
+        {/* <p><strong>Username:</strong> {investment.username}</p>
+        <p><strong>User Email:</strong> {investment.userEmail}</p> */}
+        {investment.roi && <p><strong>Roi:</strong>  {investment.roi}</p>}
+        {investment.plot && <p><strong>Plot:</strong>  {investment.plot}</p>}
+        {investment.unit && <p><strong>Unit:</strong>  {investment.unit}</p>}
         <p><strong>Amount Paid:</strong> {investment.amountPaid}</p>
         <p><strong>Date Invested:</strong> {investment.dateInvested}</p>
         {investment.nextRoiDate && <p><strong>Next ROI Date:</strong> {investment.nextRoiDate}</p>}
