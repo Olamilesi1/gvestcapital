@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import SideBar from "../components/UserSideBar";
-import Transactions from "../components/Transactions";
+// import Transactions from "../components/Transactions";
 import UserHeader from "../components/UserHeader";
 import style from "../styles/userdashboard.module.css";
 function UserCompany() {
@@ -26,7 +26,7 @@ function UserCompany() {
             <button className={style.companyDocument} onClick={mine}>My Documents</button>
             <button className={style.myDocument} onClick={company}>Company Documents</button>
           </div>
-            <Transactions />
+            {/* <Transactions /> */}
             </div>
 
         </div>

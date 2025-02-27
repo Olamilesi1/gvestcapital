@@ -55,12 +55,28 @@ const TransactionForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting transaction:", formData); // Debugging line
+  
     try {
       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+      const token = localStorage.getItem("adminAuthToken"); // Retrieve token from localStorage
+  
+      if (!token) {
+        console.error("No auth token found!");
+        alert("Unauthorized: No auth token found.");
+        return;
+      }
+  
       const response = await axios.post(
         `${API_BASE_URL}/admin/admin-transaction`,
-        formData
+        formData,  
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // ✅ Send token properly
+            "Content-Type": "application/json", // Ensure JSON content type
+          },
+        }
       );
+  
       alert("Transaction posted successfully!");
       setFormData({
         username: "",
@@ -71,8 +87,6 @@ const TransactionForm = () => {
         method: "",
         status: "",
         paymentIntentId: "",
-        // investmentName: "",
-        // investmentDuration: "",
         type: "",
       });
     } catch (error) {
@@ -80,6 +94,7 @@ const TransactionForm = () => {
       alert("Failed to post transaction.");
     }
   };
+  
   
   return (
     <form onSubmit={handleSubmit}>

@@ -135,7 +135,7 @@ function UserProperties() {
                     </div>
 
                     <Link
-                      to={`/property/${property._id}`}
+                      to={`/user/property/${property._id}`}
                       className={style.investDetail}
                     >
                       View Details

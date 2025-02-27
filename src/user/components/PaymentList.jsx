@@ -101,7 +101,7 @@ const TransactionHistory = ({ userId }) => {
 
                   <div className={style.dasl}>
                   <button className={style.view}>
-                  <NavLink to="/admin/users" className={style.link}>
+                  <NavLink to="/user/transactions" className={style.link}>
                     View More
                   </NavLink>
                 </button>

@@ -213,6 +213,14 @@ useEffect(() => {
           <option value="gbp">£ (GBP)</option>
         </select>
         <input type="number" value={amount} readOnly />
+        {/* <input
+  type="number"
+  value={amount}
+  onChange={(e) => setAmount(Number(e.target.value))} // Allow manual input
+  min="0"
+  required
+/> */}
+
 
         {showPlot && (
           <input

@@ -27,6 +27,7 @@ import PaymentForm from "../user/components/AddTransaction";
 
 // User Import
 import UserProperties from "../user/pages/UserProperties";
+import UserPropertySchemeInfo from "../user/components/UserPropertySchemeInfo";
 import UserDashboard from "../user/pages/UserDashboard";
 import UserTransactions from "../user/pages/UserTransactions";
 import UserInvestment from "../user/pages/UserInvestment";
@@ -91,21 +92,18 @@ function Pages() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<UpdatePassword />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/property/:id" element={<AdminPropertySchemeInfo />} />
            
             {/* User Pages*/}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/user/dashboard" element={<UserDashboard />} />
            
+            <Route path="/user/property/:id" element={<UserPropertySchemeInfo />} />
             <Route path="/user/properties" element={<UserProperties />} />
             <Route path="/user/transactions" element={<UserTransactions />} />
             <Route path="/user/investment" element={<UserInvestment />} />
             <Route path="/user/investments" element={<UserInvestments />} />
-            <Route
-              path="/user/compound-interest"
-              element={<CompoundInterest />}
-            />
+            <Route path="/user/compound-interest" element={<CompoundInterest />}/>
             <Route path="/user/simple-interest" element={<SimpleInterest />} />
             <Route path="/user/mine" element={<Documents />} />
             <Route path="/user/company" element={<UserCompany />} />
@@ -129,32 +127,15 @@ function Pages() {
             <Route path="/admin/notification" element={<AdminNotification />} />
             <Route path="/admin/setting" element={<AdminSetting />} />
             <Route path="/admin/password" element={<AdminPassword />} />
-            <Route
-              path="/admin/email-success"
-              element={<AdminEmailSuccess />}
-            />
-            <Route
-              path="/admin/forgot-password"
-              element={<AdminForgotPassword />}
-            />
+            <Route path="/admin/email-success" element={<AdminEmailSuccess />}/>
+            <Route path="/admin/forgot-password" element={<AdminForgotPassword />}/>
             <Route path="/admin/email-verify" element={<AdminEmailVerify />} />
             <Route path="/admin/verify-email" element={<AdminVerifyEmail />} />
-            <Route
-              path="/admin/reset-password"
-              element={<AdminUpdatePassword />}
-            />
-             <Route
-              path="/admin/add-propertyinvest"
-              element={<AddPropertyInvestment />}
-            />
-            <Route
-              path="/admin/add-investscheme"
-              element={<AddInvestmentSchemeForm />}
-            />
-            <Route
-              path="/admin/investmentscheme/:id"
-              element={<AdminInvestSchemeInfo />}
-            />
+            <Route path="/admin/reset-password" element={<AdminUpdatePassword />} />
+            <Route path="/admin/add-propertyinvest" element={<AddPropertyInvestment />}/>
+            <Route path="/admin/property/:id" element={<AdminPropertySchemeInfo />} />
+            <Route path="/admin/add-investscheme" element={<AddInvestmentSchemeForm />}/>
+            <Route path="/admin/investmentscheme/:id" element={<AdminInvestSchemeInfo />}/>
             <Route path="/user/stripe" element={<PaymentForm />} />
           </Routes>
         </AdminProvider>

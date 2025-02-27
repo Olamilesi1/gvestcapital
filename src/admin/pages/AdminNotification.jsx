@@ -2,7 +2,7 @@ import { useState } from "react";
 import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
-import Transactions from "../../user/components/Transactions";
+// import Transactions from "../../user/components/Transactions";
 import AdminNotificationForm from "../components/AdminNotificationForm";
 import Notifications from "../components/AdminNotificationHistory";
 function AdminAllInvest() {

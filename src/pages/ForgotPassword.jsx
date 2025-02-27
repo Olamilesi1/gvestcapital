@@ -20,9 +20,9 @@ function ForgotPassword() {
       toast.success("Check your email for reset instructions.");
       //  setEmail(""); // Clear input after successful request
     } catch (error) {
-      toast.error(
-        error.response?.data?.message || "Error sending reset email."
-      );
+      // toast.error(
+      //   error.response?.data?.message || "Error sending reset email."
+      // );
     } finally {
       setLoading(false);
     }

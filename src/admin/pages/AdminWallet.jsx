@@ -1,7 +1,7 @@
 import SideBar from "../components/AdminSideBar";
 import UserHeader from "../components/AdminHeader";
 import style from "../styles/adminwallet.module.css";
-import Transactions from "../../user/components/Transactions";
+// import Transactions from "../../user/components/Transactions";
 function AdminWallet() {
   return (
     <>
