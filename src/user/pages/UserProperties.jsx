@@ -88,10 +88,11 @@ function UserProperties() {
 
                     <p className={style.par}>{property.description}</p>
 
+<div className={style.prop}>
                     <div className={style.period1}>
                       <div className={style.period}>
                         <img
-                          src="/images/hourglass.png"
+                          src="/images/map.png"
                           alt="property"
                           className={style.contai}
                         />
@@ -102,17 +103,17 @@ function UserProperties() {
 
                       <div className={style.period}>
                         <img
-                          src="/images/hourglass.png"
+                          src="/images/unit.png"
                           alt="property"
                           className={style.contai}
                         />
-                        <p className={style.pary}>{property.propertyUnit}</p>
+                        <p className={style.pary}>{property.propertyUnit} units</p>
                       </div>
                     </div>
 
                     <div className={style.period}>
                       <img
-                        src="/images/hourglass.png"
+                        src="/images/clock.png"
                         alt="property"
                         className={style.contai}
                       />
@@ -132,6 +133,7 @@ function UserProperties() {
                           </p>
                         </div>
                       ))}
+                    </div>
                     </div>
 
                     <Link

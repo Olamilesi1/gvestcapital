@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useParams } from 'react-router-dom';
 import Card from "./Card"; // Assuming Card is another reusable component
 import style from "../../styles/PropertyDetail.module.css";
 
 function PropertyDetail({
+  
   imageSrc,
   imageSrc1,
   imageSrc2,
@@ -26,6 +28,10 @@ function PropertyDetail({
   onButtonClick,
   dynamicCard,
 }) {
+
+
+  const { propertyType } = useParams();
+
   return (
     <div className={style.property}>
       <img src={imageSrc} alt="property" className={style.contain} />
@@ -34,6 +40,8 @@ function PropertyDetail({
         <div className={style.propertyTitle}>
           <h2 className={style.package}>{title}</h2>
           <p className={style.par}>{description}</p>
+
+      <p>Showing details for: <strong>{propertyType}</strong></p>
 
           <div className={style.paras}>
             {cards.map((card, index) => (
@@ -130,6 +138,7 @@ PropertyDetail.propTypes = {
 };
 
 PropertyDetail.defaultProps = {
+  cards: [],
   buttonLabel: "View Detail",
   onButtonClick: () => {},
   dynamicCard: null,

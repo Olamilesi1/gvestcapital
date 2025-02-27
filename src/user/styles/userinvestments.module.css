@@ -142,6 +142,7 @@
 .period {
   display: flex;
   width: 48%;
+  /* justify-content: center; */
   gap: 0.6rem;
   align-items: center;
 }
@@ -159,6 +160,19 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
+}
+
+.prop{
+  display: flex;
+ justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contai {
+  border-radius: 1rem;
+  width: 10%;
+  /* color: black; */
 }
 
 .period1,

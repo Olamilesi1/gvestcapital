@@ -23,7 +23,11 @@ import VerifyEmail from "../pages/VerifyEmail";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsCondition from "../pages/TermsCondition";
 import Disclosure from "../pages/Disclosure";
+import PropertyDetail from "../components/reusables/PropertyDetail";
 import PaymentForm from "../user/components/AddTransaction";
+
+//Third party
+import Calendy from "./Calendly"
 
 // User Import
 import UserProperties from "../user/pages/UserProperties";
@@ -72,6 +76,10 @@ function Pages() {
       <UserProvider>
         <AdminProvider>
           <Routes>
+
+            {/* Third Party Route */}
+            <Route path="/schedule-consultation" element={<Calendy/>}/>
+
             {/* Main website routes */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -92,6 +100,7 @@ function Pages() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<UpdatePassword />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/property-detail/:propertyType" element={<PropertyDetail />} />
            
             {/* User Pages*/}
             <Route path="/login" element={<Login />} />

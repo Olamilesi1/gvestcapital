@@ -30,23 +30,22 @@ export default function SimpleMap(){
   );
 }
 
+// import React from "react";
 
-// const handleApiLoaded = (map, maps) => {
-//     // use map and maps objects
-//   };
-  
-//   ...
-  
-//   <GoogleMapReact
-//     bootstrapURLKeys={{ key: /* YOUR KEY HERE */ }}
-//     defaultCenter={this.props.center}
-//     defaultZoom={this.props.zoom}
-//     yesIWantToUseGoogleMapApiInternals
-//     onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
-//   >
-//     <AnyReactComponent
-//       lat={59.955413}
-//       lng={30.337844}
-//       text="My Marker"
-//     />
-//   </GoogleMapReact>
+// export default function SimpleMap() {
+//   return (
+//     <div style={{ width: "100%", height: "50vh" }}>
+//       <iframe
+//         title="Gtext Location"
+//         width="100%"
+//         height="100%"
+//         style={{ border: 0 }}
+//         loading="lazy"
+//         allowFullScreen
+//         referrerPolicy="no-referrer-when-downgrade"
+//         src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=518+Westgreen+Blvd+Katy+Texas+77450`}
+//       ></iframe>
+//     </div>
+//   );
+// }
+

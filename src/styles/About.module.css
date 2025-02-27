@@ -46,6 +46,11 @@
   background-color: rgb(110, 10, 10);
 }
 
+.investConsult a{
+  color: white;
+  text-decoration: none;
+}
+
 .benefit {
   display: flex;
   flex-direction: column;

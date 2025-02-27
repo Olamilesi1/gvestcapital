@@ -226,6 +226,7 @@
   margin: 1.5rem;
   background-color: rgba(110, 0, 0, 1);
   color: rgba(255, 240, 240, 1);
+  border: none;
 }
 
 .savt {

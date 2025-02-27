@@ -97,9 +97,10 @@
   color: white;
   background-color: rgb(144, 12, 12);
   border-radius: 0.4rem;
-  font-size: 1rem;
-  margin-top: 2rem;
+  font-size: .8rem;
+  margin-top: 1rem;
   transition: background-color 300ms, color 300ms;
+  width: 50%;
 }
 
 .investConsult3:hover {

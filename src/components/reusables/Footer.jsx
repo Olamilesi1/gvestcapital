@@ -18,10 +18,10 @@ function Footer() {
 
             <div className={style.contact}>
               <h4 className={style.contactText}>Contact</h4>
-              <p className={style.p}>+1 305 407 0276</p>
-              <p className={style.p}>gtext@gmail.com</p>
+              <p className={style.p}> +1 (346) 575-4852</p>
+              <p className={style.p}>info@gtexthomesusa.com</p>
               <p className={style.p}>
-                4, Joe Faraday, Mojisola Estate, Onikoyi, Ikoyi
+              518, Westgreen Blvd. Katy, Texas, 77450
               </p>
 
               <span className={style.social}>
@@ -45,9 +45,9 @@ function Footer() {
                 <li className={style.navLi}>
                   <NavLink to="/t&c">Terms & Conditions</NavLink>
                 </li>
-                <li className={style.navLi}>
+                {/* <li className={style.navLi}>
                   <NavLink to="/disclosure">Disclosures</NavLink>
-                </li>
+                </li> */}
               </ul>
             </div>
 

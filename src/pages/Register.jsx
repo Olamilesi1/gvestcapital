@@ -281,13 +281,13 @@ function Register() {
 
           <ToastContainer />
 
-          <div className={style.hrsign}>
+          {/* <div className={style.hrsign}>
             <hr className={style.horiz} />
             <p>Or sign up with</p>
             <hr className={style.horiz} />
-          </div>
+          </div> */}
 
-          {provider && profile ? (
+          {/* {provider && profile ? (
             <User
               provider={provider}
               profile={profile}
@@ -310,7 +310,6 @@ function Register() {
                   />
                   <p>Google</p>
                 </div>
-                {/* <GoogleLoginButton /> */}
               </LoginSocialGoogle>
 
               <LoginSocialFacebook
@@ -324,10 +323,9 @@ function Register() {
                   <img src="./images/FB.png" alt="FB" className={style.socio} />
                   <p>Facebook</p>
                 </div>
-                {/* <FacebookLoginButton /> */}
               </LoginSocialFacebook>
             </div>
-          )}
+          )} */}
 
           <div className={style.navUl}>
             <p>Already have an account? </p>

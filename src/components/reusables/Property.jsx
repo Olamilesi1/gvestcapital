@@ -43,10 +43,10 @@ function Property({
           )}
         </div>
 
-        <button className={style.investDetail} onClick={onButtonClick}>
+        {/* <button className={style.investDetail} onClick={onButtonClick}>
           {buttonLabel}
           <span className="material-symbols-outlined">arrow_forward</span>
-        </button>
+        </button> */}
       </div>
     </div>
   );
@@ -75,6 +75,7 @@ Property.propTypes = {
 };
 
 Property.defaultProps = {
+  cards: [],
   buttonLabel: "View Detail",
   onButtonClick: () => {},
   dynamicCard: null,

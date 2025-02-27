@@ -17,91 +17,102 @@ function UserHeader() {
   const { headerTitle } = useHeader();
   const [imageSrc, setImageSrc] = useState("");
 
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     setLoading(true);
+  //     try {
+  //       let currentUsername = username || localStorage.getItem("userUsername");
+
+  //       if (!currentUsername) {
+  //         toast.error("Username is not available. Redirecting to login...");
+  //         navigate("/login");
+  //         return;
+  //       }
+
+  //       const token = localStorage.getItem("userAuthToken");
+  //       if (!token) {
+  //         toast.error("Unauthorized access. Please log in.");
+  //         navigate("/login");
+  //         return;
+  //       }
+
+  //       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  //       const response = await axios.get(
+  //         // `http://localhost:4000/user/one-user/${currentUsername}`,
+  //         `${API_BASE_URL}/user/one-user/${currentUsername}`,
+  //         {
+  //           headers: { Authorization: `Bearer ${token}` },
+  //         }
+  //       );
+
+  //       console.log(response.data); // Check the response format
+
+  //       setUserData(response.data.userData);
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //       if (error.response?.status === 404) {
+  //         toast.error("User not found. Please check the username.");
+  //       } else {
+  //         toast.error("Failed to fetch user data.");
+  //       }
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchUser();
+  // }, [username, navigate]);
+
   useEffect(() => {
+    const storedProfileImage = localStorage.getItem("profileImage");
+    if (storedProfileImage) {
+      setImageSrc(storedProfileImage); // Set the header image to the saved one
+    }
+  
     const fetchUser = async () => {
       setLoading(true);
       try {
         let currentUsername = username || localStorage.getItem("userUsername");
-
+  
         if (!currentUsername) {
           toast.error("Username is not available. Redirecting to login...");
           navigate("/login");
           return;
         }
-
+  
         const token = localStorage.getItem("userAuthToken");
         if (!token) {
           toast.error("Unauthorized access. Please log in.");
           navigate("/login");
           return;
         }
-
+  
         const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
         const response = await axios.get(
-          // `http://localhost:4000/user/one-user/${currentUsername}`,
           `${API_BASE_URL}/user/one-user/${currentUsername}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-
-        console.log(response.data); // Check the response format
-
+  
         setUserData(response.data.userData);
+  
+        // Optional: If you want to update imageSrc from API if localStorage image is missing
+        if (!storedProfileImage && response.data.userData.profilePictureUrl) {
+          setImageSrc(response.data.userData.profilePictureUrl);
+          localStorage.setItem("profileImage", response.data.userData.profilePictureUrl);
+        }
       } catch (error) {
         console.error("Error fetching user data:", error);
-        if (error.response?.status === 404) {
-          toast.error("User not found. Please check the username.");
-        } else {
-          toast.error("Failed to fetch user data.");
-        }
+        toast.error("Failed to fetch user data.");
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchUser();
   }, [username, navigate]);
-
-  // useEffect(() => {
-  //   const fetchUserProfile = async () => {
-  //     const currentUsername = localStorage.getItem("userUsername");
-  //     if (!currentUsername) {
-  //       toast.error("User not found. Please log in.");
-  //       return;
-  //     }
-
-  //     const token = localStorage.getItem("userAuthToken");
-  //     if (!token) {
-  //       toast.error("Unauthorized access. Please log in.");
-  //       return;
-  //     }
-
-  //     try {
-  //       const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-  //       const response = await axios.get(
-  //         `${API_BASE_URL}/user/profile/${currentUsername}`,
-  //         { headers: { Authorization: `Bearer ${token}` } }
-  //       );
-
-  //       console.log("Fetched Profile Data:", response.data);
-
-  //       // Ensure profile picture updates correctly
-  //       const updatedImageUrl = response.data.data.profilePictureUrl
-  //         ? `${response.data.data.profilePictureUrl}?t=${new Date().getTime()}`
-  //         : "/images/default-profile.jpg"; // Prevent caching and provide fallback
-
-  //       setImageSrc(updatedImageUrl);
-  //       localStorage.setItem("profileImage", updatedImageUrl);
-  //     } catch (error) {
-  //       console.error("Error fetching profile:", error);
-  //       toast.error("Failed to fetch profile data.");
-  //     }
-  //   };
-
-  //   fetchUserProfile();
-  // }, []);
-
+  
   return (
     <>
       <div className={style.haeder}>
@@ -118,22 +129,10 @@ function UserHeader() {
         <div className={style.dashLogos}>
           <span class="material-symbols-outlined">notifications</span>
           <div className={style.profile}>
-            {/* <img
-              src="/images/profile.jpeg"
-              alt="person"
-              className={style.person}
-            /> */}
-            {/* <img
-              src={userData?.profilePicture || "/images/default-profile.jpg"}
-              alt="person"
-              className={style.person}
-            /> */}
-
             <img
-              src={imageSrc || "/images/default-profile.jpg"} // Fallback to default profile image
+              src={imageSrc || "/images/default-profile.jpg"} 
               alt="Profile"
               className={style.person}
-              // style={{ width: "100px", height: "100px", borderRadius: "50%" }}
             />
           </div>
           <p>{username}</p>

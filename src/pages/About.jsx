@@ -3,9 +3,10 @@ import Header from "../components/reusables/Header";
 import style from "../styles/About.module.css";
 import AboutCard from "../components/reusables/AboutCard";
 import TeamCard from "../components/reusables/TeamCard";
+import { NavLink } from "react-router-dom";
 
 function About() {
-  return ( 
+  return (
     <div>
       <Header />
       <div className={style.home}>
@@ -20,7 +21,7 @@ function About() {
             </p>
             <p className={style.cardTitle}>Who We Are </p>
             <p className={style.cardPara}>
-              At Gtext, we’re more than just a real estate investment
+              At Gvest, we’re more than just a real estate investment
               company—we’re a community of forward-thinking individuals
               dedicated to helping people achieve financial growth through
               strategic property investments. With a foundation built on trust,
@@ -97,7 +98,7 @@ function About() {
 
         <p className={style.cardTitle}>Our Journey</p>
         <p className={style.cardPara}>
-          Since our inception in 2000, Gtext has consistently delivered
+          Since our inception in 2000, Gvest has consistently delivered
           innovative solutions in the real estate industry. What began as a
           small startup has grown into a trusted name with a diverse portfolio
           and a global reach. Each milestone in our journey is a testament to
@@ -148,12 +149,12 @@ function About() {
       </div>
 
       <div className={style.join}>
-        <p className={style.cardTitle}>Join the GText Family</p>
+        <p className={style.cardTitle}>Join the Gvest Family</p>
         <p className={style.cardPara}>
           Behind every successful investment is a team of dedicated
           professionals. From seasoned market analysts to customer support
           specialists, our team works tirelessly to ensure your success. Whether
-          you're a first-time investor or a seasoned professional, Gtext offers
+          you're a first-time investor or a seasoned professional, Gvest offers
           opportunities tailored to your goals. Let’s build a future of
           financial freedom and sustainable growth together.
         </p>
@@ -165,9 +166,14 @@ function About() {
         </p>
 
         <div className={style.btnri}>
-          <button className={style.investConsult}>
+          {/* <button className={style.investConsult}>
             Schedule Your Free Investment Consultation
-          </button>
+          </button> */}
+              <button className={style.investConsult} >
+
+        
+<NavLink to="/schedule-consultation">Schedule Your Free Investment Consultation</NavLink>
+</button>
         </div>
       </div>
 

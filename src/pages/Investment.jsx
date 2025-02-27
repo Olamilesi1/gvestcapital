@@ -404,8 +404,13 @@ function Investment() {
         </div>
 
         <div className={style.btnri}>
-          <button className={style.investConsult}>
+          {/* <button className={style.investConsult}>
             Schedule Your Free Investment Consultation
+          </button> */}
+          <button className={style.investConsult}>
+            <NavLink to="/schedule-consultation">
+              Schedule Your Free Investment Consultation
+            </NavLink>
           </button>
         </div>
       </div>

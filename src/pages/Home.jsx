@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Footer from "../components/reusables/Footer";
 import Header from "../components/reusables/Header";
@@ -109,21 +110,27 @@ function Home() {
 
   const faqs = [
     {
-      question: "Why should I choose Gtext for my real estate investments?",
+      question: "Why should I choose Gvest for my real estate investments?",
       answer:
-        "Gtext offers over a decade of expertise in real estate, providing transparent, secure, and tailored investment opportunities. Our proven track record of delivering consistent returns, ethical practices, and comprehensive support sets us apart from competitors.",
+        "Gvest offers over a decade of expertise in real estate, providing transparent, secure, and tailored investment opportunities. Our proven track record of delivering consistent returns, ethical practices, and comprehensive support sets us apart from competitors.",
     },
     {
-      question: "Why should I choose Gtext for my real estate investments?",
+      question: "Why should I choose Gvest for my real estate investments?",
       answer:
-        "Gtext offers over a decade of expertise in real estate, providing transparent, secure, and tailored investment opportunities. Our proven track record of delivering consistent returns, ethical practices, and comprehensive support sets us apart from competitors.",
+        "Gvest offers over a decade of expertise in real estate, providing transparent, secure, and tailored investment opportunities. Our proven track record of delivering consistent returns, ethical practices, and comprehensive support sets us apart from competitors.",
     },
     {
-      question: "Why should I choose Gtext for my real estate investments?",
+      question: "Why should I choose Gvest for my real estate investments?",
       answer:
-        "Gtext offers over a decade of expertise in real estate, providing transparent, secure, and tailored investment opportunities. Our proven track record of delivering consistent returns, ethical practices, and comprehensive support sets us apart from competitors.",
+        "Gvest offers over a decade of expertise in real estate, providing transparent, secure, and tailored investment opportunities. Our proven track record of delivering consistent returns, ethical practices, and comprehensive support sets us apart from competitors.",
     },
   ];
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   return (
     <>
@@ -134,7 +141,7 @@ function Home() {
             Build Your Future With GVest Real Estate Investments
           </h1>
           <p className={style.homeText2}>
-            Join us at Gtext to explore smart investment opportunities that
+            Join us at Gvest to explore smart investment opportunities that
             secure your financial freedom.
           </p>
 
@@ -145,7 +152,7 @@ function Home() {
               <span class="material-symbols-outlined">arrow_forward</span>
             </button>
             <p className={style.more}>
-              <NavLink to="/login">Learn More</NavLink>
+              <NavLink to="/about">Learn More</NavLink>
             </p>
           </div>
         </div>
@@ -154,7 +161,7 @@ function Home() {
       <div className={style.home2}>
         <p className={style.invest1}>Invest Confidently, Grow Securely.</p>
         <p className={style.cardTitle}>
-          Why Investors Trust Gtext for Real Estate Success
+          Why Investors Trust Gvest for Real Estate Success
         </p>
         <p className={style.cardPara}>
           At Gtext, we don’t just offer investments—we deliver peace of mind,
@@ -165,7 +172,7 @@ function Home() {
           <Cards
             imageSrc="./images/card1.svg"
             title="Expertise Backed by Experience"
-            paragraph="With over a decade of experience in the real estate market, Gtext has become a trusted name for individuals and businesses seeking reliable and profitable investments."
+            paragraph="With over a decade of experience in the real estate market, Gvest has become a trusted name for individuals and businesses seeking reliable and profitable investments."
             bgColor="rgba(244, 245, 255, 1)"
             textColor="rgba(26, 35, 126, 1)"
           />
@@ -251,8 +258,8 @@ function Home() {
         </div>
 
         <div className={style.btnri}>
-          <button className={style.investConsult}>
-            Schedule Your Free Investment Consultation
+          <button className={style.invest}>
+            <NavLink to="/schedule-consultation">Schedule Your Free Investment Consultation</NavLink>
           </button>
         </div>
       </div>
@@ -285,7 +292,7 @@ function Home() {
         <p className={style.cardPara}>
           Explore our curated portfolio of Real Estate opportunities, designed
           to meet the unique needs of every investor, From premium housing
-          developments to strategic land acquisitions, Gtext offers pathways to
+          developments to strategic land acquisitions, Gvest offers pathways to
           sustainable growth and exceptional returns.
         </p>
 
@@ -296,7 +303,10 @@ function Home() {
           cards={premiumHousingCards}
           dynamicCard={dynamicCard1}
           buttonLabel="View Detail"
-          onButtonClick={() => alert("Navigating to Premium Housing...")}
+          onButtonClick={() =>
+            handleNavigate("/property-detail/premium-housing")
+          }
+          // onButtonClick={() => alert("Navigating to Premium Housing...")}
         />
 
         <Property
@@ -306,7 +316,10 @@ function Home() {
           cards={landAcquisitionCards}
           dynamicCard={dynamicCard2}
           buttonLabel="View Detail"
-          onButtonClick={() => alert("Navigating to Land Acquisition...")}
+          // onButtonClick={() => alert("Navigating to Land Acquisition...")}
+          onButtonClick={() =>
+            handleNavigate("/property-detail/land-acquisition")
+          }
         />
 
         <Property
@@ -316,7 +329,10 @@ function Home() {
           cards={commercialRealEstateCards}
           dynamicCard={dynamicCard3}
           buttonLabel="View Detail"
-          onButtonClick={() => alert("Navigating to Commercial Real Estate...")}
+          // onButtonClick={() => alert("Navigating to Commercial Real Estate...")}
+          onButtonClick={() =>
+            handleNavigate("/property-detail/commercial-real-estate")
+          }
         />
 
         <Property
@@ -326,7 +342,10 @@ function Home() {
           cards={customizableInvestmentCards}
           dynamicCard={dynamicCard4}
           buttonLabel="View Detail"
-          onButtonClick={() => alert("Navigating to Commercial Real Estate...")}
+          onButtonClick={() =>
+            handleNavigate("/property-detail/customizable-investment")
+          }
+          // onButtonClick={() => alert("Navigating to Commercial Real Estate...")}
         />
 
         <p className={style.cardTitle}>How It Works (3-4 Step Process)</p>
@@ -456,7 +475,7 @@ function Home() {
             Secure Your Path to Real Estate Wealth
           </p>
           <p className={style.cardPara}>
-            Join thousands of savvy investors who trust Gtext to turn their
+            Join thousands of savvy investors who trust Gvest to turn their
             dreams into reality. With tailored opportunities, proven returns,
             and unwavering support, we make your success our priority. Take the
             first step towards a secure and prosperous future today.
@@ -464,8 +483,10 @@ function Home() {
         </div>
 
         <div className={style.btnri}>
-          <button className={style.investConsult}>
-            Schedule Your Free Investment Consultation
+          <button className={style.investConsult} >
+
+        
+          <NavLink to="/schedule-consultation">Schedule Your Free Investment Consultation</NavLink>
           </button>
         </div>
       </div>

@@ -208,13 +208,13 @@ function Login() {
             )}
           </Formik>
 
-          <div className={style.hrsign}>
+          {/* <div className={style.hrsign}>
             <hr className={style.horiz} />
             <p>Or login with</p>
             <hr className={style.horiz} />
-          </div>
+          </div> */}
 
-          {provider && profile ? (
+          {/* {provider && profile ? (
             <User
               provider={provider}
               profile={profile}
@@ -237,7 +237,7 @@ function Login() {
                   />
                   <p>Google</p>
                 </div>
-                {/* <GoogleLoginButton /> */}
+                <GoogleLoginButton />
               </LoginSocialGoogle>
 
               <LoginSocialFacebook
@@ -251,10 +251,10 @@ function Login() {
                   <img src="./images/FB.png" alt="FB" className={style.socio} />
                   <p>Facebook</p>
                 </div>
-                {/* <FacebookLoginButton /> */}
+              <FacebookLoginButton /> 
               </LoginSocialFacebook>
             </div>
-          )}
+          )} */}
 
           <div className={style.navUl}>
             <p>New here? </p>

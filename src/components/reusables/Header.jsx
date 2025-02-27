@@ -69,7 +69,7 @@ function Header() {
               Contact
             </NavLink>
           </li>
-          <li className={style.navLi}>
+          {/* <li className={style.navLi}>
             <NavLink
               to="/ira-info"
               className={({ isActive }) => (isActive ? style.active : "")}
@@ -77,7 +77,7 @@ function Header() {
             >
               IRA
             </NavLink>
-          </li>
+          </li> */}
         </ul>
 
         {/* Responsive numLog */}
