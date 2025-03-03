@@ -47,7 +47,8 @@ function UserSideBar() {
                     <ul className={style.navUl2}>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/term' onClick={() => handleLinkClick("Term")}><span class="material-symbols-outlined">sticky_note_2</span> <span>Terms & Conditions</span></NavLink></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/setting' onClick={() => handleLinkClick("Setting")}><span class="material-symbols-outlined">settings</span> <span>Settings</span></NavLink></li>
-                    <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/help' onClick={() => handleLinkClick("Help")}><span class="material-symbols-outlined">help</span> <span>Help</span></NavLink></li>
+                    {/* <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/user/help' onClick={() => handleLinkClick("Help")}><span class="material-symbols-outlined">help</span> <span>Help</span></NavLink></li> */}
+                    <li className={style.navLi}><a href="https://wa.me/2348142590965" target="_blank" rel="noopener noreferrer" className={style.navLink} onClick={() => handleLinkClick("Help")}><span className="material-symbols-outlined">help</span><span>Help</span></a></li>
                     <li className={style.navLi}><NavLink  className={({ isActive }) => (isActive ? style.active : "")} to='/login'  onClick={handleLogout}><span class="material-symbols-outlined">logout</span> <span>Logout</span></NavLink></li>
                 </ul>
             </nav>

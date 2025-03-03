@@ -4,11 +4,7 @@ import SideBar from "../components/UserSideBar";
 import UserHeader from "../components/UserHeader";
 import InvestmentDetailsModal from "../components/InvestmentDetailsModal"; // Modal for details
 import style from "../styles/userinvestments.module.css";
-import { toast, ToastContainer } from "react-toastify";
-import TotalInvestment from "../components/TotalInvestment";
-import TotalMonthlyInterest from "../components/TotalMonthlyInterest";
-import TotalInvestedAmount from "../components/TotalInvestedAmount";
-
+import { toast, ToastContainer } from "react-toastify"
 function UserInvestments({ username }) {
   const [investments, setInvestments] = useState({
     propertyInvestments: [],
@@ -98,7 +94,7 @@ function UserInvestments({ username }) {
       <div className={style.headerContent}>
         <UserHeader />
 
-        <div className={style.outline}>
+        <div className={style.outline1}>
           <h2>My Investments</h2>
           {/* Search & Filter Controls */}
           <div className={style.filters}>
@@ -107,10 +103,12 @@ function UserInvestments({ username }) {
               placeholder="Search by ID, Type, or Status"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              className={style.filter1}
             />
             <select
               onChange={(e) => setFilterType(e.target.value)}
               value={filterType}
+              className={style.filter2}
             >
               <option value="All">All Types</option>
               <option value="Bought land">Bought Land</option>
@@ -125,12 +123,14 @@ function UserInvestments({ username }) {
             <select
               onChange={(e) => setFilterStatus(e.target.value)}
               value={filterStatus}
+              className={style.filter3}
             >
               <option value="All">All Status</option>
               <option value="Completed">Completed</option>
               <option value="Not completed">Not Completed</option>
             </select>
           </div>
+
           {/* Property Investments Table */}
           <h3>Property Investments</h3>
           <table>

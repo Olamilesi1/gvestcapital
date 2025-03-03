@@ -4,12 +4,12 @@ import UserHeader from "../components/AdminHeader";
 import style from "../styles/admindashboard.module.css";
 // import Transactions from "../../user/components/Transactions";
 import AdminNotificationForm from "../components/AdminNotificationForm";
+import AdminAllUserNotificationForm from "../components/AdminAllUserNotificationForm";
 import Notifications from "../components/AdminNotificationHistory";
 function AdminAllInvest() {
   const [isModalOpen, setIsModalOpen] = useState(false); // Controls the modal visibility
 
   return (
-
     <>
       <div className={style.componentContent}>
         <SideBar />
@@ -18,7 +18,7 @@ function AdminAllInvest() {
           <UserHeader />
 
           <div className={style.outline}>
-          <div className={`${isModalOpen ? style.blurBackground : ""}`}>
+            <div className={`${isModalOpen ? style.blurBackground : ""}`}>
               <div className={style.allInvest}>
                 <p>List of All Notification</p>
 
@@ -32,8 +32,7 @@ function AdminAllInvest() {
               </div>
             </div>
 
-            
-            <Notifications/>
+            <Notifications />
           </div>
         </div>
       </div>
@@ -49,7 +48,12 @@ function AdminAllInvest() {
               ×
             </button>
             <div className={style.scrollableForm}>
-            <AdminNotificationForm />
+              <h3>Post for one user</h3>
+              <AdminNotificationForm />
+              <br />
+
+              <h3>Post for all users</h3>
+              <AdminAllUserNotificationForm />
             </div>
           </div>
         </div>

@@ -170,6 +170,7 @@ const TransactionHistory = ({ userId }) => {
       )}
       {/* Table - Blur when details are open */}
       <div className={selectedTransaction ? style.blur : ""}>
+      <div className={style.tableWrapper}>
         <table>
           <thead className={style.head}>
             <tr>
@@ -199,6 +200,7 @@ const TransactionHistory = ({ userId }) => {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   );

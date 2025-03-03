@@ -92,6 +92,12 @@ function Password() {
             />
           </div> */}
 
+          <h2>Reset your password</h2>
+          <p>
+            Enter your registered email address, and we'll send you reset
+            instructions.
+          </p>
+          <br />
           <div className={style.labet}>
             <label htmlFor="" className={style.lab}>
               Enter Your Registered Email
@@ -112,7 +118,7 @@ function Password() {
           </button> */}
 
           {/* <div className={style.sav}> */}
-            <button className={style.sav}>Save</button>
+          <button className={style.sav}>Save</button>
           {/* </div> */}
         </form>
       </div>

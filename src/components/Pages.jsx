@@ -60,6 +60,7 @@ import AdminDocument from "../admin/pages/AdminDocument";
 import AdminWallet from "../admin/pages/AdminWallet";
 import AdminTerm from "../admin/pages/AdminTerm";
 import AdminNotification from "../admin/pages/AdminNotification";
+// import AdminAllUserNotificationForm  from "../admin/components/AdminAllUserNotificationForm";
 import AdminVerifyEmail from "../admin/components/AdminVerifyEmail";
 import AdminEmailVerify from "../admin/components/AdminEmailVerify";
 import AdminForgotPassword from "../admin/components/AdminForgotPassword";
@@ -134,6 +135,7 @@ function Pages() {
             <Route path="/admin/wallet" element={<AdminWallet />} />
             <Route path="/admin/term" element={<AdminTerm />} />
             <Route path="/admin/notification" element={<AdminNotification />} />
+            {/* <Route path="/admin/all/notification" element={<AdminAllUserNotificationForm />} /> */}
             <Route path="/admin/setting" element={<AdminSetting />} />
             <Route path="/admin/password" element={<AdminPassword />} />
             <Route path="/admin/email-success" element={<AdminEmailSuccess />}/>

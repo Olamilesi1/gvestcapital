@@ -97,7 +97,7 @@ function PropertyDetails() {
                       <div className={style.period1}>
                         <div className={style.period}>
                           <img
-                            src="/images/hourglass.png"
+                            src="/images/map.png"
                             alt="property"
                             className={style.contai}
                           />
@@ -108,17 +108,17 @@ function PropertyDetails() {
 
                         <div className={style.period}>
                           <img
-                            src="/images/hourglass.png"
+                            src="/images/unit.png"
                             alt="property"
                             className={style.contai}
                           />
-                          <p className={style.pary}>{property.propertyUnit}</p>
+                          <p className={style.pary}>{property.propertyUnit} Units</p>
                         </div>
                       </div>
 
                       <div className={style.period}>
                         <img
-                          src="/images/hourglass.png"
+                          src="/images/clock.png"
                           alt="property"
                           className={style.contai}
                         />

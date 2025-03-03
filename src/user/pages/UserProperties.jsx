@@ -88,52 +88,54 @@ function UserProperties() {
 
                     <p className={style.par}>{property.description}</p>
 
-<div className={style.prop}>
-                    <div className={style.period1}>
-                      <div className={style.period}>
-                        <img
-                          src="/images/map.png"
-                          alt="property"
-                          className={style.contai}
-                        />
-                        <p className={style.pary}>
-                          {property.propertyLocation}
-                        </p>
-                      </div>
-
-                      <div className={style.period}>
-                        <img
-                          src="/images/unit.png"
-                          alt="property"
-                          className={style.contai}
-                        />
-                        <p className={style.pary}>{property.propertyUnit} units</p>
-                      </div>
-                    </div>
-
-                    <div className={style.period}>
-                      <img
-                        src="/images/clock.png"
-                        alt="property"
-                        className={style.contai}
-                      />
-                      <p className={style.pary}>{property.duration}</p>
-                    </div>
-
-                    <div className={style.periodH}>
-                      {property.features.map((feature, index) => (
-                        <div className={style.periodL}>
+                    <div className={style.prop}>
+                      <div className={style.period1}>
+                        <div className={style.period}>
                           <img
-                            src="/images/hourglass.png"
+                            src="/images/map.png"
                             alt="property"
                             className={style.contai}
                           />
-                          <p className={style.pary} key={index}>
-                            {feature}
+                          <p className={style.pary}>
+                            {property.propertyLocation}
                           </p>
                         </div>
-                      ))}
-                    </div>
+
+                        <div className={style.period}>
+                          <img
+                            src="/images/unit.png"
+                            alt="property"
+                            className={style.contai}
+                          />
+                          <p className={style.pary}>
+                            {property.propertyUnit} Units
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className={style.period}>
+                        <img
+                          src="/images/clock.png"
+                          alt="property"
+                          className={style.contai}
+                        />
+                        <p className={style.pary}>{property.duration}</p>
+                      </div>
+
+                      <div className={style.periodH}>
+                        {property.features.map((feature, index) => (
+                          <div className={style.periodL}>
+                            <img
+                              src="/images/hourglass.png"
+                              alt="property"
+                              className={style.contai}
+                            />
+                            <p className={style.pary} key={index}>
+                              {feature}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
                     <Link
