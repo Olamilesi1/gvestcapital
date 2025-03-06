@@ -36,9 +36,10 @@ function PropertyDetails() {
           <UserHeader />
 
           <div
-            className={`${style.componentContent} ${
-              showTransaction ? style.blur : ""
-            }`}
+            className={` ${showTransaction.show ? style.blurBackground : ""}`}
+            // {`${style.componentContent} ${
+            //   showTransaction ? style.blur : ""
+            // }`}
           >
             <div className={style.outline}>
               <div className={style.property}>
@@ -182,6 +183,8 @@ function PropertyDetails() {
                 Close
               </button> */}
           {showTransaction.show && (
+            
+            <div className={style.modalOverlay}>
             <div className={style.transactionModal}>
               <Transaction transactionData={showTransaction.transactionData} />
               <button
@@ -192,6 +195,7 @@ function PropertyDetails() {
               >
                 Close
               </button>
+            </div>
             </div>
           )}
         </div>

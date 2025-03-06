@@ -151,7 +151,7 @@ function UserInvestments({ username }) {
                   >
                     <td>{investment.investmentId}</td>
                     <td>{investment.type}</td>
-                    <td>{investment.amountPaid}</td>
+                    <td>{investment.currency} {investment.amountPaid}</td>
                     <td>{investment.status}</td>
                   </tr>
                 )
@@ -179,7 +179,7 @@ function UserInvestments({ username }) {
                   >
                     <td>{investment.investmentId}</td>
                     <td>{investment.type}</td>
-                    <td>{investment.amountPaid}</td>
+                    <td>{investment.currency} {investment.amountPaid}</td>
                     <td>{investment.nextRoiDate}</td>
                     <td>{investment.status}</td>
                   </tr>

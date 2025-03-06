@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
+import style from "../styles/stripe.module.css";
 
 const AddTransaction = ({ transactionData }) => {
   const stripe = useStripe();
@@ -49,72 +50,135 @@ const AddTransaction = ({ transactionData }) => {
     }
   }, [plot, unit, type, transactionData]);
 
-//   useEffect(() => {
-//   if (transactionData?.durations?.length > 0) {
-//     const selectedInvestment = transactionData.durations[0]; // Get first duration
+  // useEffect(() => {
+  //   console.log("transactionData:", transactionData); // Debugging
 
-//     if (selectedInvestment?.duration) {
-//       const today = new Date();
-//       const roiDurationMonths = parseInt(selectedInvestment.duration, 10);
+  //   if (transactionData?.durations?.length > 0) {
+  //     const selectedInvestment = transactionData.durations[0]; // Get first duration
+  //     console.log("Selected Investment:", selectedInvestment); // Debugging
 
-//       if (!isNaN(roiDurationMonths)) {
-//         const nextRoiDate = new Date(today);
-//         nextRoiDate.setMonth(today.getMonth() + roiDurationMonths);
+  //     if (selectedInvestment?.duration) {
+  //       const today = new Date();
+  //       const roiDurationMonths = parseInt(selectedInvestment.duration, 10);
 
-//         // If the day is automatically adjusted (e.g., Feb 30 → March 2), fix it
-//         if (nextRoiDate.getDate() < today.getDate()) {
-//           nextRoiDate.setDate(0); // Move to last valid day of the previous month
-//         }
+  //       console.log("ROI Duration (Months):", roiDurationMonths); // Debugging
 
-//         setNextRoiDate(nextRoiDate.toISOString().split("T")[0]);
-//       }
-//     }
-//   }
-// }, [transactionData]);
+  //       if (!isNaN(roiDurationMonths)) {
+  //         const nextRoiDate = new Date(today);
+  //         nextRoiDate.setMonth(today.getMonth() + roiDurationMonths);
 
-useEffect(() => {
-  console.log("transactionData:", transactionData); // Debugging
+  //         // Handle month-end issues
+  //         if (nextRoiDate.getDate() < today.getDate()) {
+  //           nextRoiDate.setDate(0); // Moves to the last valid day of previous month
+  //         }
 
-  if (transactionData?.durations?.length > 0) {
-    const selectedInvestment = transactionData.durations[0]; // Get first duration
-    console.log("Selected Investment:", selectedInvestment); // Debugging
+  //         console.log("Computed Next ROI Date:", nextRoiDate); // Debugging
 
-    if (selectedInvestment?.duration) {
-      const today = new Date();
-      const roiDurationMonths = parseInt(selectedInvestment.duration, 10);
+  //         setNextRoiDate(nextRoiDate.toISOString().split("T")[0]);
+  //       }
+  //     }
+  //   }
+  // }, [transactionData]);
 
-      console.log("ROI Duration (Months):", roiDurationMonths); // Debugging
+  // };
 
-      if (!isNaN(roiDurationMonths)) {
-        const nextRoiDate = new Date(today);
-        nextRoiDate.setMonth(today.getMonth() + roiDurationMonths);
+  console.log("Type:", type);
+console.log("Transaction Durations:", transactionData?.durations);
 
-        // Handle month-end issues
-        if (nextRoiDate.getDate() < today.getDate()) {
-          nextRoiDate.setDate(0); // Moves to the last valid day of previous month
+  useEffect(() => {
+    // const calculateNextRoiDate = () => {
+    //   if (["5million", "8million", "10million"].includes(type) && transactionData?.durations?.length > 0) {
+    //     const selectedInvestment = transactionData.durations[0]; // Assuming you're using the first duration
+        
+    //     if (selectedInvestment?.duration) {
+    //       const today = new Date();
+    //       const roiDurationMonths = parseInt(selectedInvestment.duration, 10); // Assume duration is in months
+  
+    //       if (!isNaN(roiDurationMonths)) {
+    //         const nextDate = new Date(today);
+    //         nextDate.setMonth(today.getMonth() + roiDurationMonths);
+  
+    //         // Handle edge case: if the day doesn't exist in the new month
+    //         if (nextDate.getDate() < today.getDate()) {
+    //           nextDate.setDate(0); // Sets to the last day of previous month
+    //         }
+
+    //         setNextRoiDate(nextDate.toISOString().split("T")[0]);
+    //         console.log("Next ROI Date Set:", nextRoiDate);
+    //       }
+    //     }
+    //   } else {
+    //     setNextRoiDate(""); // Clear if not applicable
+    //   }
+    // };
+    console.log("Type:", type);
+    console.log("Transaction Durations:", transactionData?.durations);
+    
+    const calculateNextRoiDate = () => {
+      if (["5million", "8million", "10million"].includes(type) && transactionData?.durations?.length > 0) {
+        const selectedInvestment = transactionData.durations.find(d => d.duration); 
+        if (selectedInvestment?.duration) {
+          const today = new Date();
+          const months = parseInt(selectedInvestment.duration, 10);
+          if (!isNaN(months)) {
+            const nextDate = new Date(today);
+            nextDate.setMonth(nextDate.getMonth() + months);
+            if (nextDate.getDate() < today.getDate()) {
+              nextDate.setDate(0);  // Handles month overflow
+            }
+            const nextDateString = nextDate.toISOString().split("T")[0];
+            setNextRoiDate(nextDateString);
+            console.log("Computed Next ROI Date:", nextDateString);  // Correct logging spot
+          }
         }
-
-        console.log("Computed Next ROI Date:", nextRoiDate); // Debugging
-
-        setNextRoiDate(nextRoiDate.toISOString().split("T")[0]);
+      } else {
+        setNextRoiDate("");
       }
+    };
+    
+    calculateNextRoiDate();
+  }, [transactionData, type]);
+  
+  const conversionRates = { usd: 1, ngn: 1500, eur: 0.92, gbp: 0.78 };
+
+  const calculateAmount = (baseAmount, currency, plot, unit, type) => {
+    const rate = conversionRates[currency] || 1;
+    let totalAmount = baseAmount;
+
+    if (type === "land") {
+      totalAmount = baseAmount * plot;
+    } else if (type === "house") {
+      totalAmount = baseAmount * unit;
     }
-  }
-}, [transactionData]);
+
+    // Convert to selected currency
+    const convertedAmount = (totalAmount / conversionRates["usd"]) * rate;
+    return parseFloat(convertedAmount.toFixed(2));
+  };
+
+  useEffect(() => {
+    const newAmount = calculateAmount(baseAmount, currency, plot, unit, type);
+    setAmount(newAmount);
+  }, [plot, unit, type, currency, baseAmount]);
 
   const handleCurrencyChange = (e) => {
     const newCurrency = e.target.value;
-    const conversionRates = { usd: 1, ngn: 1500, eur: 0.92, gbp: 0.78 };
-
-    if (conversionRates[newCurrency]) {
-      // Always convert from USD to the selected currency
-      const convertedAmount =
-        (baseAmount / conversionRates["usd"]) * conversionRates[newCurrency];
-      setAmount(parseFloat(convertedAmount.toFixed(2)));
-    }
-
     setCurrency(newCurrency);
+
+    const newAmount = calculateAmount(
+      baseAmount,
+      newCurrency,
+      plot,
+      unit,
+      type
+    );
+    setAmount(newAmount);
   };
+
+  useEffect(() => {
+    console.log("Transaction Data:", transactionData);
+}, [transactionData]);
+
 
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -184,108 +248,170 @@ useEffect(() => {
     <div>
       <h2>Make a Payment</h2>
       <form onSubmit={handlePayment}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
+        <div className={style.emme}>
+          <div className={style.laut}>
+            <label htmlFor="">Email: </label>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className={style.ail}
+            />
+          </div>
 
-        <input
-          type="text"
-          placeholder="Description"
-          value={description}
-          readOnly
-        />
+          <div className={style.laut}>
+            <label htmlFor="">Username: </label>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              readOnly
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className={style.ail}
+            />
+          </div>
+        </div>
 
-        <select value={currency} onChange={handleCurrencyChange}>
-          <option value="usd">$ (USD)</option>
-          <option value="ngn"># (NGN)</option>
-          <option value="eur">€ (EUR)</option>
-          <option value="gbp">£ (GBP)</option>
-        </select>
-        <input type="number" value={amount} readOnly />
-        {/* <input
-  type="number"
-  value={amount}
-  onChange={(e) => setAmount(Number(e.target.value))} // Allow manual input
-  min="0"
-  required
-/> */}
+        <div className={style.emme}>
+          <div className={style.laut}>
+            <label htmlFor="">Description: </label>
+            <input
+              type="text"
+              placeholder="Description"
+              value={description}
+              readOnly
+              className={style.ail}
+            />
+          </div>
 
+          <div className={style.laut}>
+            <label htmlFor="">Currency: </label>
+            <select
+              value={currency}
+              className={style.ail}
+              onChange={handleCurrencyChange}
+            >
+              <option value="usd">$ (USD)</option>
+              <option value="ngn"># (NGN)</option>
+              <option value="eur">€ (EUR)</option>
+              <option value="gbp">£ (GBP)</option>
+            </select>
+          </div>
+        </div>
 
-        {showPlot && (
-          <input
-            type="number"
-            placeholder="How many Plots?"
-            value={plot}
-            onChange={(e) => setPlot(Number(e.target.value))}
-          />
-        )}
+        <div className={style.lautnt}>
+          <label htmlFor="">Amount:</label>
+          <input type="number" value={amount} readOnly className={style.ail} />
+        </div>
 
-        {showUnit && (
-          <input
-            type="number"
-            placeholder="How many Units?"
-            value={unit}
-            onChange={(e) => setUnit(Number(e.target.value))}
-          />
-        )}
+        <div className={style.emme}>
+          {showPlot && (
+            <div className={style.laut}>
+              <label htmlFor="">How many Plot: </label>
+              <input
+                className={style.ail}
+                type="number"
+                placeholder="How many Plots?"
+                value={plot}
+                onChange={(e) => setPlot(Number(e.target.value))}
+                // onChange={handlePlotChange}
+              />
+            </div>
+          )}
 
-        <select
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          disabled={!!transactionData?.type} // Disables if type exists in transactionData
-        >
-          <option value="">Select Transaction Type</option>
-          <option value="5million">5 Million</option>
-          <option value="8million">8 Million</option>
-          <option value="10million">10 Million</option>
-          <option value="land">Buy Land</option>
-          <option value="house">Buy House</option>
-          <option value="Bought Fractional Ownership">
-            Buy Fractional Ownership
-          </option>
-        </select>
+          {showUnit && (
+            <div className={style.laut}>
+              <label htmlFor="">How many Unit?</label>
+              <input
+                className={style.ail}
+                type="number"
+                placeholder="How many Units?"
+                value={unit}
+                onChange={(e) => setUnit(Number(e.target.value))}
+              />
+            </div>
+          )}
+        </div>
 
-        <select value={method} onChange={(e) => setMethod(e.target.value)}>
-          <option value="">Select Payment Method</option>
-          <option value="Bank Transfer">Credit/Debit Card</option>
-          <option value="Wallet">Wallet</option>
-        </select>
+        <div className={style.emme}>
+          <div className={style.laut}>
+            <label htmlFor="">Transaction Type: </label>
+            <select
+              value={type}
+              // onChange={handleTypeChange}
+              onChange={(e) => setType(e.target.value)}
+              disabled={!!transactionData?.type} // Disables if type exists in transactionData
+              className={style.ail}
+            >
+              <option value="">Select Transaction Type</option>
+              <option value="5million">5 Million</option>
+              <option value="8million">8 Million</option>
+              <option value="10million">10 Million</option>
+              <option value="land">Buy Land</option>
+              <option value="house">Buy House</option>
+              <option value="Bought Fractional Ownership">
+                Buy Fractional Ownership
+              </option>
+            </select>
+          </div>
+
+          <div className={style.laut}>
+            <label htmlFor="">Payment Method: </label>
+            <select
+              value={method}
+              onChange={(e) => setMethod(e.target.value)}
+              className={style.ail}
+            >
+              <option value="">Select Payment Method</option>
+              <option value="Bank Transfer">Credit/Debit Card</option>
+              {/* <option value="Wallet">Wallet</option> */}
+            </select>
+          </div>
+        </div>
 
         {showRoiFields && (
-          <>
-            <input
-              type="number"
-              name="roi"
-              placeholder="Enter User ROI"
-              value={roi}
-              onChange={(e) => setRoi(e.target.value)}
-              required
-              disabled={!!transactionData?.roi}
-            />
+          <div className={style.emme}>
+            <div className={style.laut}>
+              <label htmlFor="">ROI: </label>
+              <input
+                className={style.ail}
+                type="number"
+                name="roi"
+                placeholder="Enter User ROI"
+                value={roi}
+                onChange={(e) => setRoi(e.target.value)}
+                required
+                disabled={!!transactionData?.roi}
+              />
+            </div>
 
-            <input
-              type="date"
-              name="nextRoiDate"
-              value={nextRoiDate}
-              onChange={(e) => setNextRoiDate(e.target.value)}
-              required
-            />
-          </>
+            <div className={style.laut}>
+              <label htmlFor="">Next ROI Date: </label>
+              <input
+                className={style.ail}
+                type="date"
+                name="nextRoiDate"
+                value={nextRoiDate}
+                readOnly
+                // onChange={(e) => setNextRoiDate(e.target.value)}
+                required
+              />
+            </div>
+          </div>
         )}
 
+        <br />
         <CardElement />
-        <button type="submit" disabled={loading || !stripe}>
+
+        <br />
+        <button
+          className={style.key}
+          type="submit"
+          disabled={loading || !stripe}
+        >
           {loading ? "Processing..." : "Pay Now"}
         </button>
       </form>

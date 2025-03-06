@@ -97,7 +97,7 @@ function UserInvestments() {
                   <table className={style.table}>
                     <thead>
                       <tr>
-                        <th>Year</th>
+                        <th>Month</th>
                         <th>ROI Percentage</th>
                         <th>ROI</th>
                         <th>Action</th>
@@ -122,6 +122,8 @@ function UserInvestments() {
                                     currency: selectedInvestment.currency,
                                     description: selectedInvestment.description,
                                     type: selectedInvestment.investmentType,
+
+                                    durations: selectedInvestment.durations, // ✅ Pass durations here
                                     roi: selectedInvestment.durations[0].roi, // Get first ROI as default
                                     nextRoiDate:
                                       selectedInvestment.durations[0]
