@@ -5,7 +5,8 @@
 }
 
 .home {
-  background: url("../../public/images/bg__.png");
+  /* background: url("../../public/images/bg__.png"); */
+background: url("../../public/images/bg__.webp");
   background-size: cover;
   background-position: center;
   height: 100vh;

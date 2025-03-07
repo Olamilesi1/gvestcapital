@@ -6,8 +6,21 @@
   padding: 0;
 }
 
-.home {
+/* .home {
   background: url("../../public/images/bg__.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+} */
+
+.home {
+  /* background: url("../../public/images/bg__.png"); */
+background: url("../../public/images/bg__.webp");
   background-size: cover;
   background-position: center;
   height: 100vh;
